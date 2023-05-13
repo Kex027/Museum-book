@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    .museumTitle {
+        width: 200px;
+    }
+
+    .book {
+        img {
+            height: 80vh;
+        }
+    }
+}
