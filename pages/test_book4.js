@@ -22,7 +22,7 @@ export async function getStaticProps() {
 }
 
 const TestBook4 = ({ data }) => {
-  console.log(data);
+  // console.log(data);
   const pages = [...data].sort((first, second) => {
     const firstCategory = first.fields.category.toLowerCase();
     const secondCategory = second.fields.category.toLowerCase();

@@ -39,9 +39,9 @@ const DoublePage = ({
       >
         <div className={`${style.pageContent}`}>
           <h1>{heading}</h1>
-          <video controls={false}>
+          {currentPage === pageIndex && <video controls>
             <source src={video.fields.file.url} type="video/mp4" />
-          </video>
+          </video>}
           <p>{description}</p>
         </div>
       </div>
