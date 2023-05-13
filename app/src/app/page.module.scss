@@ -1,0 +1,32 @@
+.container {
+    width: 100vw;
+    height: 100vh;
+
+    .bg {
+        width: 100%;
+        height: 100%;
+        background-image: url("/background.png");
+        background-position: center;
+        background-size: cover;
+        background-size: 110%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            .museumTitle {
+                width: 200px;
+            }
+    
+            .book {
+                img {
+                    height: 80vh;
+                }
+            }
+        }
+    }
+}
