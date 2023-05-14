@@ -1,5 +1,5 @@
-import Book from '../components/Book.jsx'
-import style from '../styles/index.module.scss'
+import Book from "../components/Book.jsx";
+import style from "../styles/index.module.scss";
 import { createClient } from "contentful";
 
 export async function getStaticProps() {
@@ -7,9 +7,9 @@ export async function getStaticProps() {
     space: process.env.CONTENTFUL_SPACE_ID,
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   });
-  
+
   const res = await client.getEntries({ content_type: "page" });
-  
+
   return {
     props: {
       data: res.items,
@@ -35,10 +35,14 @@ export default function Index({ data }) {
     <div className={style.container}>
       <div className={style.bg}>
         <div className={style.content}>
-          <img src="/museum_title.png" alt="Museum Title" className={style.museumTitle} />
-          <Book />
+          <img
+            src="/museum_title.webp"
+            alt="Museum Title"
+            className={style.museumTitle}
+          />
+          <Book pages={pages} />
         </div>
       </div>
     </div>
-  )
+  );
 }

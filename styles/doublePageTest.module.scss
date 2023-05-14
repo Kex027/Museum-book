@@ -1,0 +1,64 @@
+.content {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  perspective: 3000px;
+
+  .pageLeft,
+  .pageRight {
+    transition: transform 1s;
+    width: 50%;
+    padding: 10px;
+    border: 1px solid #dedede;
+    background: url("https://i.imgur.com/0kjMcUe.png");
+    filter: brightness(0.95) sepia(25%) saturate(80%);
+    border-radius: 2px;
+
+    .pageContent {
+      width: 100%;
+      height: 100%;
+      position: relative;
+
+      .bookmark {
+        position: absolute;
+        background-color: goldenrod;
+        color: antiquewhite;
+        font-size: 2em;
+        padding: 0 15px;
+        //transform: rotate(90deg);
+        top: 3%;
+        left: -2.5%;
+        -webkit-box-shadow: 7px 0 26px -11px rgba(66, 68, 90, 1);
+        -moz-box-shadow: 7px 0 26px -11px rgba(66, 68, 90, 1);
+        box-shadow: 7px 0 26px -11px rgba(66, 68, 90, 1);
+      }
+    }
+  }
+
+  // Page flip animation
+  .pageLeft {
+    transform-origin: right;
+  }
+
+  .flippedLeft {
+    transform: rotateY(-180deg);
+  }
+
+  .pageRight {
+    transform-origin: left;
+  }
+
+  .flippedRight {
+    transform: rotateY(180deg);
+  }
+
+  p {
+    font-size: 1.2em;
+    color: #565046;
+    letter-spacing: 0.5px;
+    word-spacing: 3px;
+    text-shadow: 0.2px 0.2px 1.3px Sienna;
+  }
+}

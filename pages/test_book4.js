@@ -4,7 +4,7 @@
 import React, { useState } from "react";
 import style from "../styles/test_book4.module.scss";
 import { createClient } from "contentful";
-import DoublePage from "../components/DoublePage";
+import DoublePageTest from "../components/DoublePageTest";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -97,7 +97,7 @@ const TestBook4 = ({ data }) => {
             { fields: { id, image, heading, description, video, category } },
             index
           ) => (
-            <DoublePage
+            <DoublePageTest
               key={id}
               currentPage={index}
               pageIndex={pageIndex}
