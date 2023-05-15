@@ -1,6 +1,7 @@
 import Book from "../components/Book.jsx";
 import style from "../styles/index.module.scss";
 import { createClient } from "contentful";
+import Link from "next/link";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -34,6 +35,9 @@ export default function Index({ data }) {
   return (
     <div className={style.container}>
       <div className={style.bg}>
+        <Link href="/test_book4" className={style.link}>
+          demo
+        </Link>
         <div className={style.content}>
           <img
             src="/museum_title.webp"

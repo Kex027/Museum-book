@@ -16,6 +16,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
+            height: 100%;
 
             .museumTitle {
                 width: 200px;
@@ -26,6 +27,12 @@
                     height: 80vh;
                 }
             }
+        }
+
+        .link {
+            color: red;
+            font-weight: bold;
+            font-size: 2em;
         }
     }
 }

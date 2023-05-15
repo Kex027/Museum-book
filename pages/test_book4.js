@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import style from "../styles/test_book4.module.scss";
 import { createClient } from "contentful";
 import DoublePageTest from "../components/DoublePageTest";
+import Link from "next/link";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -77,6 +78,9 @@ const TestBook4 = ({ data }) => {
 
   return (
     <div className={style.container}>
+      <Link href="/" className={style.link}>
+        app
+      </Link>
       <button className={style.btn} onClick={() => changePage(-1)}>
         &larr;
       </button>

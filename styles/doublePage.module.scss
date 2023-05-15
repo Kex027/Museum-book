@@ -1,15 +1,32 @@
-.content {
+.container {
   display: flex;
+  height: 100%;
 
   .leftPage, .rightPage {
     transition: transform 1s;
     width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
   }
 
   .leftPage {
     //background-image: url("/left_page_not_adjusted.webp");
     transform-origin: right;
-    border: 2px solid red;
+    //border: 2px solid red;
+
+    .quote {
+      display: flex;
+      align-items: center;
+      font-size: 3em;
+      height: 100%;
+    }
+
+    .contentLeft {
+      width: 70%;
+      height: 100%;
+    }
   }
   .flippedLeft {
     transform: rotateY(-180deg);
@@ -18,7 +35,26 @@
   .rightPage {
     //background-image: url("/right_page.webp");
     transform-origin: left;
-    border: 2px solid green;
+    //border: 2px solid green;
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 50px;
+
+    .contentRight {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: flex-start;
+      height: 90%;
+      width: 80%;
+
+      .video {
+        height: 30%;
+        width: 90%;
+        background-color: #0f2f19;
+        color: white;
+      }
+    }
   }
   .flippedRight {
     transform: rotateY(180deg);

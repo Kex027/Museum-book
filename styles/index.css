@@ -4,10 +4,17 @@
 /* purgecss end ignore */
 @tailwind utilities;
 
+@font-face {
+    font-family: 'MuseumFont';
+    src: url('/FoundryFormSans_Book_Regular.otf') format('opentype');
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    font-family: 'MuseumFont', sans-serif;
 }
 
 .btn {
