@@ -1,6 +1,3 @@
-//TODO sort pages by category and then id
-//TODO write a changeCustomPages func - it moves to first item in each category
-
 import React, { useState } from "react";
 import style from "../styles/test_book4.module.scss";
 import { createClient } from "contentful";
@@ -46,19 +43,19 @@ const TestBook4 = ({ data }) => {
   });
   bookmarksNames.sort();
 
-  const changePage = (index) => {
+  const changePage = (value) => {
     setTimeout(() => {
       setTimeout(() => {
         setPageIndex((oldIndex) => {
-          if (oldIndex + index < 0 || oldIndex + index > pages.length - 1)
+          if (oldIndex + value < 0 || oldIndex + value > pages.length - 1)
             return oldIndex;
-          return oldIndex + index;
+          return oldIndex + value;
         });
       }, 280);
       setPageIndexStyle((oldIndex) => {
-        if (oldIndex + index < 0 || oldIndex + index > pages.length - 1)
+        if (oldIndex + value < 0 || oldIndex + value > pages.length - 1)
           return oldIndex;
-        return oldIndex + index;
+        return oldIndex + value;
       });
     }, 50);
   };

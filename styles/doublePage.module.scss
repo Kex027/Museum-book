@@ -1,6 +1,8 @@
 .container {
   display: flex;
   height: 100%;
+  width: 100%;
+  perspective: 3000px;
 
   .leftPage, .rightPage {
     transition: transform 1s;
@@ -9,6 +11,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    background-color: rgb(224, 224, 224, .9);
   }
 
   .leftPage {
@@ -24,7 +27,7 @@
     }
 
     .contentLeft {
-      width: 70%;
+      padding: 30px;
       height: 100%;
     }
   }
@@ -38,7 +41,7 @@
     //border: 2px solid green;
     display: flex;
     justify-content: flex-start;
-    margin-left: 50px;
+    padding: 0 0 0 50px;
 
     .contentRight {
       display: flex;
