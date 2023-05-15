@@ -5,10 +5,9 @@
     .bg {
         width: 100%;
         height: 100%;
-        background-image: url("/background.png");
+        background-image: url("/background.webp");
         background-position: center;
         background-size: cover;
-        background-size: 110%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -17,6 +16,7 @@
             display: flex;
             flex-direction: column;
             align-items: flex-end;
+            height: 100%;
 
             .museumTitle {
                 width: 200px;
@@ -27,6 +27,12 @@
                     height: 80vh;
                 }
             }
+        }
+
+        .link {
+            color: red;
+            font-weight: bold;
+            font-size: 2em;
         }
     }
 }

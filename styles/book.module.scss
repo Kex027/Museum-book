@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    align-items: flex-end;
+
+    .museumTitle {
+        width: 200px;
+    }
+
+    .book {
+        position: relative;
+        height: 100%;
+        img {
+            height: 80vh;
+        }
+
+        .bookContent {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            .relative {
+                position: absolute;
+                height: 100%;
+            }
+        }
+    }
+
+    .button {
+        border: 2px solid orangered;
+        font-weight: bold;
+        background-color: greenyellow;
+    }
+}
