@@ -5,9 +5,11 @@
   perspective: 3000px;
   justify-content: center;
   align-items: center;
+  position: absolute;
 
   .leftPage, .rightPage {
     width: 50%;
+    min-width: 50%;
     transition: transform 1s;
     height: 101%;
     display: flex;
