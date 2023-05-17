@@ -1,31 +1,40 @@
 .container {
   display: flex;
   height: 100%;
+  width: 100%;
+  perspective: 3000px;
+  justify-content: center;
+  align-items: center;
 
   .leftPage, .rightPage {
-    transition: transform 1s;
     width: 50%;
-    height: 100%;
+    transition: transform 1s;
+    height: 101%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    backface-visibility: hidden;
+
+    .contentLeft, .contentRight {
+      padding: 30px;
+      height: 98%;
+    }
   }
 
   .leftPage {
-    //background-image: url("/left_page_not_adjusted.webp");
     transform-origin: right;
-    //border: 2px solid red;
 
     .quote {
       display: flex;
       align-items: center;
-      font-size: 3em;
+      font-size: 7vh;
       height: 100%;
     }
 
     .contentLeft {
-      width: 70%;
-      height: 100%;
+      background-image: url("/clear-left-paper.webp");
+      background-size: cover;
+      width: 83%;
     }
   }
   .flippedLeft {
@@ -33,23 +42,19 @@
   }
 
   .rightPage {
-    //background-image: url("/right_page.webp");
     transform-origin: left;
-    //border: 2px solid green;
     display: flex;
     justify-content: flex-start;
-    margin-left: 50px;
 
     .contentRight {
+      background-image: url("/clear-right-paper.webp");
+      background-size: cover;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
-      align-items: flex-start;
-      height: 90%;
-      width: 80%;
+      width: 89%;
 
       .video {
-        height: 30%;
         width: 90%;
         background-color: #0f2f19;
         color: white;
@@ -58,5 +63,10 @@
   }
   .flippedRight {
     transform: rotateY(180deg);
+  }
+
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
   }
 }

@@ -20,17 +20,7 @@ export async function getStaticProps() {
 
 export default function Index({ data }) {
   const pages = [...data].sort((first, second) => {
-    const firstCategory = first.fields.category.toLowerCase();
-    const secondCategory = second.fields.category.toLowerCase();
-    if (firstCategory < secondCategory) {
-      return -1;
-    }
-    if (firstCategory > secondCategory) {
-      return 1;
-    }
-
-    // categories must be equal
-    return first.fields.id - second.fields.id;
+    return first.fields.id > second.fields.id ? 1 : -1;
   });
   return (
     <div className={style.container}>
