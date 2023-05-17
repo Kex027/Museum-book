@@ -23,7 +23,6 @@ const Book = ({ pages }) => {
       });
     }, 50);
   };
-
   return (
     <div className={style.container}>
       <button className={style.button} onClick={() => changePage(-1)}>
@@ -49,6 +48,9 @@ const Book = ({ pages }) => {
                   pageIndex={pageIndex}
                   pageIndexStyle={pageIndexStyle}
                   pagesLength={pages.length}
+                  heading={heading}
+                  description={description}
+                  video={video}
                 />
               </div>
             )

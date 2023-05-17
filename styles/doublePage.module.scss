@@ -27,7 +27,7 @@
     .quote {
       display: flex;
       align-items: center;
-      font-size: 3em;
+      font-size: 7vh;
       height: 100%;
     }
 
@@ -55,7 +55,6 @@
       width: 89%;
 
       .video {
-        height: 30%;
         width: 90%;
         background-color: #0f2f19;
         color: white;
@@ -64,5 +63,10 @@
   }
   .flippedRight {
     transform: rotateY(180deg);
+  }
+
+  h1 {
+    font-size: 2em;
+    font-weight: bold;
   }
 }
