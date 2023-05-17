@@ -14,14 +14,12 @@ const DoublePageTest = ({ pageIndex, currentPage, pageIndexStyle }) => {
             vero."
           </p>
         </div>
-        {/*<img src="/left_page_not_adjusted.webp" alt="" />*/}
       </div>
       <div
         className={`${style.rightPage} ${
           pageIndexStyle > currentPage && style.flippedLeft
         }`}
       >
-        {/*<img src="/right_page.webp" alt="" />*/}
         <div className={style.contentRight}>
           <h1>Story {pageIndex}</h1>
           <div className={style.video}>that's a video placeholder</div>
