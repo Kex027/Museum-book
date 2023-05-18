@@ -8,8 +8,6 @@ const Foreword = ({
   pageIndexStyle,
   page: { title, text },
 }) => {
-  console.log(text);
-  console.log(Object.entries(text.content));
   return (
     <div
       className={style.container}
@@ -35,9 +33,9 @@ const Foreword = ({
         >
           <h1>{title}</h1>
           {Object.entries(text.content).map((content) => {
-            return <div>{content[1].content[0].value}</div>;
+            console.log(content);
+            return <div key={content[0]}>{content[1].content[0].value}</div>;
           })}
-          {/*<p>{text}</p>*/}
         </div>
       </div>
     </div>

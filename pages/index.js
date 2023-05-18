@@ -9,21 +9,18 @@ export async function getStaticProps() {
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   });
 
-  const pageRes = await client.getEntries({ content_type: "page" });
-  const contentsRes = await client.getEntries({ content_type: "contentsPage" });
-  const forewordRes = await client.getEntries({ content_type: "forewordPage" });
+  const bookData = await client.getEntries({ content_type: "book" });
 
   return {
     props: {
-      pagesRes: pageRes.items,
-      contentsRes: contentsRes.items[0],
-      forewordRes: forewordRes.items[0],
+      bookData: bookData.items[0],
     },
   };
 }
 
-export default function Index({ pagesRes, contentsRes, forewordRes }) {
-  const pages = [...pagesRes].sort((first, second) => {
+export default function Index({ bookData }) {
+  console.log(bookData.fields.videoPages);
+  const videoPages = [...bookData.fields.videoPages].sort((first, second) => {
     return first.fields.id > second.fields.id ? 1 : -1;
   });
   return (
@@ -39,9 +36,9 @@ export default function Index({ pagesRes, contentsRes, forewordRes }) {
             className={style.museumTitle}
           />
           <Book
-            pages={pages}
-            contentsRes={contentsRes}
-            forewordRes={forewordRes}
+            pages={videoPages}
+            contentsRes={bookData.fields.contents}
+            forewordRes={bookData.fields.foreword}
           />
         </div>
       </div>
