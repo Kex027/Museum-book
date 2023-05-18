@@ -47,6 +47,7 @@
     transform-origin: left;
     display: flex;
     justify-content: flex-start;
+    font-size: 2vh;
 
     .contentRight {
       background-image: url("/clear-right-paper.webp");
@@ -57,7 +58,6 @@
       width: 89%;
 
       .video {
-        width: 90%;
         background-color: #0f2f19;
         color: white;
       }

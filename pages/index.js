@@ -10,7 +10,6 @@ export async function getStaticProps() {
   });
 
   const bookData = await client.getEntries({ content_type: "book" });
-
   return {
     props: {
       bookData: bookData.items[0],
@@ -19,9 +18,6 @@ export async function getStaticProps() {
 }
 
 export default function Index({ bookData }) {
-  const videoPages = [...bookData.fields.videoPages].sort((first, second) => {
-    return first.fields.id > second.fields.id ? 1 : -1;
-  });
   return (
     <div className={style.container}>
       <div className={style.bg}>
@@ -34,11 +30,7 @@ export default function Index({ bookData }) {
             alt="Museum Title"
             className={style.museumTitle}
           />
-          <Book
-            pages={videoPages}
-            contentsRes={bookData.fields.contents}
-            forewordRes={bookData.fields.foreword}
-          />
+          <Book pages={bookData.fields.pages} />
         </div>
       </div>
     </div>

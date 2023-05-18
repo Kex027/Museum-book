@@ -6,28 +6,21 @@ import React, { useState } from "react";
 import Contents from "./Contents";
 import Foreword from "./Foreword";
 
-const Book = ({ pages, contentsRes, forewordRes }) => {
-  const lowestIndex = -2;
-  const [pageIndex, setPageIndex] = useState(lowestIndex);
-  const [pageIndexStyle, setPageIndexStyle] = useState(lowestIndex);
+const Book = ({ pages }) => {
+  const [pageIndex, setPageIndex] = useState(0);
+  const [pageIndexStyle, setPageIndexStyle] = useState(0);
 
   const changePage = (value) => {
     setTimeout(() => {
       setTimeout(() => {
         setPageIndex((oldIndex) => {
-          if (
-            oldIndex + value < lowestIndex ||
-            oldIndex + value > pages.length - 1
-          )
+          if (oldIndex + value < 0 || oldIndex + value > pages.length - 1)
             return oldIndex;
           return oldIndex + value;
         });
       }, 280);
       setPageIndexStyle((oldIndex) => {
-        if (
-          oldIndex + value < lowestIndex ||
-          oldIndex + value > pages.length - 1
-        )
+        if (oldIndex + value < 0 || oldIndex + value > pages.length - 1)
           return oldIndex;
         return oldIndex + value;
       });
@@ -42,20 +35,6 @@ const Book = ({ pages, contentsRes, forewordRes }) => {
       <div className={style.book}>
         <img src="/book.webp" alt="Book" />
         <div className={style.bookContent}>
-          <Contents
-            currentPage={lowestIndex}
-            pageIndex={pageIndex}
-            pageIndexStyle={pageIndexStyle}
-            pagesLength={pages.length}
-            page={contentsRes.fields}
-          />
-          <Foreword
-            currentPage={lowestIndex + 1}
-            pageIndex={pageIndex}
-            pageIndexStyle={pageIndexStyle}
-            pagesLength={pages.length}
-            page={forewordRes.fields}
-          />
           {pages?.map(
             (
               {
@@ -64,25 +43,59 @@ const Book = ({ pages, contentsRes, forewordRes }) => {
                   image,
                   quote,
                   heading,
+                  title,
                   description,
                   video,
+                  list,
+                  text,
                   category,
+                },
+                sys: {
+                  contentType: {
+                    sys: { id: content_id },
+                  },
                 },
               },
               index
-            ) => (
-              <DoublePage
-                key={id}
-                currentPage={index}
-                pageIndex={pageIndex}
-                pageIndexStyle={pageIndexStyle}
-                pagesLength={pages.length}
-                quote={quote}
-                heading={heading}
-                description={description}
-                video={video}
-              />
-            )
+            ) => {
+              if (content_id === "page")
+                return (
+                  <DoublePage
+                    key={id}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    quote={quote}
+                    heading={heading}
+                    description={description}
+                    video={video}
+                  />
+                );
+              else if (content_id === "contentsPage")
+                return (
+                  <Contents
+                    key={content_id}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    page={{ title, list }}
+                  />
+                );
+              else if (content_id === "forewordPage")
+                return (
+                  <Foreword
+                    key={content_id}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    page={{ title, text }}
+                  />
+                );
+              return <></>;
+            }
           )}
         </div>
       </div>
