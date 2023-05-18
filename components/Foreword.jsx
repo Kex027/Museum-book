@@ -32,10 +32,9 @@ const Foreword = ({
           style={{ justifyContent: "flex-start" }}
         >
           <h1>{title}</h1>
-          {Object.entries(text.content).map((content) => {
-            console.log(content);
-            return <div key={content[0]}>{content[1].content[0].value}</div>;
-          })}
+          {Object.entries(text.content).map((content) => (
+            <div key={content[0]}>{content[1].content[0].value}</div>
+          ))}
         </div>
       </div>
     </div>

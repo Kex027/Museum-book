@@ -19,7 +19,6 @@ export async function getStaticProps() {
 }
 
 export default function Index({ bookData }) {
-  console.log(bookData.fields.videoPages);
   const videoPages = [...bookData.fields.videoPages].sort((first, second) => {
     return first.fields.id > second.fields.id ? 1 : -1;
   });
