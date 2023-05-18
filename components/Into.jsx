@@ -1,13 +1,14 @@
 import React from "react";
 import style from "../styles/doublePage.module.scss";
 
-const Foreword = ({
+const Into = ({
   pageIndex,
   currentPage,
   pagesLength,
   pageIndexStyle,
-  page: { title, text },
+  page: { logo, subtitle, footer },
 }) => {
+  console.log(logo.fields.file.url);
   return (
     <div
       className={style.container}
@@ -31,14 +32,15 @@ const Foreword = ({
           className={style.contentRight}
           style={{ justifyContent: "flex-start" }}
         >
-          <h1 className={style.forewordTitle}>{title}</h1>
-          {Object.entries(text.content).map((content) => (
-            <div key={content[0]}>{content[1].content[0].value}</div>
-          ))}
+          <div className={style.intoPageRightContent}>
+            <img src={logo.fields.file.url} alt={logo.fields.title} />
+            <h4>{subtitle}</h4>
+            <p>{footer}</p>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Foreword;
+export default Into;

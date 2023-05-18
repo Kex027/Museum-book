@@ -5,6 +5,7 @@ import DoublePage from "../components/DoublePage";
 import React, { useState } from "react";
 import Contents from "./Contents";
 import Foreword from "./Foreword";
+import Into from "./Into";
 
 const Book = ({ pages }) => {
   const [pageIndex, setPageIndex] = useState(0);
@@ -48,6 +49,9 @@ const Book = ({ pages }) => {
                   video,
                   list,
                   text,
+                  logo,
+                  subtitle,
+                  footer,
                   category,
                 },
                 sys: {
@@ -70,6 +74,17 @@ const Book = ({ pages }) => {
                     heading={heading}
                     description={description}
                     video={video}
+                  />
+                );
+              else if (content_id === "intoPage")
+                return (
+                  <Into
+                    key={content_id}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    page={{ logo, subtitle, footer }}
                   />
                 );
               else if (content_id === "contentsPage")
