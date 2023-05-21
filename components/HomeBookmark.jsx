@@ -5,7 +5,7 @@ const HomeBookmark = ({ changeCustomPage, pagesLength }) => {
   return (
     <div className={style.homeBookmark} style={{ zIndex: pagesLength + 1 }}>
       <img
-        src="/homeBookmark.webp"
+        src="/HomeBookmark.webp"
         alt="Home Bookmark"
         className={style.pointer}
         onClick={(event) => {
