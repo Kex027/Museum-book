@@ -1,6 +1,8 @@
+//for smaller than (width: 850px) do a mobile view
+
 .container {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
 
     .museumTitle {
         width: 200px;
@@ -16,13 +18,36 @@
         .bookContent {
             width: 100%;
             height: 100%;
+
             position: absolute;
             top: 0;
             left: 0;
+        }
 
-            .relative {
-                position: absolute;
-                height: 100%;
+        .bookmarks {
+            height: 7vh;
+
+            position: absolute;
+            top: 50px;
+            right: -9%;
+        }
+
+        .homeBookmark {
+            height: 15vh;
+
+            position: absolute;
+            bottom: 0;
+            left: -80px;
+        }
+
+        .bookmarks, .homeBookmark {
+            .pointer {
+                cursor: pointer;
+            }
+
+            img {
+                max-height: 100%;
+                max-width: 100%;
             }
         }
     }

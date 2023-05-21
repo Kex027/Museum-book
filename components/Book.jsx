@@ -1,7 +1,13 @@
+//TODO make book in a contentful
+
 import style from "../styles/book.module.scss";
 import DoublePage from "../components/DoublePage";
 import React, { useState } from "react";
-import DoublePageTest from "./DoublePageTest";
+import Contents from "./Contents";
+import Foreword from "./Foreword";
+import Into from "./Into";
+import HomeBookmark from "./HomeBookmark";
+import Bookmarks from "./Bookmarks";
 
 const Book = ({ pages }) => {
   const [pageIndex, setPageIndex] = useState(0);
@@ -23,6 +29,23 @@ const Book = ({ pages }) => {
       });
     }, 50);
   };
+
+  const changeCustomPage = (e, bookmark) => {
+    e.preventDefault();
+    const indexOfFirstBookmarkItem = pages.findIndex(
+      ({ fields: { category } }) =>
+        category &&
+        bookmark &&
+        category.toLowerCase() === bookmark.toLowerCase()
+    );
+    setTimeout(() => {
+      setTimeout(() => {
+        setPageIndex(indexOfFirstBookmarkItem);
+      }, 280);
+      setPageIndexStyle(indexOfFirstBookmarkItem);
+    }, 50);
+  };
+
   return (
     <div className={style.container}>
       <button className={style.button} onClick={() => changePage(-1)}>
@@ -30,33 +53,95 @@ const Book = ({ pages }) => {
       </button>
       <div className={style.book}>
         <img src="/book.webp" alt="Book" />
+
+        <HomeBookmark
+          changeCustomPage={changeCustomPage}
+          pagesLength={pages.length}
+        />
+
         <div className={style.bookContent}>
-          {pages.map(
+          {pages?.map(
             (
-              { fields: { id, image, heading, description, video, category } },
+              {
+                fields: {
+                  id,
+                  image,
+                  quote,
+                  heading,
+                  title,
+                  description,
+                  video,
+                  list,
+                  text,
+                  logo,
+                  subtitle,
+                  footer,
+                  category,
+                },
+                sys: {
+                  contentType: {
+                    sys: { id: content_id },
+                  },
+                },
+              },
               index
-            ) => (
-              <div
-                key={id}
-                className={style.relative}
-                style={{
-                  zIndex: pages.length - Math.abs(index - pageIndex),
-                }}
-              >
-                <DoublePage
-                  currentPage={index}
-                  pageIndex={pageIndex}
-                  pageIndexStyle={pageIndexStyle}
-                  pagesLength={pages.length}
-                  heading={heading}
-                  description={description}
-                  video={video}
-                />
-              </div>
-            )
+            ) => {
+              if (content_id === "page")
+                return (
+                  <DoublePage
+                    key={id}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    quote={quote}
+                    heading={heading}
+                    description={description}
+                    video={video}
+                  />
+                );
+              else if (content_id === "intoPage")
+                return (
+                  <Into
+                    key={content_id}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    page={{ logo, subtitle, footer }}
+                  />
+                );
+              else if (content_id === "contentsPage")
+                return (
+                  <Contents
+                    key={content_id}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    page={{ title, list }}
+                  />
+                );
+              else if (content_id === "forewordPage")
+                return (
+                  <Foreword
+                    key={content_id}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    page={{ title, text }}
+                  />
+                );
+              return <></>;
+            }
           )}
-          {/*<DoublePage />*/}
         </div>
+
+        <Bookmarks
+          changeCustomPage={changeCustomPage}
+          pagesLength={pages.length}
+        />
       </div>
       <button className={style.button} onClick={() => changePage(+1)}>
         right

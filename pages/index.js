@@ -9,32 +9,25 @@ export async function getStaticProps() {
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   });
 
-  const res = await client.getEntries({ content_type: "page" });
-
+  const bookData = await client.getEntries({ content_type: "book" });
   return {
     props: {
-      data: res.items,
+      bookData: bookData.items[0],
     },
   };
 }
 
-export default function Index({ data }) {
-  const pages = [...data].sort((first, second) => {
-    return first.fields.id > second.fields.id ? 1 : -1;
-  });
+export default function Index({ bookData }) {
   return (
     <div className={style.container}>
       <div className={style.bg}>
-        <Link href="/test_book4" className={style.link}>
-          demo
-        </Link>
         <div className={style.content}>
           <img
             src="/museum_title.webp"
             alt="Museum Title"
             className={style.museumTitle}
           />
-          <Book pages={pages} />
+          <Book pages={bookData.fields.pages} />
         </div>
       </div>
     </div>

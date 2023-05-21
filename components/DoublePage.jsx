@@ -5,6 +5,8 @@ const DoublePageTest = ({
   pageIndex,
   currentPage,
   pageIndexStyle,
+  pagesLength,
+  quote,
   heading,
   description,
   video,
@@ -18,17 +20,19 @@ const DoublePageTest = ({
   }, [videoRef, pageIndex]);
 
   return (
-    <div className={style.container}>
+    <div
+      className={style.container}
+      style={{
+        zIndex: pagesLength - Math.abs(currentPage - pageIndex),
+      }}
+    >
       <div
         className={`${style.leftPage} ${
           pageIndexStyle < currentPage && style.flippedRight
         }`}
       >
         <div className={style.contentLeft}>
-          <p className={style.quote}>
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa,
-            vero."
-          </p>
+          {quote && <p className={style.quote}>"{quote}"</p>}
         </div>
       </div>
       <div
@@ -38,11 +42,13 @@ const DoublePageTest = ({
       >
         <div className={style.contentRight}>
           <h1>{heading}</h1>
-          <div className={style.video}>
-            <video controls ref={videoRef}>
-              <source src={video.fields.file.url} type="video/mp4" />
-            </video>
-          </div>
+          {video && (
+            <div className={style.video}>
+              <video controls ref={videoRef}>
+                <source src={video?.fields.file.url} type="video/mp4" />
+              </video>
+            </div>
+          )}
           <p>{description}</p>
         </div>
       </div>
