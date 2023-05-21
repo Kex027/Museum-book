@@ -6,6 +6,8 @@ import React, { useState } from "react";
 import Contents from "./Contents";
 import Foreword from "./Foreword";
 import Into from "./Into";
+import HomeBookmark from "./HomeBookmark";
+import Bookmarks from "./Bookmarks";
 
 const Book = ({ pages }) => {
   const [pageIndex, setPageIndex] = useState(0);
@@ -32,7 +34,9 @@ const Book = ({ pages }) => {
     e.preventDefault();
     const indexOfFirstBookmarkItem = pages.findIndex(
       ({ fields: { category } }) =>
-        category && category.toLowerCase() === bookmark.toLowerCase()
+        category &&
+        bookmark &&
+        category.toLowerCase() === bookmark.toLowerCase()
     );
     setTimeout(() => {
       setTimeout(() => {
@@ -49,6 +53,12 @@ const Book = ({ pages }) => {
       </button>
       <div className={style.book}>
         <img src="/book.webp" alt="Book" />
+
+        <HomeBookmark
+          changeCustomPage={changeCustomPage}
+          pagesLength={pages.length}
+        />
+
         <div className={style.bookContent}>
           {pages?.map(
             (
@@ -127,16 +137,11 @@ const Book = ({ pages }) => {
             }
           )}
         </div>
-        <div className={style.homeBookmark}>
-          <img
-            src="/homeBookmark.webp"
-            alt="Home Bookmark"
-            className={style.pointer}
-            onClick={(event) => {
-              changeCustomPage(event, "Home");
-            }}
-          />
-        </div>
+
+        <Bookmarks
+          changeCustomPage={changeCustomPage}
+          pagesLength={pages.length}
+        />
       </div>
       <button className={style.button} onClick={() => changePage(+1)}>
         right

@@ -1,3 +1,5 @@
+//for smaller than (width: 850px) do a mobile view
+
 .container {
     display: flex;
     align-items: flex-start;
@@ -22,13 +24,23 @@
             left: 0;
         }
 
+        .bookmarks {
+            height: 7vh;
+
+            position: absolute;
+            top: 50px;
+            right: -9%;
+        }
+
         .homeBookmark {
-            height: 20vh;
+            height: 15vh;
 
             position: absolute;
             bottom: 0;
             left: -80px;
+        }
 
+        .bookmarks, .homeBookmark {
             .pointer {
                 cursor: pointer;
             }
