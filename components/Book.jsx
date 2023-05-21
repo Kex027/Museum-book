@@ -12,6 +12,7 @@ import Bookmarks from "./Bookmarks";
 const Book = ({ pages }) => {
   const [pageIndex, setPageIndex] = useState(0);
   const [pageIndexStyle, setPageIndexStyle] = useState(0);
+  const [changedPage, setChangedPage] = useState(true);
 
   const changePage = (value) => {
     setTimeout(() => {
@@ -31,7 +32,10 @@ const Book = ({ pages }) => {
   };
 
   const changeCustomPage = (e, bookmark) => {
+    if (!changedPage) return;
+
     e.preventDefault();
+    setChangedPage(false);
     const indexOfFirstBookmarkItem = pages.findIndex(
       ({ fields: { category } }) =>
         category &&
@@ -44,6 +48,10 @@ const Book = ({ pages }) => {
       }, 280);
       setPageIndexStyle(indexOfFirstBookmarkItem);
     }, 50);
+
+    setTimeout(() => {
+      setChangedPage(true);
+    }, 500);
   };
 
   return (
