@@ -1,7 +1,7 @@
 import style from "../styles/doublePage.module.scss";
 import { useEffect, useRef } from "react";
 
-const DoublePageTest = ({
+const DoublePage = ({
   pageIndex,
   currentPage,
   pageIndexStyle,
@@ -56,4 +56,4 @@ const DoublePageTest = ({
   );
 };
 
-export default DoublePageTest;
+export default DoublePage;
