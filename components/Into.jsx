@@ -8,7 +8,6 @@ const Into = ({
   pageIndexStyle,
   page: { logo, subtitle, footer },
 }) => {
-  console.log(logo.fields.file.url);
   return (
     <div
       className={style.container}

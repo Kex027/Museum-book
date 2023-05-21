@@ -21,9 +21,6 @@ export default function Index({ bookData }) {
   return (
     <div className={style.container}>
       <div className={style.bg}>
-        <Link href="/test_book4" className={style.link}>
-          demo
-        </Link>
         <div className={style.content}>
           <img
             src="/museum_title.webp"

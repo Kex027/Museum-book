@@ -28,6 +28,20 @@ const Book = ({ pages }) => {
     }, 50);
   };
 
+  const changeCustomPage = (e, bookmark) => {
+    e.preventDefault();
+    const indexOfFirstBookmarkItem = pages.findIndex(
+      ({ fields: { category } }) =>
+        category && category.toLowerCase() === bookmark.toLowerCase()
+    );
+    setTimeout(() => {
+      setTimeout(() => {
+        setPageIndex(indexOfFirstBookmarkItem);
+      }, 280);
+      setPageIndexStyle(indexOfFirstBookmarkItem);
+    }, 50);
+  };
+
   return (
     <div className={style.container}>
       <button className={style.button} onClick={() => changePage(-1)}>
@@ -112,6 +126,16 @@ const Book = ({ pages }) => {
               return <></>;
             }
           )}
+        </div>
+        <div className={style.homeBookmark}>
+          <img
+            src="/homeBookmark.webp"
+            alt="Home Bookmark"
+            className={style.pointer}
+            onClick={(event) => {
+              changeCustomPage(event, "Home");
+            }}
+          />
         </div>
       </div>
       <button className={style.button} onClick={() => changePage(+1)}>
