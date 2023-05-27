@@ -3,7 +3,7 @@ import style from "../styles/index.module.scss";
 import { createClient } from "contentful";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import Mobile from "../components/Mobile";
+import Mobile from "../components/mobile/Mobile";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -43,8 +43,6 @@ export default function Index({ bookData }) {
     }, []);
     return windowSize;
   }
-
-  console.log(size);
 
   return (
     <div

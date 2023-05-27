@@ -1,7 +1,7 @@
 $breakoutPoint: 500px;
 
 .container {
-  background-color: #565656;
+  height: 100%;
   background-size: 100vw 100vh;
   background-position: center;
   color: #dddddd;
@@ -63,7 +63,7 @@ $breakoutPoint: 500px;
       padding: 10px;
       border-radius: 5px;
       font-size: 4vw;
-      margin-top: 10px;
+      margin: 20px 0;
     }
   }
 
