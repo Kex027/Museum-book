@@ -45,7 +45,7 @@ const Curl = ({ side, changePage }) => {
           setCurl(true);
         }}
         onMouseLeave={() => {
-          setCurl(true);
+          setCurl(false);
         }}
       ></div>
     </>
