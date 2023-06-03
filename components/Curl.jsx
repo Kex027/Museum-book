@@ -12,13 +12,13 @@ const Curl = ({ side, changePage }) => {
 
     background:
       side === "left"
-        ? "linear-gradient(45deg, rgba(255, 255, 255, 0), rgba(243, 243, 243, 0) 45%, rgba(80, 80, 80, 0.5) 50%, rgba(170, 170, 170, 0.75) 50%, #bbb 56%, #ccc 62%, rgba(243, 243, 243, 0.5) 80%, rgba(255, 255, 255, 0.8) 100%)"
-        : "linear-gradient(315deg, rgba(255, 255, 255, 0), rgba(243, 243, 243, 0) 45%, rgba(80, 80, 80, 0.5) 50%, rgba(170, 170, 170, 1) 50%, #bbb 56%, #ccc 62%, rgba(243, 243, 243, 0.5) 80%, rgba(255, 255, 255, 0.8) 100%)",
+        ? "linear-gradient(45deg, rgba(255, 255, 255, 0), rgba(243, 243, 243, 0) 45%, rgba(150, 150, 150) 50%, rgba(190, 190, 190) 50%, rgba(210, 210, 210) 56%, rgba(220, 220, 220) 62%, rgba(230, 230, 230) 80%, rgba(230, 230, 230) 100%)"
+        : "linear-gradient(315deg, rgba(255, 255, 255, 0), rgba(243, 243, 243, 0) 25%, rgba(210, 210, 210) 45%, rgba(135, 135, 135) 50%, rgba(180, 180, 180) 50%, rgba(200, 200, 200) 56%, rgba(205, 205, 205) 62%, rgba(225, 225, 225) 80%, rgba(230, 230, 230) 100%)",
 
     boxShadow: `box-shadow: ${
       side === "left" ? "12px" : "-12px"
     } -12px 25px -15px rgba(0, 0, 0, 1)`,
-    webkitBoxShadow: `${
+    WebkitBoxShadow: `${
       side === "left" ? "12px" : "-12px"
     } -12px 25px -15px rgba(0, 0, 0, 1)`,
     MozBoxShadow: `${
