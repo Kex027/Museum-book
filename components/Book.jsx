@@ -1,13 +1,12 @@
-//TODO make book in a contentful
-
 import style from "../styles/book.module.scss";
 import VideoPage from "./VideoPage";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Contents from "./Contents";
 import Foreword from "./Foreword";
 import Into from "./Into";
 import HomeBookmark from "./HomeBookmark";
 import Bookmarks from "./Bookmarks";
+import Cover from "./Cover";
 
 const Book = ({ pages }) => {
   const [pageIndex, setPageIndex] = useState(0);
@@ -18,13 +17,13 @@ const Book = ({ pages }) => {
     setTimeout(() => {
       setTimeout(() => {
         setPageIndex((oldIndex) => {
-          if (oldIndex + value < 0 || oldIndex + value > pages.length - 1)
+          if (oldIndex + value < -1 || oldIndex + value > pages.length - 1)
             return oldIndex;
           return oldIndex + value;
         });
       }, 280);
       setPageIndexStyle((oldIndex) => {
-        if (oldIndex + value < 0 || oldIndex + value > pages.length - 1)
+        if (oldIndex + value < -1 || oldIndex + value > pages.length - 1)
           return oldIndex;
         return oldIndex + value;
       });
@@ -59,12 +58,19 @@ const Book = ({ pages }) => {
       <div className={style.book}>
         <img src="/book.webp" alt="Book" />
 
-        <HomeBookmark
-          changeCustomPage={changeCustomPage}
-          pagesLength={pages.length}
-        />
+        {/*<HomeBookmark*/}
+        {/*  changeCustomPage={changeCustomPage}*/}
+        {/*  pagesLength={pages.length}*/}
+        {/*/>*/}
 
         <div className={style.bookContent}>
+          <Cover
+            changePage={changePage}
+            pageIndex={pageIndex}
+            pageIndexStyle={pageIndexStyle}
+            pagesLength={pages.length}
+            currentPage={-1}
+          />
           {pages?.map(
             (
               {
@@ -147,10 +153,10 @@ const Book = ({ pages }) => {
           )}
         </div>
 
-        <Bookmarks
-          changeCustomPage={changeCustomPage}
-          pagesLength={pages.length}
-        />
+        {/*<Bookmarks*/}
+        {/*  changeCustomPage={changeCustomPage}*/}
+        {/*  pagesLength={pages.length}*/}
+        {/*/>*/}
       </div>
     </div>
   );
