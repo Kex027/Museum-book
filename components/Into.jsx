@@ -1,5 +1,6 @@
 import React from "react";
 import style from "../styles/doublePage.module.scss";
+import Curl from "./Curl";
 
 const Into = ({
   pageIndex,
@@ -7,6 +8,7 @@ const Into = ({
   pagesLength,
   pageIndexStyle,
   page: { logo, subtitle, footer },
+  changePage,
 }) => {
   return (
     <div
@@ -20,7 +22,9 @@ const Into = ({
           pageIndexStyle < currentPage && style.flippedRight
         }`}
       >
-        <div className={style.contentLeft}></div>
+        <div className={style.contentLeft}>
+          <Curl side="left" changePage={changePage} />
+        </div>
       </div>
       <div
         className={`${style.rightPage} ${
@@ -36,6 +40,7 @@ const Into = ({
             <h4>{subtitle}</h4>
             <p>{footer}</p>
           </div>
+          <Curl side="right" changePage={changePage} />
         </div>
       </div>
     </div>
