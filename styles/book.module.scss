@@ -25,11 +25,14 @@
         }
 
         .bookmarks {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
             height: 7vh;
 
             position: absolute;
             top: 50px;
-            right: -9%;
+            right: -7.5%;
         }
 
         .homeBookmark {
@@ -50,11 +53,5 @@
                 max-width: 100%;
             }
         }
-    }
-
-    .button {
-        border: 2px solid orangered;
-        font-weight: bold;
-        background-color: greenyellow;
     }
 }

@@ -1,7 +1,7 @@
 //TODO make book in a contentful
 
 import style from "../styles/book.module.scss";
-import DoublePage from "../components/DoublePage";
+import VideoPage from "./VideoPage";
 import React, { useState } from "react";
 import Contents from "./Contents";
 import Foreword from "./Foreword";
@@ -12,6 +12,7 @@ import Bookmarks from "./Bookmarks";
 const Book = ({ pages }) => {
   const [pageIndex, setPageIndex] = useState(0);
   const [pageIndexStyle, setPageIndexStyle] = useState(0);
+  const [changedPage, setChangedPage] = useState(true);
 
   const changePage = (value) => {
     setTimeout(() => {
@@ -31,7 +32,10 @@ const Book = ({ pages }) => {
   };
 
   const changeCustomPage = (e, bookmark) => {
+    if (!changedPage) return;
+
     e.preventDefault();
+    setChangedPage(false);
     const indexOfFirstBookmarkItem = pages.findIndex(
       ({ fields: { category } }) =>
         category &&
@@ -44,13 +48,14 @@ const Book = ({ pages }) => {
       }, 280);
       setPageIndexStyle(indexOfFirstBookmarkItem);
     }, 50);
+
+    setTimeout(() => {
+      setChangedPage(true);
+    }, 500);
   };
 
   return (
     <div className={style.container}>
-      <button className={style.button} onClick={() => changePage(-1)}>
-        left
-      </button>
       <div className={style.book}>
         <img src="/book.webp" alt="Book" />
 
@@ -88,7 +93,7 @@ const Book = ({ pages }) => {
             ) => {
               if (content_id === "page")
                 return (
-                  <DoublePage
+                  <VideoPage
                     key={id}
                     currentPage={index}
                     pageIndex={pageIndex}
@@ -98,6 +103,7 @@ const Book = ({ pages }) => {
                     heading={heading}
                     description={description}
                     video={video}
+                    changePage={changePage}
                   />
                 );
               else if (content_id === "intoPage")
@@ -109,6 +115,7 @@ const Book = ({ pages }) => {
                     pageIndexStyle={pageIndexStyle}
                     pagesLength={pages.length}
                     page={{ logo, subtitle, footer }}
+                    changePage={changePage}
                   />
                 );
               else if (content_id === "contentsPage")
@@ -120,6 +127,7 @@ const Book = ({ pages }) => {
                     pageIndexStyle={pageIndexStyle}
                     pagesLength={pages.length}
                     page={{ title, list }}
+                    changePage={changePage}
                   />
                 );
               else if (content_id === "forewordPage")
@@ -131,6 +139,7 @@ const Book = ({ pages }) => {
                     pageIndexStyle={pageIndexStyle}
                     pagesLength={pages.length}
                     page={{ title, text }}
+                    changePage={changePage}
                   />
                 );
               return <></>;
@@ -143,9 +152,6 @@ const Book = ({ pages }) => {
           pagesLength={pages.length}
         />
       </div>
-      <button className={style.button} onClick={() => changePage(+1)}>
-        right
-      </button>
     </div>
   );
 };

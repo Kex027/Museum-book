@@ -1,7 +1,8 @@
 import style from "../styles/doublePage.module.scss";
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
+import Curl from "./Curl";
 
-const DoublePage = ({
+const VideoPage = ({
   pageIndex,
   currentPage,
   pageIndexStyle,
@@ -10,6 +11,7 @@ const DoublePage = ({
   heading,
   description,
   video,
+  changePage,
 }) => {
   const videoRef = useRef(null);
 
@@ -33,6 +35,7 @@ const DoublePage = ({
       >
         <div className={style.contentLeft}>
           {quote && <p className={style.quote}>"{quote}"</p>}
+          <Curl side="left" changePage={changePage} />
         </div>
       </div>
       <div
@@ -44,16 +47,17 @@ const DoublePage = ({
           <h1>{heading}</h1>
           {video && (
             <div className={style.video}>
-              <video controls ref={videoRef}>
+              <video ref={videoRef}>
                 <source src={video?.fields.file.url} type="video/mp4" />
               </video>
             </div>
           )}
           <p>{description}</p>
+          <Curl side="right" changePage={changePage} />
         </div>
       </div>
     </div>
   );
 };
 
-export default DoublePage;
+export default VideoPage;

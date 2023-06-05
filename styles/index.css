@@ -17,6 +17,10 @@
     font-family: 'MuseumFont', sans-serif;
 }
 
+body {
+    background-color: #565656;
+}
+
 .btn {
     display: inline-block;
     padding: 12px 20px;

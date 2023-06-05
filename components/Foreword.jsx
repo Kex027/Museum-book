@@ -1,5 +1,6 @@
 import React from "react";
 import style from "../styles/doublePage.module.scss";
+import Curl from "./Curl";
 
 const Foreword = ({
   pageIndex,
@@ -7,6 +8,7 @@ const Foreword = ({
   pagesLength,
   pageIndexStyle,
   page: { title, text },
+  changePage,
 }) => {
   return (
     <div
@@ -20,7 +22,9 @@ const Foreword = ({
           pageIndexStyle < currentPage && style.flippedRight
         }`}
       >
-        <div className={style.contentLeft}></div>
+        <div className={style.contentLeft}>
+          <Curl side="left" changePage={changePage} />
+        </div>
       </div>
       <div
         className={`${style.rightPage} ${
@@ -35,6 +39,7 @@ const Foreword = ({
           {Object.entries(text.content).map((content) => (
             <div key={content[0]}>{content[1].content[0].value}</div>
           ))}
+          <Curl side="right" changePage={changePage} />
         </div>
       </div>
     </div>

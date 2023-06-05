@@ -18,6 +18,7 @@
     backface-visibility: hidden;
 
     .contentLeft, .contentRight {
+      position: relative;
       padding: 30px;
       height: 98%;
     }
@@ -34,6 +35,7 @@
     }
 
     .contentLeft {
+      filter: brightness(.985);
       background-image: url("/clear-left-paper.webp");
       background-size: cover;
       width: 83%;
@@ -50,6 +52,7 @@
     font-size: 2vh;
 
     .contentRight {
+      filter: brightness(.99);
       background-image: url("/clear-right-paper.webp");
       background-size: cover;
       display: flex;
@@ -58,7 +61,6 @@
       width: 89%;
 
       .video {
-        background-color: #0f2f19;
         color: white;
         width: 96%;
       }
@@ -68,7 +70,7 @@
       }
 
       .intoPageRightContent {
-        padding-top: 150px;
+        padding-top: 50%;
         height: 100%;
         display: flex;
         flex-direction: column;
