@@ -5,8 +5,8 @@ const Curl = ({ side, changePage }) => {
   const [curl, setCurl] = useState(false);
 
   const curlStyle = {
-    width: curl ? "40px" : 0,
-    height: curl ? "40px" : 0,
+    width: curl ? "50px" : 0,
+    height: curl ? "50px" : 0,
     left: side === "left" ? 0 : null,
     right: side === "right" ? 0 : null,
 
