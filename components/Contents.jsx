@@ -15,6 +15,8 @@ const Contents = ({
       className={style.container}
       style={{
         zIndex: pagesLength - Math.abs(currentPage - pageIndex),
+        width: pageIndexStyle === -1 ? "50%" : "100%",
+        transition: pageIndexStyle === -1 ? "width 10s ease-in" : "none",
       }}
     >
       <div
@@ -57,7 +59,9 @@ const Contents = ({
               </p>
             ))}
           </div>
-          <Curl side="right" changePage={changePage} />
+          {pageIndex !== pagesLength - 1 && (
+            <Curl side="right" changePage={changePage} />
+          )}
         </div>
       </div>
     </div>

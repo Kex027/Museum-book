@@ -57,7 +57,7 @@ const Book = ({ pages }) => {
     <div
       className={style.container}
       style={{
-        transform: pageIndex === -1 ? "translateX(-30%)" : "translateX(0%)",
+        transform: pageIndex === -1 ? "translateX(-25%)" : "translateX(0%)",
       }}
     >
       <div className={style.book}>

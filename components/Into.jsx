@@ -15,6 +15,8 @@ const Into = ({
       className={style.container}
       style={{
         zIndex: pagesLength - Math.abs(currentPage - pageIndex),
+        width: pageIndexStyle === -1 ? "50%" : "100%",
+        transition: pageIndexStyle === -1 ? "width 5s ease-in" : "none",
       }}
     >
       <div
@@ -55,7 +57,9 @@ const Into = ({
             <h4>{subtitle}</h4>
             <p>{footer}</p>
           </div>
-          <Curl side="right" changePage={changePage} />
+          {pageIndex !== pagesLength - 1 && (
+            <Curl side="right" changePage={changePage} />
+          )}
         </div>
       </div>
     </div>

@@ -26,6 +26,8 @@ const VideoPage = ({
       className={style.container}
       style={{
         zIndex: pagesLength - Math.abs(currentPage - pageIndex),
+        width: pageIndexStyle === -1 ? "50%" : "100%",
+        transition: pageIndexStyle === -1 ? "width 10s ease-in" : "none",
       }}
     >
       <div
@@ -67,7 +69,9 @@ const VideoPage = ({
             </div>
           )}
           <p>{description}</p>
-          <Curl side="right" changePage={changePage} />
+          {pageIndex !== pagesLength - 1 && (
+            <Curl side="right" changePage={changePage} />
+          )}
         </div>
       </div>
     </div>
