@@ -54,7 +54,12 @@ const Book = ({ pages }) => {
   };
 
   return (
-    <div className={style.container}>
+    <div
+      className={style.container}
+      style={{
+        transform: pageIndex === -1 ? "translateX(-30%)" : "translateX(0%)",
+      }}
+    >
       <div className={style.book}>
         <img src="/book.webp" alt="Book" />
 
@@ -70,6 +75,14 @@ const Book = ({ pages }) => {
             pageIndexStyle={pageIndexStyle}
             pagesLength={pages.length}
             currentPage={-1}
+            content={[
+              <img
+                key={1} // key is necessary to avoid error
+                src="/Minceiri.webp"
+                alt="Minceiri"
+                style={{ width: "80%" }}
+              />,
+            ]}
           />
           {pages?.map(
             (
@@ -151,6 +164,13 @@ const Book = ({ pages }) => {
               return <></>;
             }
           )}
+          <Cover
+            changePage={changePage}
+            pageIndex={pageIndex}
+            pageIndexStyle={pageIndexStyle}
+            pagesLength={pages.length}
+            currentPage={pages.length}
+          />
         </div>
 
         {/*<Bookmarks*/}

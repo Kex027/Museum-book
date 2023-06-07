@@ -7,6 +7,7 @@ const Cover = ({
   pageIndexStyle,
   currentPage,
   changePage,
+  content,
 }) => {
   return (
     <div
@@ -23,7 +24,7 @@ const Cover = ({
           changePage(1);
         }}
       >
-        <img src="/Minceiri.webp" alt="Minceiri" className={style.logo} />
+        {content}
       </div>
     </div>
   );

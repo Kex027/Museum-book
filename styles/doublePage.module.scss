@@ -98,6 +98,20 @@
     transform: rotateY(180deg);
   }
 
+  .bookLeftSide, .bookRightSide {
+    position: absolute;
+
+    height: 100%;
+  }
+
+  .bookLeftSide {
+    left: 0;
+  }
+
+  .bookRightSide {
+    right: 0;
+  }
+
   h1 {
     font-size: 2em;
     font-weight: bold;

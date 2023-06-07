@@ -48,11 +48,10 @@ export default function Index({ bookData }) {
     <div
       className={style.container}
       style={{
-        backgroundColor:
-          size.width >= 900 && size.height >= 450 ? "white" : "#565656",
+        backgroundColor: size.width >= 900 ? "white" : "#565656",
       }}
     >
-      {size.width >= 900 && size.height >= 450 ? (
+      {size.width >= 900 ? (
         <>
           <div className={style.bg}>
             <div className={style.content}>
