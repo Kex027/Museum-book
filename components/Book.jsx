@@ -9,8 +9,8 @@ import Bookmarks from "./Bookmarks";
 import Cover from "./Cover";
 
 const Book = ({ pages }) => {
-  const [pageIndex, setPageIndex] = useState(0);
-  const [pageIndexStyle, setPageIndexStyle] = useState(0);
+  const [pageIndex, setPageIndex] = useState(-1);
+  const [pageIndexStyle, setPageIndexStyle] = useState(-1);
   const [changedPage, setChangedPage] = useState(true);
 
   const changePage = (value) => {
