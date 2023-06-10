@@ -63,6 +63,7 @@
       .video {
         color: white;
         width: 96%;
+        cursor: pointer;
       }
 
       .forewordTitle {
@@ -96,6 +97,23 @@
   }
   .flippedRight {
     transform: rotateY(180deg);
+  }
+
+  .bookLeftSide, .bookRightSide {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+
+    height: 99%;
+  }
+
+  .bookLeftSide {
+    left: 0;
+  }
+
+  .bookRightSide {
+    right: 0;
   }
 
   h1 {

@@ -22,6 +22,13 @@ const Contents = ({
           pageIndexStyle < currentPage && style.flippedRight
         }`}
       >
+        {currentPage === 0 && (
+          <img
+            src="/bookLeftSide.webp"
+            alt="Left side of book"
+            className={style.bookLeftSide}
+          />
+        )}
         <div className={style.contentLeft}>
           <Curl side="left" changePage={changePage} />
         </div>
@@ -31,6 +38,13 @@ const Contents = ({
           pageIndexStyle > currentPage && style.flippedLeft
         }`}
       >
+        {currentPage === pagesLength - 1 && (
+          <img
+            src="/bookRightSide.webp"
+            alt="Left side of book"
+            className={style.bookRightSide}
+          />
+        )}
         <div
           className={style.contentRight}
           style={{ justifyContent: "flex-start" }}
@@ -43,7 +57,9 @@ const Contents = ({
               </p>
             ))}
           </div>
-          <Curl side="right" changePage={changePage} />
+          {pageIndex !== pagesLength - 1 && (
+            <Curl side="right" changePage={changePage} />
+          )}
         </div>
       </div>
     </div>

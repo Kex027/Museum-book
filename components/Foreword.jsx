@@ -22,6 +22,13 @@ const Foreword = ({
           pageIndexStyle < currentPage && style.flippedRight
         }`}
       >
+        {currentPage === 0 && (
+          <img
+            src="/bookLeftSide.webp"
+            alt="Left side of book"
+            className={style.bookLeftSide}
+          />
+        )}
         <div className={style.contentLeft}>
           <Curl side="left" changePage={changePage} />
         </div>
@@ -31,6 +38,13 @@ const Foreword = ({
           pageIndexStyle > currentPage && style.flippedLeft
         }`}
       >
+        {currentPage === pagesLength - 1 && (
+          <img
+            src="/bookRightSide.webp"
+            alt="Left side of book"
+            className={style.bookRightSide}
+          />
+        )}
         <div
           className={style.contentRight}
           style={{ justifyContent: "flex-start" }}
@@ -39,7 +53,9 @@ const Foreword = ({
           {Object.entries(text.content).map((content) => (
             <div key={content[0]}>{content[1].content[0].value}</div>
           ))}
-          <Curl side="right" changePage={changePage} />
+          {pageIndex !== pagesLength - 1 && (
+            <Curl side="right" changePage={changePage} />
+          )}
         </div>
       </div>
     </div>
