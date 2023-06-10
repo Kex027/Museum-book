@@ -7,6 +7,9 @@
 
   perspective: 3000px;
 
+  display: flex;
+  align-items: center;
+
   .content {
     background-image: url("/bookCover.webp");
 
@@ -25,7 +28,7 @@
 
     padding-left: 11%;
 
-    transition: transform 1s ease;
+    transition: transform 1s ease, height .5s ease-in;
     transform-origin: left;
 
     cursor: pointer;
