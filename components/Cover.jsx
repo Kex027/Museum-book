@@ -20,6 +20,7 @@ const Cover = ({
         className={`${style.content} ${
           pageIndexStyle > currentPage && style.flipped
         }`}
+        style={{ height: pageIndex !== -1 ? "99%" : "100%" }}
         onClick={() => {
           changePage(1);
         }}
