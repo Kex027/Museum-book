@@ -3,13 +3,10 @@
   bottom: 2%;
   right: 0;
   transition: all .5s ease;
-  //-webkit-box-shadow: -12px -12px 40px -10px rgba(0, 0, 0, 1);
-  //-moz-box-shadow: -12px -12px 40px -10px rgba(0, 0, 0, 1);
 
   &:before, &:after {
     content: '';
     position: absolute;
-    z-index: -1;
     left: 12.5%;
     bottom: 5.8%;
     width: 70%;
@@ -42,7 +39,7 @@
   position: absolute;
   right: 0;
   bottom: 2%;
-  height: 50%;
+  height: 30%;
   width: 20%;
   min-width: 40px;
 }

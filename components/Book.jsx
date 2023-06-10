@@ -1,30 +1,29 @@
-//TODO make book in a contentful
-
 import style from "../styles/book.module.scss";
 import VideoPage from "./VideoPage";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Contents from "./Contents";
 import Foreword from "./Foreword";
 import Into from "./Into";
 import HomeBookmark from "./HomeBookmark";
 import Bookmarks from "./Bookmarks";
+import Cover from "./Cover";
 
 const Book = ({ pages }) => {
-  const [pageIndex, setPageIndex] = useState(0);
-  const [pageIndexStyle, setPageIndexStyle] = useState(0);
+  const [pageIndex, setPageIndex] = useState(-1);
+  const [pageIndexStyle, setPageIndexStyle] = useState(-1);
   const [changedPage, setChangedPage] = useState(true);
 
   const changePage = (value) => {
     setTimeout(() => {
       setTimeout(() => {
         setPageIndex((oldIndex) => {
-          if (oldIndex + value < 0 || oldIndex + value > pages.length - 1)
+          if (oldIndex + value < -1 || oldIndex + value > pages.length - 1)
             return oldIndex;
           return oldIndex + value;
         });
       }, 280);
       setPageIndexStyle((oldIndex) => {
-        if (oldIndex + value < 0 || oldIndex + value > pages.length - 1)
+        if (oldIndex + value < -1 || oldIndex + value > pages.length - 1)
           return oldIndex;
         return oldIndex + value;
       });
@@ -55,16 +54,36 @@ const Book = ({ pages }) => {
   };
 
   return (
-    <div className={style.container}>
+    <div
+      className={style.container}
+      style={{
+        transform: pageIndex === -1 ? "translateX(-25%)" : "translateX(0%)",
+      }}
+    >
       <div className={style.book}>
         <img src="/book.webp" alt="Book" />
 
-        <HomeBookmark
-          changeCustomPage={changeCustomPage}
-          pagesLength={pages.length}
-        />
+        {/*<HomeBookmark*/}
+        {/*  changeCustomPage={changeCustomPage}*/}
+        {/*  pagesLength={pages.length}*/}
+        {/*/>*/}
 
         <div className={style.bookContent}>
+          <Cover
+            changePage={changePage}
+            pageIndex={pageIndex}
+            pageIndexStyle={pageIndexStyle}
+            pagesLength={pages.length}
+            currentPage={-1}
+            content={[
+              <img
+                key={1} // key is necessary to avoid error
+                src="/Minceiri.webp"
+                alt="Minceiri"
+                style={{ width: "80%" }}
+              />,
+            ]}
+          />
           {pages?.map(
             (
               {
@@ -145,12 +164,19 @@ const Book = ({ pages }) => {
               return <></>;
             }
           )}
+          <Cover
+            changePage={changePage}
+            pageIndex={pageIndex}
+            pageIndexStyle={pageIndexStyle}
+            pagesLength={pages.length}
+            currentPage={pages.length}
+          />
         </div>
 
-        <Bookmarks
-          changeCustomPage={changeCustomPage}
-          pagesLength={pages.length}
-        />
+        {/*<Bookmarks*/}
+        {/*  changeCustomPage={changeCustomPage}*/}
+        {/*  pagesLength={pages.length}*/}
+        {/*/>*/}
       </div>
     </div>
   );
