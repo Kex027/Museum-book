@@ -27,7 +27,7 @@ const VideoPage = ({
       category: "Schools",
       styling: {
         top: "10%",
-        right: pageIndexStyle > currentPage ? "-2.5vw" : "-4vw",
+        right: pageIndexStyle > currentPage ? "-2vw" : "-4vw",
       },
     },
     {
@@ -36,7 +36,7 @@ const VideoPage = ({
       category: "Parents",
       styling: {
         top: "25%",
-        right: pageIndexStyle > currentPage ? "-1.8vw" : "-3.8vw",
+        right: pageIndexStyle > currentPage ? "-1.3vw" : "-3vw",
       },
     },
     {
@@ -45,7 +45,7 @@ const VideoPage = ({
       category: "Students",
       styling: {
         top: "40%",
-        right: pageIndexStyle > currentPage ? "-20px" : "-4vw",
+        right: pageIndexStyle > currentPage ? "-1.3vw" : "-3vw",
       },
     },
     {
@@ -54,7 +54,7 @@ const VideoPage = ({
       category: "FAQ",
       styling: {
         top: "55%",
-        right: pageIndexStyle > currentPage ? "-15px" : "-3vw",
+        right: pageIndexStyle > currentPage ? "-.8vw" : "-2.5vw",
       },
     },
   ];
