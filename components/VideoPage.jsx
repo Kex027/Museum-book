@@ -28,7 +28,7 @@ const VideoPage = ({
       category: "Schools",
       styling: {
         top: "10%",
-        right: pageIndexStyle > currentPage ? "-2vw" : "-4vw",
+        right: pageIndexStyle > currentPage ? "-2vw" : "-3.5vw",
       },
     },
     {
