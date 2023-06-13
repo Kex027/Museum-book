@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "../styles/doublePage.module.scss";
 import Curl from "./Curl";
+import HomeBookmark from "./HomeBookmark";
+import classNames from "classnames";
 
 const Into = ({
   pageIndex,
@@ -9,7 +11,22 @@ const Into = ({
   pageIndexStyle,
   page: { logo, subtitle, footer },
   changePage,
+  changeCustomPage,
 }) => {
+  const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+
+  useEffect(() => {
+    if (pageIndexStyle > currentPage) {
+      setTimeout(() => {
+        setIsAnimationFinished(true);
+      }, 500);
+    } else {
+      setTimeout(() => {
+        setIsAnimationFinished(false);
+      }, 200);
+    }
+  }, [isAnimationFinished, pageIndexStyle, currentPage]);
+
   return (
     <div
       className={style.container}
@@ -18,10 +35,14 @@ const Into = ({
       }}
     >
       <div
-        className={`${style.leftPage} ${
-          pageIndexStyle < currentPage && style.flippedRight
-        }`}
+        className={classNames(style.leftPage, {
+          [style.flippedRight]: pageIndexStyle < currentPage,
+        })}
       >
+        <HomeBookmark
+          changeCustomPage={changeCustomPage}
+          pagesLength={pagesLength}
+        />
         {currentPage === 0 && (
           <img
             src="/bookLeftSide.webp"
@@ -30,14 +51,18 @@ const Into = ({
           />
         )}
 
-        <div className={style.contentLeft}>
+        <div
+          className={classNames(style.contentLeft, {
+            [style.visibilityHidden]: isAnimationFinished,
+          })}
+        >
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
       <div
-        className={`${style.rightPage} ${
-          pageIndexStyle > currentPage && style.flippedLeft
-        }`}
+        className={classNames(style.rightPage, {
+          [style.flippedLeft]: pageIndexStyle > currentPage,
+        })}
       >
         {currentPage === pagesLength - 1 && (
           <img
@@ -47,7 +72,9 @@ const Into = ({
           />
         )}
         <div
-          className={style.contentRight}
+          className={classNames(style.contentRight, {
+            [style.visibilityHidden]: isAnimationFinished,
+          })}
           style={{ justifyContent: "flex-start" }}
         >
           <div className={style.intoPageRightContent}>

@@ -1,6 +1,7 @@
 import style from "../styles/doublePage.module.scss";
 import React, { useEffect, useRef, useState } from "react";
 import Curl from "./Curl";
+import classNames from "classnames";
 
 const VideoPage = ({
   pageIndex,
@@ -12,9 +13,63 @@ const VideoPage = ({
   description,
   video,
   changePage,
+  changeCustomPage,
+  getIndexOfFirstBookmark,
 }) => {
   const videoRef = useRef(null);
   const [showControls, setShowControls] = useState(false);
+  const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+
+  const bookmarks = [
+    {
+      bookmarksIndex: 3,
+      src: "SchoolsBookmark.webp",
+      category: "Schools",
+      styling: {
+        top: "10%",
+        right: pageIndexStyle > currentPage ? "-2.5vw" : "-4vw",
+      },
+    },
+    {
+      bookmarksIndex: 6,
+      src: "ParentsBookmark.webp",
+      category: "Parents",
+      styling: {
+        top: "25%",
+        right: pageIndexStyle > currentPage ? "-1.8vw" : "-3.8vw",
+      },
+    },
+    {
+      bookmarksIndex: 4,
+      src: "StudentsBookmark.webp",
+      category: "Students",
+      styling: {
+        top: "40%",
+        right: pageIndexStyle > currentPage ? "-20px" : "-4vw",
+      },
+    },
+    {
+      bookmarksIndex: 7,
+      src: "FaqBookmark.webp",
+      category: "FAQ",
+      styling: {
+        top: "55%",
+        right: pageIndexStyle > currentPage ? "-15px" : "-3vw",
+      },
+    },
+  ];
+
+  useEffect(() => {
+    if (pageIndexStyle > currentPage) {
+      setTimeout(() => {
+        setIsAnimationFinished(true);
+      }, 450);
+    } else {
+      setTimeout(() => {
+        setIsAnimationFinished(false);
+      }, 200);
+    }
+  }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
   const fullScreen = () => {
     const video = videoRef.current;
@@ -43,9 +98,9 @@ const VideoPage = ({
       }}
     >
       <div
-        className={`${style.leftPage} ${
-          pageIndexStyle < currentPage && style.flippedRight
-        }`}
+        className={classNames(style.leftPage, {
+          [style.flippedRight]: pageIndexStyle < currentPage,
+        })}
       >
         {currentPage === 0 && (
           <img
@@ -54,15 +109,19 @@ const VideoPage = ({
             className={style.bookLeftSide}
           />
         )}
-        <div className={style.contentLeft}>
+        <div
+          className={classNames(style.contentLeft, {
+            [style.visibilityHidden]: isAnimationFinished,
+          })}
+        >
           {quote && <p className={style.quote}>"{quote}"</p>}
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
       <div
-        className={`${style.rightPage} ${
-          pageIndexStyle > currentPage && style.flippedLeft
-        }`}
+        className={classNames(style.rightPage, {
+          [style.flippedLeft]: pageIndexStyle > currentPage,
+        })}
       >
         {currentPage === pagesLength - 1 && (
           <img
@@ -71,7 +130,26 @@ const VideoPage = ({
             className={style.bookRightSide}
           />
         )}
-        <div className={style.contentRight}>
+        {bookmarks.map(({ bookmarksIndex, src, category, styling }) => {
+          if (currentPage === getIndexOfFirstBookmark(category))
+            return (
+              <img
+                key={bookmarksIndex}
+                src={src}
+                alt={category}
+                style={styling}
+                className={classNames(style.bookmark)}
+                onClick={(e) => {
+                  changeCustomPage(e, category);
+                }}
+              />
+            );
+        })}
+        <div
+          className={classNames(style.contentRight, {
+            [style.visibilityHidden]: isAnimationFinished,
+          })}
+        >
           <h1>{heading}</h1>
           {video && (
             <div

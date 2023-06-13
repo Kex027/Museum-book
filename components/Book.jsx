@@ -52,6 +52,14 @@ const Book = ({ pages }) => {
       setChangedPage(true);
     }, 500);
   };
+  const getIndexOfFirstBookmark = (bookmark) => {
+    return pages.findIndex(
+      ({ fields: { category } }) =>
+        category &&
+        bookmark &&
+        category.toLowerCase() === bookmark.toLowerCase()
+    );
+  };
 
   return (
     <div
@@ -62,11 +70,6 @@ const Book = ({ pages }) => {
     >
       <div className={style.book}>
         <img src="/book.webp" alt="Book" />
-
-        {/*<HomeBookmark*/}
-        {/*  changeCustomPage={changeCustomPage}*/}
-        {/*  pagesLength={pages.length}*/}
-        {/*/>*/}
 
         <div className={style.bookContent}>
           <Cover
@@ -123,6 +126,8 @@ const Book = ({ pages }) => {
                     description={description}
                     video={video}
                     changePage={changePage}
+                    changeCustomPage={changeCustomPage}
+                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
                   />
                 );
               else if (content_id === "intoPage")
@@ -135,6 +140,7 @@ const Book = ({ pages }) => {
                     pagesLength={pages.length}
                     page={{ logo, subtitle, footer }}
                     changePage={changePage}
+                    changeCustomPage={changeCustomPage}
                   />
                 );
               else if (content_id === "contentsPage")
@@ -172,11 +178,6 @@ const Book = ({ pages }) => {
             currentPage={pages.length}
           />
         </div>
-
-        {/*<Bookmarks*/}
-        {/*  changeCustomPage={changeCustomPage}*/}
-        {/*  pagesLength={pages.length}*/}
-        {/*/>*/}
       </div>
     </div>
   );
