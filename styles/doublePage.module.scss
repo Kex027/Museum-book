@@ -99,11 +99,24 @@
     }
 
     .bookmark {
+      position: absolute;
+      max-height: 100%;
       transition: right .5s ease;
-      position: fixed;
-      height: 8%;
-
       cursor: pointer;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & > img {
+        height: 6vh;
+      }
+
+      .bookmarkText {
+        color: #454545;
+        position: absolute;
+        font-size: 1.5em;
+      }
     }
   }
   .flippedRight {

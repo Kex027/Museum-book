@@ -19,11 +19,12 @@ const VideoPage = ({
   const videoRef = useRef(null);
   const [showControls, setShowControls] = useState(false);
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+  const bookmarksTextRef = useRef(null);
 
   const bookmarks = [
     {
       bookmarksIndex: 3,
-      src: "SchoolsBookmark.webp",
+      src: "ClearSchoolsBookmark.webp",
       category: "Schools",
       styling: {
         top: "10%",
@@ -32,7 +33,7 @@ const VideoPage = ({
     },
     {
       bookmarksIndex: 6,
-      src: "ParentsBookmark.webp",
+      src: "ClearParentsBookmark.webp",
       category: "Parents",
       styling: {
         top: "25%",
@@ -41,7 +42,7 @@ const VideoPage = ({
     },
     {
       bookmarksIndex: 4,
-      src: "StudentsBookmark.webp",
+      src: "ClearStudentsBookmark.webp",
       category: "Students",
       styling: {
         top: "40%",
@@ -50,7 +51,7 @@ const VideoPage = ({
     },
     {
       bookmarksIndex: 7,
-      src: "FaqBookmark.webp",
+      src: "ClearFaqBookmark.webp",
       category: "FAQ",
       styling: {
         top: "55%",
@@ -133,16 +134,29 @@ const VideoPage = ({
         {bookmarks.map(({ bookmarksIndex, src, category, styling }) => {
           if (currentPage === getIndexOfFirstBookmark(category))
             return (
-              <img
+              <div
                 key={bookmarksIndex}
-                src={src}
-                alt={category}
                 style={styling}
                 className={classNames(style.bookmark)}
                 onClick={(e) => {
                   changeCustomPage(e, category);
                 }}
-              />
+              >
+                <img src={src} alt={category} />
+                <span
+                  className={classNames(style.bookmarkText)}
+                  ref={bookmarksTextRef}
+                  style={{
+                    color:
+                      bookmarksTextRef.current?.getBoundingClientRect().x <
+                      window.innerWidth / 2
+                        ? "transparent"
+                        : "",
+                  }}
+                >
+                  {category}
+                </span>
+              </div>
             );
         })}
         <div

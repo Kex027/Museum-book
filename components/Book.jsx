@@ -1,11 +1,9 @@
 import style from "../styles/book.module.scss";
 import VideoPage from "./VideoPage";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Contents from "./Contents";
 import Foreword from "./Foreword";
 import Into from "./Into";
-import HomeBookmark from "./HomeBookmark";
-import Bookmarks from "./Bookmarks";
 import Cover from "./Cover";
 
 const Book = ({ pages }) => {
