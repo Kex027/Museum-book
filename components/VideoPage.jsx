@@ -1,6 +1,7 @@
 import style from "../styles/doublePage.module.scss";
 import React, { useEffect, useRef, useState } from "react";
 import Curl from "./Curl";
+import classNames from "classnames";
 
 const VideoPage = ({
   pageIndex,
@@ -12,9 +13,64 @@ const VideoPage = ({
   description,
   video,
   changePage,
+  changeCustomPage,
+  getIndexOfFirstBookmark,
 }) => {
   const videoRef = useRef(null);
   const [showControls, setShowControls] = useState(false);
+  const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+  const bookmarksTextRef = useRef(null);
+
+  const bookmarks = [
+    {
+      bookmarksIndex: 3,
+      src: "ClearSchoolsBookmark.webp",
+      category: "Schools",
+      styling: {
+        top: "10%",
+        right: pageIndexStyle > currentPage ? "-2vw" : "-3.5vw",
+      },
+    },
+    {
+      bookmarksIndex: 6,
+      src: "ClearParentsBookmark.webp",
+      category: "Parents",
+      styling: {
+        top: "25%",
+        right: pageIndexStyle > currentPage ? "-1.3vw" : "-3vw",
+      },
+    },
+    {
+      bookmarksIndex: 4,
+      src: "ClearStudentsBookmark.webp",
+      category: "Students",
+      styling: {
+        top: "40%",
+        right: pageIndexStyle > currentPage ? "-1.3vw" : "-3vw",
+      },
+    },
+    {
+      bookmarksIndex: 7,
+      src: "ClearFaqBookmark.webp",
+      category: "FAQ",
+      styling: {
+        top: "55%",
+        right: pageIndexStyle > currentPage ? "-.8vw" : "-2.5vw",
+      },
+    },
+  ];
+
+  useEffect(() => {
+    if (pageIndexStyle > currentPage) {
+      setTimeout(() => {
+        setIsAnimationFinished(true);
+      }, 450);
+    } else {
+      setTimeout(() => {
+        setIsAnimationFinished(false);
+      }, 200);
+    }
+  }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
   const fullScreen = () => {
     const video = videoRef.current;
@@ -43,9 +99,9 @@ const VideoPage = ({
       }}
     >
       <div
-        className={`${style.leftPage} ${
-          pageIndexStyle < currentPage && style.flippedRight
-        }`}
+        className={classNames(style.leftPage, {
+          [style.flippedRight]: pageIndexStyle < currentPage,
+        })}
       >
         {currentPage === 0 && (
           <img
@@ -54,15 +110,19 @@ const VideoPage = ({
             className={style.bookLeftSide}
           />
         )}
-        <div className={style.contentLeft}>
+        <div
+          className={classNames(style.contentLeft, {
+            [style.visibilityHidden]: isAnimationFinished,
+          })}
+        >
           {quote && <p className={style.quote}>"{quote}"</p>}
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
       <div
-        className={`${style.rightPage} ${
-          pageIndexStyle > currentPage && style.flippedLeft
-        }`}
+        className={classNames(style.rightPage, {
+          [style.flippedLeft]: pageIndexStyle > currentPage,
+        })}
       >
         {currentPage === pagesLength - 1 && (
           <img
@@ -71,7 +131,39 @@ const VideoPage = ({
             className={style.bookRightSide}
           />
         )}
-        <div className={style.contentRight}>
+        {bookmarks.map(({ bookmarksIndex, src, category, styling }) => {
+          if (currentPage === getIndexOfFirstBookmark(category))
+            return (
+              <div
+                key={bookmarksIndex}
+                style={styling}
+                className={classNames(style.bookmark)}
+                onClick={(e) => {
+                  changeCustomPage(e, category);
+                }}
+              >
+                <img src={src} alt={category} />
+                <span
+                  className={classNames(style.bookmarkText)}
+                  ref={bookmarksTextRef}
+                  style={{
+                    color:
+                      bookmarksTextRef.current?.getBoundingClientRect().x <
+                      window.innerWidth / 2
+                        ? "transparent"
+                        : "",
+                  }}
+                >
+                  {category}
+                </span>
+              </div>
+            );
+        })}
+        <div
+          className={classNames(style.contentRight, {
+            [style.visibilityHidden]: isAnimationFinished,
+          })}
+        >
           <h1>{heading}</h1>
           {video && (
             <div

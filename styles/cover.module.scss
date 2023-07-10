@@ -1,8 +1,8 @@
 .container {
-
   position: absolute;
 
   width: 50%;
+  min-width: 50%;
   height: 100%;
 
   perspective: 3000px;
@@ -13,7 +13,7 @@
   .content {
     background-image: url("/bookCover.webp");
 
-    border-radius: 2%;
+    border-radius: 1%;
 
     -webkit-box-shadow: -16px 12px 30px 0px rgba(66, 68, 90, 1);
     -moz-box-shadow: -16px 12px 30px 0px rgba(66, 68, 90, 1);

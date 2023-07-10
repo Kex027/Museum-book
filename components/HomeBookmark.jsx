@@ -1,9 +1,9 @@
 import React from "react";
 import style from "../styles/book.module.scss";
 
-const HomeBookmark = ({ changeCustomPage, pagesLength }) => {
+const HomeBookmark = ({ changeCustomPage }) => {
   return (
-    <div className={style.homeBookmark} style={{ zIndex: pagesLength + 1 }}>
+    <div className={style.homeBookmark} style={{ zIndex: 1 }}>
       <img
         src="/HomeBookmark.webp"
         alt="Home Bookmark"
