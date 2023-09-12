@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import style from "../styles/doublePage.module.scss";
 import Curl from "./Curl";
+import classNames from "classnames";
 
 const Foreword = ({
   pageIndex,
@@ -10,6 +11,20 @@ const Foreword = ({
   page: { title, text },
   changePage,
 }) => {
+  const [isAnimationFinished, setIsAnimationFinished] = useState(false);
+
+  useEffect(() => {
+    if (pageIndexStyle > currentPage) {
+      setTimeout(() => {
+        setIsAnimationFinished(true);
+      }, 500);
+    } else {
+      setTimeout(() => {
+        setIsAnimationFinished(false);
+      }, 200);
+    }
+  }, [isAnimationFinished, pageIndexStyle, currentPage]);
+
   return (
     <div
       className={style.container}
@@ -18,9 +33,9 @@ const Foreword = ({
       }}
     >
       <div
-        className={`${style.leftPage} ${
-          pageIndexStyle < currentPage && style.flippedRight
-        }`}
+        className={classNames(style.leftPage, {
+          [style.flippedRight]: pageIndexStyle < currentPage,
+        })}
       >
         {currentPage === 0 && (
           <img
@@ -29,14 +44,18 @@ const Foreword = ({
             className={style.bookLeftSide}
           />
         )}
-        <div className={style.contentLeft}>
+        <div
+          className={classNames(style.contentLeft, {
+            [style.visibilityHidden]: isAnimationFinished,
+          })}
+        >
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
       <div
-        className={`${style.rightPage} ${
-          pageIndexStyle > currentPage && style.flippedLeft
-        }`}
+        className={classNames(style.rightPage, {
+          [style.flippedLeft]: pageIndexStyle > currentPage,
+        })}
       >
         {currentPage === pagesLength - 1 && (
           <img
@@ -46,7 +65,9 @@ const Foreword = ({
           />
         )}
         <div
-          className={style.contentRight}
+          className={classNames(style.contentRight, {
+            [style.visibilityHidden]: isAnimationFinished,
+          })}
           style={{ justifyContent: "flex-start" }}
         >
           <h1 className={style.forewordTitle}>{title}</h1>

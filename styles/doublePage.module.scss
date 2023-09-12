@@ -9,18 +9,19 @@
 
   .leftPage, .rightPage {
     width: 50%;
-    min-width: 50%;
+    max-width: 50%;
     transition: transform 1s;
     height: 101%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    backface-visibility: hidden;
 
     .contentLeft, .contentRight {
       position: relative;
       padding: 30px;
       height: 98%;
+
+      background-size: cover;
     }
   }
 
@@ -37,12 +38,15 @@
     .contentLeft {
       filter: brightness(.985);
       background-image: url("/clear-left-paper.webp");
-      background-size: cover;
       width: 83%;
+      background-color: transparent;
     }
   }
   .flippedLeft {
     transform: rotateY(-180deg);
+  }
+  .visibilityHidden {
+    visibility: hidden;
   }
 
   .rightPage {
@@ -52,13 +56,12 @@
     font-size: 2vh;
 
     .contentRight {
-      filter: brightness(.99);
       background-image: url("/clear-right-paper.webp");
-      background-size: cover;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
       width: 89%;
+      position: relative;
 
       .video {
         color: white;
@@ -94,6 +97,27 @@
         }
       }
     }
+
+    .bookmark {
+      position: absolute;
+      max-height: 100%;
+      transition: right .5s ease;
+      cursor: pointer;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      & > img {
+        height: 6vh;
+      }
+
+      .bookmarkText {
+        color: #454545;
+        position: absolute;
+        font-size: 1.5em;
+      }
+    }
   }
   .flippedRight {
     transform: rotateY(180deg);
@@ -106,6 +130,7 @@
     align-items: center;
 
     height: 99%;
+    max-width: 50%;
   }
 
   .bookLeftSide {
