@@ -4,6 +4,7 @@ import { createClient } from "contentful";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Mobile from "../components/mobile/Mobile";
+import book from "../components/Book.jsx";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -55,10 +56,12 @@ export default function Index({ bookData }) {
     e.preventDefault();
     setChangedPage(false);
     const indexOfFirstBookmarkItem = pages.findIndex(
-      ({ fields: { category } }) =>
-        category &&
-        bookmark &&
-        category.toLowerCase() === bookmark.toLowerCase()
+      ({ fields: { category, id } }) =>
+        (typeof bookmark === "string" &&
+          category &&
+          bookmark &&
+          category.toLowerCase() === bookmark.toLowerCase()) ||
+        (typeof bookmark === "number" && id === bookmark)
     );
     setTimeout(() => {
       setTimeout(() => {

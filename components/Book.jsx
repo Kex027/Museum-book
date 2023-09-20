@@ -78,6 +78,7 @@ const Book = ({
                   description,
                   video,
                   list,
+                  listOfDescriptions,
                   text,
                   logo,
                   subtitle,
@@ -130,8 +131,9 @@ const Book = ({
                     pageIndex={pageIndex}
                     pageIndexStyle={pageIndexStyle}
                     pagesLength={pages.length}
-                    page={{ title, list }}
+                    page={{ title, list, listOfDescriptions }}
                     changePage={changePage}
+                    changeCustomPage={changeCustomPage}
                   />
                 );
               else if (content_id === "forewordPage")
