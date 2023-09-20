@@ -2,14 +2,16 @@ import React, { useEffect, useState } from "react";
 import style from "../styles/doublePage.module.scss";
 import Curl from "./Curl";
 import classNames from "classnames";
+import Content from "./Content";
 
 const Contents = ({
   pageIndex,
   currentPage,
   pagesLength,
   pageIndexStyle,
-  page: { title, list },
+  page: { title, list, listOfDescriptions },
   changePage,
+  changeCustomPage,
 }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
@@ -49,6 +51,19 @@ const Contents = ({
             [style.visibilityHidden]: isAnimationFinished,
           })}
         >
+          <div style={{ height: "100%", marginTop: "45px" }}>
+            {list.slice(0, 5).map((name, index) => {
+              return (
+                <Content
+                  id={index + 1}
+                  name={name}
+                  description={listOfDescriptions[index]}
+                  changeCustomPage={changeCustomPage}
+                  key={index}
+                />
+              );
+            })}
+          </div>
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
@@ -70,13 +85,19 @@ const Contents = ({
           })}
           style={{ justifyContent: "flex-start" }}
         >
-          <h1>{title}</h1>
+          <h1 style={{ height: "45px" }}>{title}</h1>
           <div>
-            {list.map((chapter, index) => (
-              <p key={chapter}>
-                {index + 1}. {chapter}
-              </p>
-            ))}
+            {list.slice(5, 10).map((name, index) => {
+              return (
+                <Content
+                  id={index + 5 + 1}
+                  name={name}
+                  description={listOfDescriptions[index]}
+                  changeCustomPage={changeCustomPage}
+                  key={index}
+                />
+              );
+            })}
           </div>
           {pageIndex !== pagesLength - 1 && (
             <Curl side="right" changePage={changePage} />
