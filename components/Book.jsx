@@ -1,16 +1,19 @@
 import style from "../styles/book.module.scss";
 import VideoPage from "./VideoPage";
-import React, { useState } from "react";
+import React from "react";
 import Contents from "./Contents";
 import Foreword from "./Foreword";
 import Into from "./Into";
 import Cover from "./Cover";
 
-const Book = ({ pages }) => {
-  const [pageIndex, setPageIndex] = useState(-1);
-  const [pageIndexStyle, setPageIndexStyle] = useState(-1);
-  const [changedPage, setChangedPage] = useState(true);
-
+const Book = ({
+  pages,
+  pageIndex,
+  pageIndexStyle,
+  setPageIndex,
+  setPageIndexStyle,
+  changeCustomPage,
+}) => {
   const changePage = (value) => {
     setTimeout(() => {
       setTimeout(() => {
@@ -28,28 +31,6 @@ const Book = ({ pages }) => {
     }, 50);
   };
 
-  const changeCustomPage = (e, bookmark) => {
-    if (!changedPage) return;
-
-    e.preventDefault();
-    setChangedPage(false);
-    const indexOfFirstBookmarkItem = pages.findIndex(
-      ({ fields: { category } }) =>
-        category &&
-        bookmark &&
-        category.toLowerCase() === bookmark.toLowerCase()
-    );
-    setTimeout(() => {
-      setTimeout(() => {
-        setPageIndex(indexOfFirstBookmarkItem);
-      }, 280);
-      setPageIndexStyle(indexOfFirstBookmarkItem);
-    }, 50);
-
-    setTimeout(() => {
-      setChangedPage(true);
-    }, 500);
-  };
   const getIndexOfFirstBookmark = (bookmark) => {
     return pages.findIndex(
       ({ fields: { category } }) =>

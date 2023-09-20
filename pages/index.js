@@ -44,6 +44,34 @@ export default function Index({ bookData }) {
     return windowSize;
   }
 
+  const [pageIndex, setPageIndex] = useState(-1);
+  const [pageIndexStyle, setPageIndexStyle] = useState(-1);
+  const [changedPage, setChangedPage] = useState(true);
+  const pages = bookData.fields.pages;
+
+  const changeCustomPage = (e, bookmark) => {
+    if (!changedPage) return;
+
+    e.preventDefault();
+    setChangedPage(false);
+    const indexOfFirstBookmarkItem = pages.findIndex(
+      ({ fields: { category } }) =>
+        category &&
+        bookmark &&
+        category.toLowerCase() === bookmark.toLowerCase()
+    );
+    setTimeout(() => {
+      setTimeout(() => {
+        setPageIndex(indexOfFirstBookmarkItem);
+      }, 280);
+      setPageIndexStyle(indexOfFirstBookmarkItem);
+    }, 50);
+
+    setTimeout(() => {
+      setChangedPage(true);
+    }, 500);
+  };
+
   return (
     <div
       className={style.container}
@@ -59,8 +87,16 @@ export default function Index({ bookData }) {
                 src="/museum_title.webp"
                 alt="Museum Title"
                 className={style.museumTitle}
+                onClick={(e) => changeCustomPage(e, "Home")}
               />
-              <Book pages={bookData.fields.pages} />
+              <Book
+                pages={bookData.fields.pages}
+                pageIndex={pageIndex}
+                setPageIndex={setPageIndex}
+                pageIndexStyle={pageIndexStyle}
+                setPageIndexStyle={setPageIndexStyle}
+                changeCustomPage={changeCustomPage}
+              />
             </div>
           </div>
         </>
