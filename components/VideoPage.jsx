@@ -13,56 +13,10 @@ const VideoPage = ({
   description,
   video,
   changePage,
-  changeCustomPage,
-  getIndexOfFirstBookmark,
 }) => {
   const videoRef = useRef(null);
   const [showControls, setShowControls] = useState(false);
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
-  const bookmarksTextRef = useRef(null);
-
-  const bookmarks = [
-    {
-      bookmarksIndex: 3,
-      src: "ClearSchoolsBookmark.webp",
-      category: "Schools",
-      name: "Schools",
-      styling: {
-        top: "10%",
-        right: pageIndexStyle > currentPage ? "-2vw" : "-3.5vw",
-      },
-    },
-    {
-      bookmarksIndex: 6,
-      src: "ClearParentsBookmark.webp",
-      category: "Parents",
-      name: "For Parents",
-      styling: {
-        top: "25%",
-        right: pageIndexStyle > currentPage ? "-1.3vw" : "-3vw",
-      },
-    },
-    {
-      bookmarksIndex: 4,
-      src: "ClearStudentsBookmark.webp",
-      category: "Students",
-      name: "For Students",
-      styling: {
-        top: "40%",
-        right: pageIndexStyle > currentPage ? "-1.3vw" : "-3vw",
-      },
-    },
-    {
-      bookmarksIndex: 7,
-      src: "ClearFaqBookmark.webp",
-      category: "FAQ",
-      name: "FAQ",
-      styling: {
-        top: "55%",
-        right: pageIndexStyle > currentPage ? "-.8vw" : "-2.5vw",
-      },
-    },
-  ];
 
   useEffect(() => {
     if (pageIndexStyle > currentPage) {
@@ -131,39 +85,10 @@ const VideoPage = ({
         {currentPage === pagesLength - 1 && (
           <img
             src="/bookRightSide.webp"
-            alt="Left side of book"
+            alt="Right side of book"
             className={style.bookRightSide}
           />
         )}
-        {bookmarks.map(({ bookmarksIndex, src, category, name, styling }) => {
-          if (currentPage === getIndexOfFirstBookmark(category))
-            return (
-              <div
-                key={bookmarksIndex}
-                style={styling}
-                className={classNames(style.bookmark)}
-                onClick={(e) => {
-                  changeCustomPage(e, category);
-                }}
-              >
-                <img src={src} alt={category} />
-                <span
-                  className={classNames(style.bookmarkText)}
-                  ref={bookmarksTextRef}
-                  style={{
-                    color:
-                      bookmarksTextRef.current?.getBoundingClientRect().x <
-                      window.innerWidth / 2
-                        ? "transparent"
-                        : "",
-                    fontSize: "1.1rem",
-                  }}
-                >
-                  {name}
-                </span>
-              </div>
-            );
-        })}
         <div
           className={classNames(style.contentRight, {
             [style.visibilityHidden]: isAnimationFinished,

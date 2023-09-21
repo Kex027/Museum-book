@@ -6,6 +6,10 @@ import Foreword from "./Foreword";
 import Into from "./Into";
 import Cover from "./Cover";
 import ContextPage from "./ContextPage";
+import ForTeachers from "./ForTeachers";
+import ForParents from "./ForParents";
+import FAQ from "./FAQ";
+import GetInTouch from "./GetInTouch";
 
 const Book = ({
   pages,
@@ -96,7 +100,7 @@ const Book = ({
               if (content_id === "page")
                 return (
                   <VideoPage
-                    key={id}
+                    key={`${id}-${content_id}`}
                     currentPage={index}
                     pageIndex={pageIndex}
                     pageIndexStyle={pageIndexStyle}
@@ -113,7 +117,7 @@ const Book = ({
               else if (content_id === "intoPage")
                 return (
                   <Into
-                    key={content_id}
+                    key={`${id}-${content_id}`}
                     currentPage={index}
                     pageIndex={pageIndex}
                     pageIndexStyle={pageIndexStyle}
@@ -126,20 +130,21 @@ const Book = ({
               else if (content_id === "contentsPage")
                 return (
                   <Contents
-                    key={content_id}
+                    key={`${id}-${content_id}`}
                     currentPage={index}
                     pageIndex={pageIndex}
                     pageIndexStyle={pageIndexStyle}
                     pagesLength={pages.length}
-                    page={{ title, listOfContents }}
+                    page={{ category, title, listOfContents }}
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
+                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
                   />
                 );
               else if (content_id === "forewordPage")
                 return (
                   <Foreword
-                    key={content_id}
+                    key={`${id}-${content_id}`}
                     currentPage={index}
                     pageIndex={pageIndex}
                     pageIndexStyle={pageIndexStyle}
@@ -148,17 +153,77 @@ const Book = ({
                     changePage={changePage}
                   />
                 );
-              return (
-                <ContextPage
-                  key={content_id}
-                  currentPage={index}
-                  pageIndex={pageIndex}
-                  pageIndexStyle={pageIndexStyle}
-                  pagesLength={pages.length}
-                  page={{ id, category }}
-                  changePage={changePage}
-                />
-              );
+              else if (content_id === "contextPage")
+                return (
+                  <ContextPage
+                    key={`${id}-${content_id}`}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    page={{ id, category }}
+                    changePage={changePage}
+                    changeCustomPage={changeCustomPage}
+                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                  />
+                );
+              else if (content_id === "forTeachers")
+                return (
+                  <ForTeachers
+                    key={`${id}-${content_id}`}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    page={{ id, category }}
+                    changePage={changePage}
+                    changeCustomPage={changeCustomPage}
+                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                  />
+                );
+              else if (content_id === "forParents")
+                return (
+                  <ForParents
+                    key={`${id}-${content_id}`}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    page={{ id, category }}
+                    changePage={changePage}
+                    changeCustomPage={changeCustomPage}
+                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                  />
+                );
+              else if (content_id === "faq")
+                return (
+                  <FAQ
+                    key={`${id}-${content_id}`}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    page={{ id, category }}
+                    changePage={changePage}
+                    changeCustomPage={changeCustomPage}
+                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                  />
+                );
+              else if (content_id === "getInTouch")
+                return (
+                  <GetInTouch
+                    key={`${id}-${content_id}`}
+                    currentPage={index}
+                    pageIndex={pageIndex}
+                    pageIndexStyle={pageIndexStyle}
+                    pagesLength={pages.length}
+                    page={{ id, category }}
+                    changePage={changePage}
+                    changeCustomPage={changeCustomPage}
+                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                  />
+                );
+              return <></>;
             }
           )}
           <Cover

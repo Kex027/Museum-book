@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import style from "../styles/doublePage.module.scss";
 import classNames from "classnames";
 import Curl from "./Curl";
+import Bookmark from "./Bookmark";
 
 const ContextPage = ({
   pageIndex,
   currentPage,
   pagesLength,
   pageIndexStyle,
-  page: { id, category },
+  page: { category },
   changePage,
+  changeCustomPage,
+  getIndexOfFirstBookmark,
 }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
@@ -24,6 +27,14 @@ const ContextPage = ({
       }, 200);
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
+
+  const bookmarksTextRef = useRef(null);
+  const bookmark = {
+    src: "ClearBlueBookmark.webp",
+    category: "context",
+    name: "Context",
+    moveRight: pageIndexStyle > currentPage ? "-2vw" : "-3.5vw",
+  };
 
   return (
     <div
@@ -63,6 +74,17 @@ const ContextPage = ({
             src="/bookRightSide.webp"
             alt="Left side of book"
             className={style.bookRightSide}
+          />
+        )}
+        {currentPage === getIndexOfFirstBookmark(category) && (
+          <Bookmark
+            moveRight={bookmark.moveRight}
+            changeCustomPage={changeCustomPage}
+            category={category}
+            src={bookmark.src}
+            bookmarksTextRef={bookmarksTextRef}
+            top={"10%"}
+            name={bookmark.name}
           />
         )}
         <div
