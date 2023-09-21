@@ -26,6 +26,7 @@ const VideoPage = ({
       bookmarksIndex: 3,
       src: "ClearSchoolsBookmark.webp",
       category: "Schools",
+      name: "Schools",
       styling: {
         top: "10%",
         right: pageIndexStyle > currentPage ? "-2vw" : "-3.5vw",
@@ -35,6 +36,7 @@ const VideoPage = ({
       bookmarksIndex: 6,
       src: "ClearParentsBookmark.webp",
       category: "Parents",
+      name: "For Parents",
       styling: {
         top: "25%",
         right: pageIndexStyle > currentPage ? "-1.3vw" : "-3vw",
@@ -44,6 +46,7 @@ const VideoPage = ({
       bookmarksIndex: 4,
       src: "ClearStudentsBookmark.webp",
       category: "Students",
+      name: "For Students",
       styling: {
         top: "40%",
         right: pageIndexStyle > currentPage ? "-1.3vw" : "-3vw",
@@ -53,6 +56,7 @@ const VideoPage = ({
       bookmarksIndex: 7,
       src: "ClearFaqBookmark.webp",
       category: "FAQ",
+      name: "FAQ",
       styling: {
         top: "55%",
         right: pageIndexStyle > currentPage ? "-.8vw" : "-2.5vw",
@@ -131,7 +135,7 @@ const VideoPage = ({
             className={style.bookRightSide}
           />
         )}
-        {bookmarks.map(({ bookmarksIndex, src, category, styling }) => {
+        {bookmarks.map(({ bookmarksIndex, src, category, name, styling }) => {
           if (currentPage === getIndexOfFirstBookmark(category))
             return (
               <div
@@ -152,9 +156,10 @@ const VideoPage = ({
                       window.innerWidth / 2
                         ? "transparent"
                         : "",
+                    fontSize: "1.1rem",
                   }}
                 >
-                  {category}
+                  {name}
                 </span>
               </div>
             );

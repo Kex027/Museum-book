@@ -5,6 +5,7 @@ import Contents from "./Contents";
 import Foreword from "./Foreword";
 import Into from "./Into";
 import Cover from "./Cover";
+import ContextPage from "./ContextPage";
 
 const Book = ({
   pages,
@@ -77,8 +78,7 @@ const Book = ({
                   title,
                   description,
                   video,
-                  list,
-                  listOfDescriptions,
+                  listOfContents,
                   text,
                   logo,
                   subtitle,
@@ -131,7 +131,7 @@ const Book = ({
                     pageIndex={pageIndex}
                     pageIndexStyle={pageIndexStyle}
                     pagesLength={pages.length}
-                    page={{ title, list, listOfDescriptions }}
+                    page={{ title, listOfContents }}
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                   />
@@ -148,7 +148,17 @@ const Book = ({
                     changePage={changePage}
                   />
                 );
-              return <></>;
+              return (
+                <ContextPage
+                  key={content_id}
+                  currentPage={index}
+                  pageIndex={pageIndex}
+                  pageIndexStyle={pageIndexStyle}
+                  pagesLength={pages.length}
+                  page={{ id, category }}
+                  changePage={changePage}
+                />
+              );
             }
           )}
           <Cover

@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import style from "../styles/doublePage.module.scss";
-import Curl from "./Curl";
 import classNames from "classnames";
-import Content from "./Content";
+import Curl from "./Curl";
 
-const Contents = ({
+const ContextPage = ({
   pageIndex,
   currentPage,
   pagesLength,
   pageIndexStyle,
-  page: { title, listOfContents },
+  page: { id, category },
   changePage,
-  changeCustomPage,
 }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
@@ -51,19 +49,7 @@ const Contents = ({
             [style.visibilityHidden]: isAnimationFinished,
           })}
         >
-          <div style={{ height: "100%", marginTop: "45px" }}>
-            {listOfContents
-              .slice(0, 5)
-              .map(({ fields: { id, name, description } }, index) => (
-                <Content
-                  id={id}
-                  name={name}
-                  description={description}
-                  changeCustomPage={changeCustomPage}
-                  key={index}
-                />
-              ))}
-          </div>
+          {category} page
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
@@ -85,20 +71,6 @@ const Contents = ({
           })}
           style={{ justifyContent: "flex-start" }}
         >
-          <h1 style={{ height: "45px" }}>{title}</h1>
-          <div>
-            {listOfContents
-              .slice(5, 10)
-              .map(({ fields: { id, name, description } }, index) => (
-                <Content
-                  id={id}
-                  name={name}
-                  description={description}
-                  changeCustomPage={changeCustomPage}
-                  key={index}
-                />
-              ))}
-          </div>
           {pageIndex !== pagesLength - 1 && (
             <Curl side="right" changePage={changePage} />
           )}
@@ -108,4 +80,4 @@ const Contents = ({
   );
 };
 
-export default Contents;
+export default ContextPage;
