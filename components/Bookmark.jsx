@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
 import style from "../styles/doublePage.module.scss";
 
@@ -11,6 +11,17 @@ const Bookmark = ({
   bookmarksTextRef,
   top,
 }) => {
+  const [isPositionChanged, setIsPositionChanged] = useState(false);
+
+  setTimeout(() => {
+    setIsPositionChanged(
+      bookmarksTextRef.current?.getBoundingClientRect().x <
+        window.innerWidth / 2
+        ? "rotateY(180deg)"
+        : ""
+    );
+  }, 300);
+
   return (
     <div
       key={category}
@@ -25,11 +36,7 @@ const Bookmark = ({
         className={classNames(style.bookmarkText)}
         ref={bookmarksTextRef}
         style={{
-          transform:
-            bookmarksTextRef.current?.getBoundingClientRect().x <
-            window.innerWidth / 2
-              ? "rotateY(180deg)"
-              : "",
+          transform: isPositionChanged ? "rotateY(180deg)" : "",
           fontSize: "1.1rem",
         }}
       >
