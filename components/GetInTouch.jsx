@@ -28,6 +28,10 @@ const GetInTouch = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
+
   const bookmarksTextRef = useRef(null);
   const bookmark = {
     src: "ClearBlueBookmark.webp",
@@ -93,6 +97,14 @@ const GetInTouch = ({
           })}
           style={{ justifyContent: "flex-start" }}
         >
+          <form onSubmit={onSubmit} className={style.form}>
+            <label htmlFor="email">Email:</label>
+            <input type="email" name="email" />
+            <label htmlFor="message">Message:</label>
+            <textarea name="message" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value={"Send"} className={style.btnSubmit} />
+          </form>
+
           {pageIndex !== pagesLength - 1 && (
             <Curl side="right" changePage={changePage} />
           )}

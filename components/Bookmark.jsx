@@ -25,10 +25,10 @@ const Bookmark = ({
         className={classNames(style.bookmarkText)}
         ref={bookmarksTextRef}
         style={{
-          color:
+          transform:
             bookmarksTextRef.current?.getBoundingClientRect().x <
             window.innerWidth / 2
-              ? "transparent"
+              ? "rotateY(180deg)"
               : "",
           fontSize: "1.1rem",
         }}
