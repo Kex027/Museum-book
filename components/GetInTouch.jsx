@@ -1,16 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import style from "../styles/doublePage.module.scss";
-import Curl from "./Curl";
 import classNames from "classnames";
-import Content from "./Content";
+import Curl from "./Curl";
 import Bookmark from "./Bookmark";
 
-const Contents = ({
+const GetInTouch = ({
   pageIndex,
   currentPage,
   pagesLength,
   pageIndexStyle,
-  page: { category, title, listOfContents },
+  page: { category },
   changePage,
   changeCustomPage,
   getIndexOfFirstBookmark,
@@ -29,11 +28,15 @@ const Contents = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
+
   const bookmarksTextRef = useRef(null);
   const bookmark = {
-    src: "ClearGreenBookmark.webp",
-    category: "contents",
-    name: "Contents",
+    src: "ClearBlueBookmark.webp",
+    category: "getInTouch",
+    name: "Get in touch",
     moveRight: pageIndexStyle > currentPage ? "-2vw" : "-3.5vw",
   };
 
@@ -61,19 +64,7 @@ const Contents = ({
             [style.visibilityHidden]: isAnimationFinished,
           })}
         >
-          <div style={{ height: "100%", marginTop: "45px" }}>
-            {listOfContents
-              .slice(0, 5)
-              .map(({ fields: { id, name, description } }, index) => (
-                <Content
-                  id={id}
-                  name={name}
-                  description={description}
-                  changeCustomPage={changeCustomPage}
-                  key={index}
-                />
-              ))}
-          </div>
+          {category} page
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
@@ -91,13 +82,13 @@ const Contents = ({
         )}
         {currentPage === getIndexOfFirstBookmark(category) && (
           <Bookmark
-            name={bookmark.name}
             moveRight={bookmark.moveRight}
             changeCustomPage={changeCustomPage}
             category={category}
             src={bookmark.src}
             bookmarksTextRef={bookmarksTextRef}
-            top={"20%"}
+            top={"60%"}
+            name={bookmark.name}
           />
         )}
         <div
@@ -106,20 +97,14 @@ const Contents = ({
           })}
           style={{ justifyContent: "flex-start" }}
         >
-          <h1 style={{ height: "45px" }}>{title}</h1>
-          <div>
-            {listOfContents
-              .slice(5, 10)
-              .map(({ fields: { id, name, description } }, index) => (
-                <Content
-                  id={id}
-                  name={name}
-                  description={description}
-                  changeCustomPage={changeCustomPage}
-                  key={index}
-                />
-              ))}
-          </div>
+          <form onSubmit={onSubmit} className={style.form}>
+            <label htmlFor="email">Email:</label>
+            <input type="email" name="email" />
+            <label htmlFor="message">Message:</label>
+            <textarea name="message" id="" cols="30" rows="10"></textarea>
+            <input type="submit" value={"Send"} className={style.btnSubmit} />
+          </form>
+
           {pageIndex !== pagesLength - 1 && (
             <Curl side="right" changePage={changePage} />
           )}
@@ -129,4 +114,4 @@ const Contents = ({
   );
 };
 
-export default Contents;
+export default GetInTouch;

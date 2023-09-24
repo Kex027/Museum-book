@@ -12,7 +12,11 @@ export async function getStaticProps() {
     accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
   });
 
-  const bookData = await client.getEntries({ content_type: "book" });
+  const bookData = await client.getEntries({
+    content_type: "book",
+    include: 4,
+  });
+
   return {
     props: {
       bookData: bookData.items[0],

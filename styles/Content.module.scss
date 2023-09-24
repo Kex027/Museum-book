@@ -9,6 +9,7 @@
 
     line-height: 1.75rem;
     font-weight: bold;
+    font-size: 1rem;
 
     .id {
       font-size: 2.2rem;
@@ -16,17 +17,17 @@
   }
 
   .description {
-    font-size: .8rem;
-    display: none;
+    font-size: 0;
+    opacity: 0;
+    transition: all 1s ease;
   }
 
   &:hover {
     gap: 15px;
-    transition: all .5s;
     background-color: #000;
     cursor: pointer;
-
     color: white;
+
     .title {
       .id {
         color: #77FD02;
@@ -34,7 +35,8 @@
     }
 
     .description {
-      display: block;
+      opacity: 1;
+      font-size: .8rem;
     }
   }
 }
