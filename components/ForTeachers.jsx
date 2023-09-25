@@ -13,6 +13,7 @@ const ForTeachers = ({
   changePage,
   changeCustomPage,
   getIndexOfFirstBookmark,
+  bookmarkInfo,
 }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
@@ -77,12 +78,10 @@ const ForTeachers = ({
         )}
         {currentPage === getIndexOfFirstBookmark(category) && (
           <Bookmark
-            name={bookmark.name}
-            moveRight={bookmark.moveRight}
             changeCustomPage={changeCustomPage}
             category={category}
-            src={bookmark.src}
             top={"30%"}
+            info={bookmarkInfo}
           />
         )}
         <div

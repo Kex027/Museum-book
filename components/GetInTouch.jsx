@@ -13,6 +13,7 @@ const GetInTouch = ({
   changePage,
   changeCustomPage,
   getIndexOfFirstBookmark,
+  bookmarkInfo,
 }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
@@ -81,12 +82,10 @@ const GetInTouch = ({
         )}
         {currentPage === getIndexOfFirstBookmark(category) && (
           <Bookmark
-            moveRight={bookmark.moveRight}
             changeCustomPage={changeCustomPage}
             category={category}
-            src={bookmark.src}
             top={"60%"}
-            name={bookmark.name}
+            info={bookmarkInfo}
           />
         )}
         <div

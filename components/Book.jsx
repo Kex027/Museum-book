@@ -13,6 +13,7 @@ import GetInTouch from "./GetInTouch";
 
 const Book = ({
   pages,
+  bookmarks,
   pageIndex,
   pageIndexStyle,
   setPageIndex,
@@ -40,14 +41,18 @@ const Book = ({
     }, 50);
   };
 
-  const getIndexOfFirstBookmark = (bookmark) => {
-    return pages.findIndex(
+  const getIndexOfFirstBookmark = (bookmark) =>
+    pages.findIndex(
       ({ fields: { category } }) =>
         category &&
         bookmark &&
         category.toLowerCase() === bookmark.toLowerCase()
     );
-  };
+
+  const getProperBookmark = (cat) =>
+    bookmarks.filter(
+      ({ fields: { category } }) => category.toLowerCase() === cat.toLowerCase()
+    )[0]?.fields;
 
   return (
     <div
@@ -107,7 +112,6 @@ const Book = ({
                     video={video}
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
-                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
                   />
                 );
               else if (content_id === "intoPage")
@@ -135,6 +139,7 @@ const Book = ({
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               else if (content_id === "forewordPage")
@@ -161,6 +166,7 @@ const Book = ({
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               else if (content_id === "forTeachers")
@@ -175,6 +181,7 @@ const Book = ({
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               else if (content_id === "forParents")
@@ -189,6 +196,7 @@ const Book = ({
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               else if (content_id === "faq")
@@ -203,6 +211,7 @@ const Book = ({
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               else if (content_id === "getInTouch")
@@ -217,6 +226,7 @@ const Book = ({
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               return <></>;

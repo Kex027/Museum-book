@@ -104,6 +104,7 @@ export default function Index({ bookData }) {
               />
               <Book
                 pages={bookData.fields.pages}
+                bookmarks={bookData.fields.bookmarks}
                 pageIndex={pageIndex}
                 setPageIndex={setPageIndex}
                 pageIndexStyle={pageIndexStyle}

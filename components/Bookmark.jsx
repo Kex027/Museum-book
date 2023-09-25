@@ -2,14 +2,7 @@ import React, { useRef, useState } from "react";
 import classNames from "classnames";
 import style from "../styles/doublePage.module.scss";
 
-const Bookmark = ({
-  name,
-  moveRight,
-  changeCustomPage,
-  category,
-  src,
-  top,
-}) => {
+const Bookmark = ({ changeCustomPage, category, top, info }) => {
   const [isPositionChanged, setIsPositionChanged] = useState(false);
   const ref = useRef(null);
 
@@ -22,22 +15,24 @@ const Bookmark = ({
   return (
     <div
       key={category}
-      style={{ right: moveRight, top: top }}
+      style={{
+        top: top,
+        backgroundColor: info?.color,
+      }}
       className={classNames(style.bookmark)}
       onClick={(e) => {
         changeCustomPage(e, category);
       }}
     >
-      <img src={src} alt={category} />
       <span
         className={classNames(style.bookmarkText)}
         ref={ref}
         style={{
           transform: isPositionChanged ? "rotateY(180deg)" : "",
-          fontSize: "1.1rem",
+          color: info?.textColor,
         }}
       >
-        {name}
+        {info?.name}
       </span>
     </div>
   );
