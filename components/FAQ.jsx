@@ -28,7 +28,6 @@ const Faq = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
-  const bookmarksTextRef = useRef(null);
   const bookmark = {
     src: "ClearYellowBookmark.webp",
     category: "FAQ",
@@ -82,7 +81,6 @@ const Faq = ({
             changeCustomPage={changeCustomPage}
             category={category}
             src={bookmark.src}
-            bookmarksTextRef={bookmarksTextRef}
             top={"50%"}
             name={bookmark.name}
           />

@@ -23,6 +23,10 @@ const Book = ({
     setTimeout(() => {
       setTimeout(() => {
         setPageIndex((oldIndex) => {
+          if (oldIndex === -1) {
+            const audio = new Audio("/neon.mp3");
+            audio.play();
+          }
           if (oldIndex + value < -1 || oldIndex + value > pages.length - 1)
             return oldIndex;
           return oldIndex + value;

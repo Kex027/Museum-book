@@ -28,7 +28,6 @@ const ContextPage = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
-  const bookmarksTextRef = useRef(null);
   const bookmark = {
     src: "ClearBlueBookmark.webp",
     category: "context",
@@ -82,7 +81,6 @@ const ContextPage = ({
             changeCustomPage={changeCustomPage}
             category={category}
             src={bookmark.src}
-            bookmarksTextRef={bookmarksTextRef}
             top={"10%"}
             name={bookmark.name}
           />

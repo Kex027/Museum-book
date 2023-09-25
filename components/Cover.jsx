@@ -22,8 +22,6 @@ const Cover = ({
         }`}
         style={{ height: pageIndex !== -1 ? "99%" : "100%" }}
         onClick={() => {
-          const audio = new Audio("/neon.mp3");
-          audio.play();
           changePage(1);
         }}
       >

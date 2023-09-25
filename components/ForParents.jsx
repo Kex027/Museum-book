@@ -28,7 +28,6 @@ const ForParents = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
-  const bookmarksTextRef = useRef(null);
   const bookmark = {
     src: "ClearPurpleBookmark.webp",
     category: "forParents",
@@ -82,7 +81,6 @@ const ForParents = ({
             changeCustomPage={changeCustomPage}
             category={category}
             src={bookmark.src}
-            bookmarksTextRef={bookmarksTextRef}
             top={"40%"}
             name={bookmark.name}
           />

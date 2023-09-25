@@ -29,7 +29,6 @@ const Contents = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
-  const bookmarksTextRef = useRef(null);
   const bookmark = {
     src: "ClearGreenBookmark.webp",
     category: "contents",
@@ -96,7 +95,6 @@ const Contents = ({
             changeCustomPage={changeCustomPage}
             category={category}
             src={bookmark.src}
-            bookmarksTextRef={bookmarksTextRef}
             top={"20%"}
           />
         )}
