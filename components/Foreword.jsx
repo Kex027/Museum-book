@@ -72,7 +72,16 @@ const Foreword = ({
         >
           <h1 className={style.forewordTitle}>{title}</h1>
           {Object.entries(text.content).map((content) => (
-            <div key={content[0]}>{content[1].content[0].value}</div>
+            <div
+              key={content[0]}
+              style={{
+                fontWeight: content[1].content[0].marks[0]?.type,
+                fontSize: "14px",
+              }}
+            >
+              {content[1].content[0].value}
+              <br /> <br />
+            </div>
           ))}
           {pageIndex !== pagesLength - 1 && (
             <Curl side="right" changePage={changePage} />

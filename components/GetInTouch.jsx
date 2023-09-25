@@ -13,6 +13,7 @@ const GetInTouch = ({
   changePage,
   changeCustomPage,
   getIndexOfFirstBookmark,
+  bookmarkInfo,
 }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
@@ -32,7 +33,6 @@ const GetInTouch = ({
     e.preventDefault();
   };
 
-  const bookmarksTextRef = useRef(null);
   const bookmark = {
     src: "ClearBlueBookmark.webp",
     category: "getInTouch",
@@ -82,13 +82,10 @@ const GetInTouch = ({
         )}
         {currentPage === getIndexOfFirstBookmark(category) && (
           <Bookmark
-            moveRight={bookmark.moveRight}
             changeCustomPage={changeCustomPage}
             category={category}
-            src={bookmark.src}
-            bookmarksTextRef={bookmarksTextRef}
             top={"60%"}
-            name={bookmark.name}
+            info={bookmarkInfo}
           />
         )}
         <div

@@ -39,10 +39,10 @@ const Into = ({
           [style.flippedRight]: pageIndexStyle < currentPage,
         })}
       >
-        <HomeBookmark
-          changeCustomPage={changeCustomPage}
-          pagesLength={pagesLength}
-        />
+        {/*<HomeBookmark*/}
+        {/*  changeCustomPage={changeCustomPage}*/}
+        {/*  pagesLength={pagesLength}*/}
+        {/*/>*/}
         {currentPage === 0 && (
           <img
             src="/bookLeftSide.webp"

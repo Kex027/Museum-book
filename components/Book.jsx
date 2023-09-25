@@ -13,6 +13,7 @@ import GetInTouch from "./GetInTouch";
 
 const Book = ({
   pages,
+  bookmarks,
   pageIndex,
   pageIndexStyle,
   setPageIndex,
@@ -23,6 +24,10 @@ const Book = ({
     setTimeout(() => {
       setTimeout(() => {
         setPageIndex((oldIndex) => {
+          if (oldIndex === -1) {
+            const audio = new Audio("/neon.mp3");
+            audio.play();
+          }
           if (oldIndex + value < -1 || oldIndex + value > pages.length - 1)
             return oldIndex;
           return oldIndex + value;
@@ -36,14 +41,18 @@ const Book = ({
     }, 50);
   };
 
-  const getIndexOfFirstBookmark = (bookmark) => {
-    return pages.findIndex(
+  const getIndexOfFirstBookmark = (bookmark) =>
+    pages.findIndex(
       ({ fields: { category } }) =>
         category &&
         bookmark &&
         category.toLowerCase() === bookmark.toLowerCase()
     );
-  };
+
+  const getProperBookmark = (cat) =>
+    bookmarks.filter(
+      ({ fields: { category } }) => category.toLowerCase() === cat.toLowerCase()
+    )[0]?.fields;
 
   return (
     <div
@@ -62,14 +71,6 @@ const Book = ({
             pageIndexStyle={pageIndexStyle}
             pagesLength={pages.length}
             currentPage={-1}
-            content={[
-              <img
-                key={1} // key is necessary to avoid error
-                src="/Minceiri.webp"
-                alt="Minceiri"
-                style={{ width: "80%" }}
-              />,
-            ]}
           />
           {pages?.map(
             (
@@ -111,7 +112,6 @@ const Book = ({
                     video={video}
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
-                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
                   />
                 );
               else if (content_id === "intoPage")
@@ -139,6 +139,7 @@ const Book = ({
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               else if (content_id === "forewordPage")
@@ -165,6 +166,7 @@ const Book = ({
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               else if (content_id === "forTeachers")
@@ -179,6 +181,7 @@ const Book = ({
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               else if (content_id === "forParents")
@@ -193,6 +196,7 @@ const Book = ({
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               else if (content_id === "faq")
@@ -207,6 +211,7 @@ const Book = ({
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               else if (content_id === "getInTouch")
@@ -221,6 +226,7 @@ const Book = ({
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               return <></>;

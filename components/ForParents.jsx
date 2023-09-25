@@ -13,6 +13,7 @@ const ForParents = ({
   changePage,
   changeCustomPage,
   getIndexOfFirstBookmark,
+  bookmarkInfo,
 }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
@@ -28,7 +29,6 @@ const ForParents = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
-  const bookmarksTextRef = useRef(null);
   const bookmark = {
     src: "ClearPurpleBookmark.webp",
     category: "forParents",
@@ -78,13 +78,10 @@ const ForParents = ({
         )}
         {currentPage === getIndexOfFirstBookmark(category) && (
           <Bookmark
-            moveRight={bookmark.moveRight}
             changeCustomPage={changeCustomPage}
             category={category}
-            src={bookmark.src}
-            bookmarksTextRef={bookmarksTextRef}
             top={"40%"}
-            name={bookmark.name}
+            info={bookmarkInfo}
           />
         )}
         <div

@@ -69,7 +69,13 @@ export default function Index({ bookData }) {
     );
     setTimeout(() => {
       setTimeout(() => {
-        setPageIndex(indexOfFirstBookmarkItem);
+        setPageIndex((oldIndex) => {
+          if (oldIndex === -1) {
+            const audio = new Audio("/neon.mp3");
+            audio.play();
+          }
+          return indexOfFirstBookmarkItem;
+        });
       }, 280);
       setPageIndexStyle(indexOfFirstBookmarkItem);
     }, 50);
@@ -98,6 +104,7 @@ export default function Index({ bookData }) {
               />
               <Book
                 pages={bookData.fields.pages}
+                bookmarks={bookData.fields.bookmarks}
                 pageIndex={pageIndex}
                 setPageIndex={setPageIndex}
                 pageIndexStyle={pageIndexStyle}

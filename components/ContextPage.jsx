@@ -13,6 +13,7 @@ const ContextPage = ({
   changePage,
   changeCustomPage,
   getIndexOfFirstBookmark,
+  bookmarkInfo,
 }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
@@ -28,7 +29,6 @@ const ContextPage = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
-  const bookmarksTextRef = useRef(null);
   const bookmark = {
     src: "ClearBlueBookmark.webp",
     category: "context",
@@ -78,13 +78,10 @@ const ContextPage = ({
         )}
         {currentPage === getIndexOfFirstBookmark(category) && (
           <Bookmark
-            moveRight={bookmark.moveRight}
             changeCustomPage={changeCustomPage}
             category={category}
-            src={bookmark.src}
-            bookmarksTextRef={bookmarksTextRef}
             top={"10%"}
-            name={bookmark.name}
+            info={bookmarkInfo}
           />
         )}
         <div
