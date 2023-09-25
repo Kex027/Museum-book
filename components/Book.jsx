@@ -66,14 +66,6 @@ const Book = ({
             pageIndexStyle={pageIndexStyle}
             pagesLength={pages.length}
             currentPage={-1}
-            content={[
-              <img
-                key={1} // key is necessary to avoid error
-                src="/Minceiri.webp"
-                alt="Minceiri"
-                style={{ width: "80%" }}
-              />,
-            ]}
           />
           {pages?.map(
             (

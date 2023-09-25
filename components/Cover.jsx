@@ -7,7 +7,6 @@ const Cover = ({
   pageIndexStyle,
   currentPage,
   changePage,
-  content,
 }) => {
   return (
     <div
@@ -24,9 +23,7 @@ const Cover = ({
         onClick={() => {
           changePage(1);
         }}
-      >
-        {content}
-      </div>
+      ></div>
     </div>
   );
 };
