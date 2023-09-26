@@ -43,6 +43,7 @@ const Into = ({
         {/*  changeCustomPage={changeCustomPage}*/}
         {/*  pagesLength={pagesLength}*/}
         {/*/>*/}
+
         {currentPage === 0 && (
           <img
             src="/bookLeftSide.webp"

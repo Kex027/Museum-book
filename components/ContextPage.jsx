@@ -29,13 +29,6 @@ const ContextPage = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
-  const bookmark = {
-    src: "ClearBlueBookmark.webp",
-    category: "context",
-    name: "Context",
-    moveRight: pageIndexStyle > currentPage ? "-2vw" : "-3.5vw",
-  };
-
   return (
     <div
       className={style.container}

@@ -29,13 +29,6 @@ const Faq = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
-  const bookmark = {
-    src: "ClearYellowBookmark.webp",
-    category: "FAQ",
-    name: "FAQ",
-    moveRight: pageIndexStyle > currentPage ? "-2vw" : "-3.5vw",
-  };
-
   return (
     <div
       className={style.container}

@@ -29,13 +29,6 @@ const ForParents = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
-  const bookmark = {
-    src: "ClearPurpleBookmark.webp",
-    category: "forParents",
-    name: "For parents",
-    moveRight: pageIndexStyle > currentPage ? "-2vw" : "-3.5vw",
-  };
-
   return (
     <div
       className={style.container}

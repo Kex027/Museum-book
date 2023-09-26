@@ -33,13 +33,6 @@ const GetInTouch = ({
     e.preventDefault();
   };
 
-  const bookmark = {
-    src: "ClearBlueBookmark.webp",
-    category: "getInTouch",
-    name: "Get in touch",
-    moveRight: pageIndexStyle > currentPage ? "-2vw" : "-3.5vw",
-  };
-
   return (
     <div
       className={style.container}
