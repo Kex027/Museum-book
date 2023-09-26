@@ -29,13 +29,6 @@ const ForTeachers = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
-  const bookmark = {
-    src: "ClearBlueBookmark.webp",
-    category: "forTeachers",
-    name: "For teachers",
-    moveRight: pageIndexStyle > currentPage ? "-2vw" : "-3.5vw",
-  };
-
   return (
     <div
       className={style.container}

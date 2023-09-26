@@ -30,13 +30,6 @@ const Contents = ({
     }
   }, [isAnimationFinished, pageIndexStyle, currentPage]);
 
-  const bookmark = {
-    src: "ClearGreenBookmark.webp",
-    category: "contents",
-    name: "Contents",
-    moveRight: pageIndexStyle > currentPage ? "-2vw" : "-3.5vw",
-  };
-
   return (
     <div
       className={style.container}
