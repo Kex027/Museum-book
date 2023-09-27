@@ -71,25 +71,32 @@ const Foreword = ({
           className={classNames(style.contentRight, {
             [style.visibilityHidden]: isAnimationFinished,
           })}
-          style={{ justifyContent: "flex-start" }}
+          style={{
+            backgroundImage: 'url("/forewordRightPage.webp")',
+          }}
         >
-          <h1 className={style.forewordTitle}>{title}</h1>
-          {Object.entries(text.content).map((content) => (
-            <div key={content[0]} className={style.forewordText}>
-              {content[1].content.map(({ value, marks }) => (
-                <span
-                  key={value}
-                  style={{
-                    fontWeight: marks[0]?.type,
-                  }}
-                >
-                  {value}
-                  <br />
-                </span>
-              ))}
-              <br />
-            </div>
-          ))}
+          <div
+            style={{
+              marginTop: "230px",
+            }}
+          >
+            {Object.entries(text.content).map((content) => (
+              <div key={content[0]} className={style.forewordText}>
+                {content[1].content.map(({ value, marks }) => (
+                  <span
+                    key={value}
+                    style={{
+                      fontWeight: marks[0]?.type,
+                    }}
+                  >
+                    {value}
+                    <br />
+                  </span>
+                ))}
+                <br />
+              </div>
+            ))}
+          </div>
           {pageIndex !== pagesLength - 1 && (
             <Curl side="right" changePage={changePage} />
           )}

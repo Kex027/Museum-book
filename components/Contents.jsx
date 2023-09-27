@@ -53,8 +53,11 @@ const Contents = ({
           className={classNames(style.contentLeft, {
             [style.visibilityHidden]: isAnimationFinished,
           })}
+          style={{ backgroundImage: 'url("/contentsLeftPage.webp")' }}
         >
-          <div style={{ height: "100%", marginTop: "45px" }}>
+          <h1 style={{ color: "white", position: "absolute" }}>{title}</h1>
+
+          <div style={{ marginTop: "25%", height: "100%" }}>
             {listOfContents
               .slice(0, 5)
               .map(({ fields: { id, name, description } }, index) => (
@@ -94,10 +97,12 @@ const Contents = ({
           className={classNames(style.contentRight, {
             [style.visibilityHidden]: isAnimationFinished,
           })}
-          style={{ justifyContent: "flex-start" }}
+          style={{
+            backgroundImage: 'url("/contentsRightPage.webp")',
+            backgroundSize: "contain",
+          }}
         >
-          <h1 style={{ height: "45px" }}>{title}</h1>
-          <div>
+          <div style={{ marginTop: "23%", height: "100%" }}>
             {listOfContents
               .slice(5, 10)
               .map(({ fields: { id, name, description } }, index) => (
