@@ -1,25 +1,30 @@
 .container {
   display: flex;
   align-items: center;
-  padding: 15px;
+  padding: 10px;
 
   .title {
     display: flex;
     flex-direction: column;
 
-    line-height: 1.75rem;
+    line-height: 4vh;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 2vh;
 
     .id {
-      font-size: 2.2rem;
+      font-size: 6vh;
+    }
+
+    .name {
+      white-space: nowrap;
     }
   }
 
   .description {
     font-size: 0;
     opacity: 0;
-    transition: all 1s ease;
+    -webkit-transition: opacity 1s, font-size 1s;
+    transition: font-size 1s cubic-bezier(.53,0,.52,1) .5s, opacity .3s cubic-bezier(.53,0,.52,1) 1.3s;
   }
 
   &:hover {
@@ -36,7 +41,7 @@
 
     .description {
       opacity: 1;
-      font-size: .8rem;
+      font-size: 1.2vh;
     }
   }
 }

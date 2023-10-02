@@ -71,7 +71,7 @@ export default function Index({ bookData }) {
       setTimeout(() => {
         setPageIndex((oldIndex) => {
           if (oldIndex === -1) {
-            const audio = new Audio("/neon.mp3");
+            const audio = new Audio("/pageturn.mp3");
             audio.play();
           }
           return indexOfFirstBookmarkItem;

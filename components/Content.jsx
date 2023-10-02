@@ -17,7 +17,7 @@ const Content = ({ id, name, description, changeCustomPage }) => {
       <p className={style.description}>{description}</p>
       <div className={style.title}>
         <span className={style.id}>{displayId(id)}</span>
-        <span>{name}</span>
+        <span className={style.name}>{name}</span>
       </div>
     </div>
   );
