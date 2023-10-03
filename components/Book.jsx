@@ -54,6 +54,7 @@ const Book = ({
       ({ fields: { category } }) => category.toLowerCase() === cat.toLowerCase()
     )[0]?.fields;
 
+    console.log(pages);
   return (
     <div
       className={style.container}
@@ -77,7 +78,6 @@ const Book = ({
               {
                 fields: {
                   id,
-                  image,
                   quote,
                   heading,
                   title,

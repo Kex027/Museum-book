@@ -80,7 +80,7 @@ const Foreword = ({
               marginTop: "230px",
             }}
           >
-            {Object.entries(text.content).map((content) => (
+            {Object.entries(text?.content).map((content) => (
               <div key={content[0]} className={style.forewordText}>
                 {content[1].content.map(({ value, marks }) => (
                   <span
