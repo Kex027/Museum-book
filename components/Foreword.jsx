@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import style from "../styles/doublePage.module.scss";
 import Curl from "./Curl";
 import classNames from "classnames";
+import Bookmark from "./Bookmark";
 
 const Foreword = ({
   pageIndex,
   currentPage,
   pagesLength,
   pageIndexStyle,
-  page: { title, text },
+  page: { title, text, category },
   changePage,
+  changeCustomPage,
+  getIndexOfFirstBookmark,
+  bookmarkInfo,
 }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
@@ -67,6 +71,14 @@ const Foreword = ({
             className={style.bookRightSide}
           />
         )}
+        {currentPage === getIndexOfFirstBookmark(category) && (
+          <Bookmark
+            changeCustomPage={changeCustomPage}
+            category={category}
+            top={"70%"}
+            info={bookmarkInfo}
+          />
+        )}
         <div
           className={classNames(style.contentRight, {
             [style.visibilityHidden]: isAnimationFinished,
@@ -80,7 +92,7 @@ const Foreword = ({
               marginTop: "230px",
             }}
           >
-            {Object.entries(text.content).map((content) => (
+            {Object.entries(text?.content).map((content) => (
               <div key={content[0]} className={style.forewordText}>
                 {content[1].content.map(({ value, marks }) => (
                   <span

@@ -1,25 +1,32 @@
 .container {
   display: flex;
   align-items: center;
-  padding: 15px;
+  padding: 10px;
 
   .title {
     display: flex;
     flex-direction: column;
 
-    line-height: 1.75rem;
+    transition: flex-basis 3s ease; 
+
+    line-height: 4vh;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 2vh;
 
     .id {
-      font-size: 2.2rem;
+      font-size: 6vh;
+    }
+
+    .name {
+      white-space: nowrap;
     }
   }
 
   .description {
     font-size: 0;
     opacity: 0;
-    transition: all 1s ease;
+    -webkit-transition: opacity .1s ease, font-size .5s ease;
+    // transition: font-size .5s ease, opacity .1s cubic-bezier(.53,0,.52,1);
   }
 
   &:hover {
@@ -29,6 +36,8 @@
     color: white;
 
     .title {
+      align-items: flex-end;
+
       .id {
         color: #77FD02;
       }
@@ -36,7 +45,10 @@
 
     .description {
       opacity: 1;
-      font-size: .8rem;
+      font-size: 1.2vh;
+
+      // transition: font-size 2s cubic-bezier(.53,0,.52,1) 5s, opacity .3s cubic-bezier(.53,0,.52,1) 1.1s;
+      -webkit-transition: opacity 1s ease 1.2s, font-size 1s ease .5s;
     }
   }
 }

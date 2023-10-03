@@ -39,6 +39,19 @@
           }
         }
       }
+
+      .contentsHeader {
+        color: white;
+        height: 18%;
+      }
+
+      .contentsList {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        height: 78%;
+      }
     }
   }
 
@@ -48,8 +61,11 @@
     .quote {
       display: flex;
       align-items: center;
+
       font-size: 7vh;
       height: 100%;
+
+      color: white;
     }
 
     .contentLeft {
@@ -57,6 +73,15 @@
       background-image: url("/clear-left-paper.webp");
       width: 83%;
       background-color: transparent;
+
+      .video {
+        position: absolute;
+        color: white;
+        // width: 140%;
+      
+        // width: 100%;
+        cursor: pointer;
+      }
     }
   }
   .flippedLeft {
@@ -70,7 +95,6 @@
     transform-origin: left;
     display: flex;
     justify-content: flex-start;
-    font-size: 2vh;
 
     .contentRight {
       background-image: url("/clear-right-paper.webp");
@@ -79,12 +103,6 @@
       justify-content: space-around;
       width: 89%;
       position: relative;
-
-      .video {
-        color: white;
-        width: 96%;
-        cursor: pointer;
-      }
 
       .forewordTitle {
         text-align: center;
@@ -124,7 +142,6 @@
       position: absolute;
       right: -105px;
 
-      max-height: 100%;
       transition: right .5s ease;
       cursor: pointer;
 
@@ -132,7 +149,7 @@
       justify-content: center;
       align-items: center;
 
-      width: 150px;
+      min-width: 170px;
       height: 45px;
       background-color: #e9e8e8;
 
@@ -140,9 +157,11 @@
         color: #454545;
         position: absolute;
         font-size: 1.2em;
+        padding: 0 30px;
       }
     }
   }
+  
   .flippedRight {
     transform: rotateY(180deg);
   }

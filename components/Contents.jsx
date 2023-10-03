@@ -55,9 +55,9 @@ const Contents = ({
           })}
           style={{ backgroundImage: 'url("/contentsLeftPage.webp")' }}
         >
-          <h1 style={{ color: "white", position: "absolute" }}>{title}</h1>
+          <h1 style={{ fontSize: '7vh' }} className={style.contentsHeader}>{title}</h1>
 
-          <div style={{ marginTop: "25%", height: "100%" }}>
+          <div className={style.contentsList}>
             {listOfContents
               .slice(0, 5)
               .map(({ fields: { id, name, description } }, index) => (
@@ -100,9 +100,12 @@ const Contents = ({
           style={{
             backgroundImage: 'url("/contentsRightPage.webp")',
             backgroundSize: "contain",
+            display: 'block'
           }}
         >
-          <div style={{ marginTop: "23%", height: "100%" }}>
+          <h1 className={style.contentsHeader}></h1>
+
+          <div className={style.contentsList}>
             {listOfContents
               .slice(5, 10)
               .map(({ fields: { id, name, description } }, index) => (

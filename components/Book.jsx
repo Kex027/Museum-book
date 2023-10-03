@@ -25,7 +25,7 @@ const Book = ({
       setTimeout(() => {
         setPageIndex((oldIndex) => {
           if (oldIndex === -1) {
-            const audio = new Audio("/neon.mp3");
+            const audio = new Audio("/pageturn.mp3");
             audio.play();
           }
           if (oldIndex + value < -1 || oldIndex + value > pages.length - 1)
@@ -49,11 +49,12 @@ const Book = ({
         category.toLowerCase() === bookmark.toLowerCase()
     );
 
-  const getProperBookmark = (cat) =>
+  const getProperBookmark = (cat) => 
     bookmarks.filter(
-      ({ fields: { category } }) => category.toLowerCase() === cat.toLowerCase()
+      ({ fields: { category } }) => 
+        category.toLowerCase() === cat.toLowerCase()
     )[0]?.fields;
-
+    
   return (
     <div
       className={style.container}
@@ -77,7 +78,6 @@ const Book = ({
               {
                 fields: {
                   id,
-                  image,
                   quote,
                   heading,
                   title,
@@ -150,8 +150,11 @@ const Book = ({
                     pageIndex={pageIndex}
                     pageIndexStyle={pageIndexStyle}
                     pagesLength={pages.length}
-                    page={{ title, text }}
+                    page={{ title, text, category }}
                     changePage={changePage}
+                    changeCustomPage={changeCustomPage}
+                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               else if (content_id === "contextPage")
