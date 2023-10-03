@@ -49,12 +49,12 @@ const Book = ({
         category.toLowerCase() === bookmark.toLowerCase()
     );
 
-  const getProperBookmark = (cat) =>
+  const getProperBookmark = (cat) => 
     bookmarks.filter(
-      ({ fields: { category } }) => category.toLowerCase() === cat.toLowerCase()
+      ({ fields: { category } }) => 
+        category.toLowerCase() === cat.toLowerCase()
     )[0]?.fields;
-
-    console.log(pages);
+    
   return (
     <div
       className={style.container}
@@ -150,8 +150,11 @@ const Book = ({
                     pageIndex={pageIndex}
                     pageIndexStyle={pageIndexStyle}
                     pagesLength={pages.length}
-                    page={{ title, text }}
+                    page={{ title, text, category }}
                     changePage={changePage}
+                    changeCustomPage={changeCustomPage}
+                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
+                    bookmarkInfo={getProperBookmark(category)}
                   />
                 );
               else if (content_id === "contextPage")

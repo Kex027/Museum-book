@@ -2,14 +2,18 @@ import React, { useEffect, useState } from "react";
 import style from "../styles/doublePage.module.scss";
 import Curl from "./Curl";
 import classNames from "classnames";
+import Bookmark from "./Bookmark";
 
 const Foreword = ({
   pageIndex,
   currentPage,
   pagesLength,
   pageIndexStyle,
-  page: { title, text },
+  page: { title, text, category },
   changePage,
+  changeCustomPage,
+  getIndexOfFirstBookmark,
+  bookmarkInfo,
 }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
 
@@ -65,6 +69,14 @@ const Foreword = ({
             src="/bookRightSide.webp"
             alt="Left side of book"
             className={style.bookRightSide}
+          />
+        )}
+        {currentPage === getIndexOfFirstBookmark(category) && (
+          <Bookmark
+            changeCustomPage={changeCustomPage}
+            category={category}
+            top={"70%"}
+            info={bookmarkInfo}
           />
         )}
         <div
