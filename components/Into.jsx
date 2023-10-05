@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import style from "../styles/doublePage.module.scss";
 import Curl from "./Curl";
-import HomeBookmark from "./HomeBookmark";
 import classNames from "classnames";
+import PageIndex from "./PageIndex";
 
 const Into = ({
   pageIndex,
@@ -39,11 +39,6 @@ const Into = ({
           [style.flippedRight]: pageIndexStyle < currentPage,
         })}
       >
-        {/*<HomeBookmark*/}
-        {/*  changeCustomPage={changeCustomPage}*/}
-        {/*  pagesLength={pagesLength}*/}
-        {/*/>*/}
-
         {currentPage === 0 && (
           <img
             src="/bookLeftSide.webp"
@@ -57,6 +52,7 @@ const Into = ({
             [style.visibilityHidden]: isAnimationFinished,
           })}
         >
+          <PageIndex index={pageIndex} side="left" />
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
@@ -84,7 +80,10 @@ const Into = ({
             <p>{footer}</p>
           </div>
           {pageIndex !== pagesLength - 1 && (
-            <Curl side="right" changePage={changePage} />
+            <>
+              <PageIndex index={pageIndex} side="right" />
+              <Curl side="right" changePage={changePage} />
+            </>
           )}
         </div>
       </div>
