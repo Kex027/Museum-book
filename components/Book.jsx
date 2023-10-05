@@ -49,11 +49,18 @@ const Book = ({
         category.toLowerCase() === bookmark.toLowerCase()
     );
 
-  const getProperBookmark = (cat) => 
-    bookmarks.filter(
+  const getProperBookmark = (cat) => {
+    const properBookmark = bookmarks.filter(
       ({ fields: { category } }) => 
         category.toLowerCase() === cat.toLowerCase()
-    )[0]?.fields;
+    )[0]?.fields
+    const indexOfProperBookmark = bookmarks.findIndex(({fields}) => fields === properBookmark)
+
+    return {
+      ...properBookmark,
+      index: indexOfProperBookmark
+    }
+  }
     
   return (
     <div
@@ -165,7 +172,7 @@ const Book = ({
                     pageIndex={pageIndex}
                     pageIndexStyle={pageIndexStyle}
                     pagesLength={pages.length}
-                    page={{ id, category }}
+                    page={{ category, heading }}
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
@@ -180,7 +187,7 @@ const Book = ({
                     pageIndex={pageIndex}
                     pageIndexStyle={pageIndexStyle}
                     pagesLength={pages.length}
-                    page={{ id, category }}
+                    page={{ category, heading }}
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
@@ -195,7 +202,7 @@ const Book = ({
                     pageIndex={pageIndex}
                     pageIndexStyle={pageIndexStyle}
                     pagesLength={pages.length}
-                    page={{ id, category }}
+                    page={{ category, heading }}
                     changePage={changePage}
                     changeCustomPage={changeCustomPage}
                     getIndexOfFirstBookmark={getIndexOfFirstBookmark}
