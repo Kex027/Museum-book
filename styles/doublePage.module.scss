@@ -50,6 +50,8 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
+        
+        padding-left: 20px;
         height: 78%;
       }
     }
@@ -77,9 +79,8 @@
       .video {
         position: absolute;
         color: white;
-        // width: 140%;
       
-        // width: 100%;
+        width: 100%;
         cursor: pointer;
       }
     }
@@ -109,8 +110,8 @@
       }
 
       .forewordText {
-        font-size: 12px;
-        line-height: 1rem;
+        font-size: 2.4vh;
+        line-height: 2.2vh;
       }
 
       .intoPageRightContent {
@@ -135,6 +136,13 @@
           height: 20%;
           width: 100%;
         }
+      }
+
+      .contextTitle {
+        color: greenyellow;
+        font-size: 11vh;
+        line-height: 10vh;
+        word-break: break-all;
       }
     }
 

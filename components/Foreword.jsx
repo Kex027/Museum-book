@@ -89,7 +89,7 @@ const Foreword = ({
         >
           <div
             style={{
-              marginTop: "230px",
+              marginTop: "60%",
             }}
           >
             {Object.entries(text?.content).map((content) => (

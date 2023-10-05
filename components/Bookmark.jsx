@@ -16,7 +16,7 @@ const Bookmark = ({ changeCustomPage, category, top, info }) => {
     <div
       key={category}
       style={{
-        top: top,
+        top: (info.index * 10 + 10) + "%",
         backgroundColor: info?.color,
       }}
       className={classNames(style.bookmark)}

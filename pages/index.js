@@ -1,7 +1,6 @@
 import Book from "../components/Book.jsx";
 import style from "../styles/index.module.scss";
 import { createClient } from "contentful";
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import Mobile from "../components/mobile/Mobile";
 import book from "../components/Book.jsx";
@@ -60,7 +59,7 @@ export default function Index({ bookData }) {
     e.preventDefault();
     setChangedPage(false);
     const indexOfFirstBookmarkItem = pages.findIndex(
-      ({ fields: { category, id } }) =>
+      ({ fields: { category, id } }, index) =>
         (typeof bookmark === "string" &&
           category &&
           bookmark &&

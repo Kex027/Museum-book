@@ -55,7 +55,7 @@ const Contents = ({
           })}
           style={{ backgroundImage: 'url("/contentsLeftPage.webp")' }}
         >
-          <h1 style={{ fontSize: '7vh' }} className={style.contentsHeader}>{title}</h1>
+          <h1 style={{ fontSize: '7vh' }} className={style.contentsHeader}>{title.toUpperCase()}</h1>
 
           <div className={style.contentsList}>
             {listOfContents
