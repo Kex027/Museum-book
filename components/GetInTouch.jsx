@@ -52,6 +52,13 @@ const GetInTouch = ({
             className={style.bookLeftSide}
           />
         )}
+        {currentPage === getIndexOfFirstBookmark(category) && (
+          <Bookmark
+            changeCustomPage={changeCustomPage}
+            category={category}
+            info={bookmarkInfo}
+          />
+        )}
         <div
           className={classNames(style.contentLeft, {
             [style.visibilityHidden]: isAnimationFinished,
@@ -73,19 +80,13 @@ const GetInTouch = ({
             className={style.bookRightSide}
           />
         )}
-        {currentPage === getIndexOfFirstBookmark(category) && (
-          <Bookmark
-            changeCustomPage={changeCustomPage}
-            category={category}
-            top={"60%"}
-            info={bookmarkInfo}
-          />
-        )}
         <div
           className={classNames(style.contentRight, {
             [style.visibilityHidden]: isAnimationFinished,
           })}
-          style={{ justifyContent: "flex-start" }}
+          style={{ 
+            justifyContent: "flex-start"
+          }}
         >
           <form onSubmit={onSubmit} className={style.form}>
             <label htmlFor="email">Email:</label>

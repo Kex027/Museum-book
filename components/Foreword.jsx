@@ -3,6 +3,7 @@ import style from "../styles/doublePage.module.scss";
 import Curl from "./Curl";
 import classNames from "classnames";
 import Bookmark from "./Bookmark";
+import PageIndex from "./PageIndex";
 
 const Foreword = ({
   pageIndex,
@@ -41,6 +42,13 @@ const Foreword = ({
           [style.flippedRight]: pageIndexStyle < currentPage,
         })}
       >
+        {currentPage === getIndexOfFirstBookmark(category) && (
+          <Bookmark
+            changeCustomPage={changeCustomPage}
+            category={category}
+            info={bookmarkInfo}
+          />
+        )}
         {currentPage === 0 && (
           <img
             src="/bookLeftSide.webp"
@@ -48,6 +56,7 @@ const Foreword = ({
             className={style.bookLeftSide}
           />
         )}
+        
         <div
           className={classNames(style.contentLeft, {
             [style.visibilityHidden]: isAnimationFinished,
@@ -56,9 +65,11 @@ const Foreword = ({
             backgroundImage: 'url("/forewordLeftPage.webp")',
           }}
         >
+          <PageIndex index={pageIndex} side="left" />
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
+      
       <div
         className={classNames(style.rightPage, {
           [style.flippedLeft]: pageIndexStyle > currentPage,
@@ -69,14 +80,6 @@ const Foreword = ({
             src="/bookRightSide.webp"
             alt="Left side of book"
             className={style.bookRightSide}
-          />
-        )}
-        {currentPage === getIndexOfFirstBookmark(category) && (
-          <Bookmark
-            changeCustomPage={changeCustomPage}
-            category={category}
-            top={"70%"}
-            info={bookmarkInfo}
           />
         )}
         <div
@@ -110,7 +113,10 @@ const Foreword = ({
             ))}
           </div>
           {pageIndex !== pagesLength - 1 && (
-            <Curl side="right" changePage={changePage} />
+            <>
+              <PageIndex index={pageIndex} side="right" isAnimationFinished={isAnimationFinished} />
+              <Curl side="right" changePage={changePage} />
+            </>
           )}
         </div>
       </div>

@@ -58,8 +58,9 @@ export default function Index({ bookData }) {
 
     e.preventDefault();
     setChangedPage(false);
+    
     const indexOfFirstBookmarkItem = pages.findIndex(
-      ({ fields: { category, id } }, index) =>
+      ({ fields: { category, id } }) =>
         (typeof bookmark === "string" &&
           category &&
           bookmark &&

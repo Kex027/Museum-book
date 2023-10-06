@@ -90,6 +90,29 @@
         cursor: pointer;
       }
     }
+
+    .bookmark {
+      position: absolute;
+      left: -105px;
+
+      transition: left .5s ease;
+      cursor: pointer;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      min-width: 170px;
+      height: 45px;
+      background-color: #e9e8e8;
+
+      .bookmarkText {
+        color: #454545;
+        position: absolute;
+        font-size: 1.2em;
+        padding: 0 30px;
+      }
+    }
   }
   .flippedLeft {
     transform: rotateY(-180deg);

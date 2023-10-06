@@ -81,7 +81,7 @@ const Into = ({
           </div>
           {pageIndex !== pagesLength - 1 && (
             <>
-              <PageIndex index={pageIndex} side="right" />
+              <PageIndex index={pageIndex} side="right" isAnimationFinished={isAnimationFinished} />
               <Curl side="right" changePage={changePage} />
             </>
           )}
