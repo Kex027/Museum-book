@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "../styles/doublePage.module.scss";
 import classNames from "classnames";
 import Curl from "./Curl";
 import Bookmark from "./Bookmark";
+import PageIndex from "./PageIndex";
 
 const GetInTouch = ({
   pageIndex,
@@ -52,12 +53,20 @@ const GetInTouch = ({
             className={style.bookLeftSide}
           />
         )}
+        {currentPage === getIndexOfFirstBookmark(category) && (
+          <Bookmark
+            changeCustomPage={changeCustomPage}
+            category={category}
+            info={bookmarkInfo}
+          />
+        )}
         <div
           className={classNames(style.contentLeft, {
             [style.visibilityHidden]: isAnimationFinished,
           })}
         >
           {category} page
+          <PageIndex index={pageIndex} side="left" />
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
@@ -73,19 +82,13 @@ const GetInTouch = ({
             className={style.bookRightSide}
           />
         )}
-        {currentPage === getIndexOfFirstBookmark(category) && (
-          <Bookmark
-            changeCustomPage={changeCustomPage}
-            category={category}
-            top={"60%"}
-            info={bookmarkInfo}
-          />
-        )}
         <div
           className={classNames(style.contentRight, {
             [style.visibilityHidden]: isAnimationFinished,
           })}
-          style={{ justifyContent: "flex-start" }}
+          style={{ 
+            justifyContent: "flex-start"
+          }}
         >
           <form onSubmit={onSubmit} className={style.form}>
             <label htmlFor="email">Email:</label>
@@ -95,6 +98,7 @@ const GetInTouch = ({
             <input type="submit" value={"Send"} className={style.btnSubmit} />
           </form>
 
+          <PageIndex index={pageIndex} side="right" isAnimationFinished={isAnimationFinished} />
           {pageIndex !== pagesLength - 1 && (
             <Curl side="right" changePage={changePage} />
           )}

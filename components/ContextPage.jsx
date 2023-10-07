@@ -110,6 +110,13 @@ const ContextPage = ({
             className={style.bookLeftSide}
           />
         )}
+        {currentPage === getIndexOfFirstBookmark(category) && (
+          <Bookmark
+            changeCustomPage={changeCustomPage}
+            category={category}
+            info={bookmarkInfo}
+          />
+        )}
         <div
           className={classNames(style.contentLeft, {
             [style.visibilityHidden]: isAnimationFinished,
@@ -131,14 +138,6 @@ const ContextPage = ({
             src="/bookRightSide.webp"
             alt="Left side of book"
             className={style.bookRightSide}
-          />
-        )}
-        {currentPage === getIndexOfFirstBookmark(category) && (
-          <Bookmark
-            changeCustomPage={changeCustomPage}
-            category={category}
-            top={"10%"}
-            info={bookmarkInfo}
           />
         )}
         <div

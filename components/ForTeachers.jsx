@@ -16,7 +16,6 @@ const ForTeachers = ({
   bookmarkInfo,
 }) => {
   const [isAnimationFinished, setIsAnimationFinished] = useState(false);
-  console.log(heading);
 
   useEffect(() => {
     if (pageIndexStyle > currentPage) {
@@ -110,6 +109,13 @@ const ForTeachers = ({
             className={style.bookLeftSide}
           />
         )}
+        {currentPage === getIndexOfFirstBookmark(category) && (
+          <Bookmark
+            changeCustomPage={changeCustomPage}
+            category={category}
+            info={bookmarkInfo}
+          />
+        )}
         <div
           className={classNames(style.contentLeft, {
             [style.visibilityHidden]: isAnimationFinished,
@@ -131,14 +137,6 @@ const ForTeachers = ({
             src="/bookRightSide.webp"
             alt="Left side of book"
             className={style.bookRightSide}
-          />
-        )}
-        {currentPage === getIndexOfFirstBookmark(category) && (
-          <Bookmark
-            changeCustomPage={changeCustomPage}
-            category={category}
-            top={"30%"}
-            info={bookmarkInfo}
           />
         )}
         <div

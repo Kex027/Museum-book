@@ -4,6 +4,7 @@ import Curl from "./Curl";
 import classNames from "classnames";
 import Content from "./Content";
 import Bookmark from "./Bookmark";
+import PageIndex from "./PageIndex";
 
 const Contents = ({
   pageIndex,
@@ -49,13 +50,20 @@ const Contents = ({
             className={style.bookLeftSide}
           />
         )}
+        {currentPage === getIndexOfFirstBookmark(category) && (
+          <Bookmark
+            changeCustomPage={changeCustomPage}
+            category={category}
+            info={bookmarkInfo}
+          />
+        )}
         <div
           className={classNames(style.contentLeft, {
             [style.visibilityHidden]: isAnimationFinished,
           })}
           style={{ backgroundImage: 'url("/contentsLeftPage.webp")' }}
         >
-          <h1 style={{ fontSize: '7vh' }} className={style.contentsHeader}>{title.toUpperCase()}</h1>
+          <h1 style={{ fontSize: '7vh', paddingLeft: "10%" }} className={style.contentsHeader}>{title.toUpperCase()}</h1>
 
           <div className={style.contentsList}>
             {listOfContents
@@ -70,6 +78,7 @@ const Contents = ({
                 />
               ))}
           </div>
+          <PageIndex index={pageIndex} side="left" />
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
@@ -83,14 +92,6 @@ const Contents = ({
             src="/bookRightSide.webp"
             alt="Right side of book"
             className={style.bookRightSide}
-          />
-        )}
-        {currentPage === getIndexOfFirstBookmark(category) && (
-          <Bookmark
-            changeCustomPage={changeCustomPage}
-            category={category}
-            top={"20%"}
-            info={bookmarkInfo}
           />
         )}
         <div
@@ -118,6 +119,8 @@ const Contents = ({
                 />
               ))}
           </div>
+
+          <PageIndex index={pageIndex} side="right" />
           {pageIndex !== pagesLength - 1 && (
             <Curl side="right" changePage={changePage} />
           )}
