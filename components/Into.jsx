@@ -79,11 +79,10 @@ const Into = ({
             <h4>{subtitle}</h4>
             <p>{footer}</p>
           </div>
+          
+          <PageIndex index={pageIndex} side="right" isAnimationFinished={isAnimationFinished} />
           {pageIndex !== pagesLength - 1 && (
-            <>
-              <PageIndex index={pageIndex} side="right" isAnimationFinished={isAnimationFinished} />
-              <Curl side="right" changePage={changePage} />
-            </>
+            <Curl side="right" changePage={changePage} />
           )}
         </div>
       </div>

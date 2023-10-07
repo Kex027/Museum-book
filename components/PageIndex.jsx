@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import style from '../styles/doublePage.module.scss'
 
 const PageIndex = ({index, side}) => {

@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import style from "../styles/doublePage.module.scss";
 import classNames from "classnames";
 import Curl from "./Curl";
 import Bookmark from "./Bookmark";
+import PageIndex from "./PageIndex";
 
 const GetInTouch = ({
   pageIndex,
@@ -65,6 +66,7 @@ const GetInTouch = ({
           })}
         >
           {category} page
+          <PageIndex index={pageIndex} side="left" />
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
@@ -96,6 +98,7 @@ const GetInTouch = ({
             <input type="submit" value={"Send"} className={style.btnSubmit} />
           </form>
 
+          <PageIndex index={pageIndex} side="right" isAnimationFinished={isAnimationFinished} />
           {pageIndex !== pagesLength - 1 && (
             <Curl side="right" changePage={changePage} />
           )}

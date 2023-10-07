@@ -4,6 +4,7 @@ import Curl from "./Curl";
 import classNames from "classnames";
 import Content from "./Content";
 import Bookmark from "./Bookmark";
+import PageIndex from "./PageIndex";
 
 const Contents = ({
   pageIndex,
@@ -77,6 +78,7 @@ const Contents = ({
                 />
               ))}
           </div>
+          <PageIndex index={pageIndex} side="left" />
           <Curl side="left" changePage={changePage} />
         </div>
       </div>
@@ -117,6 +119,8 @@ const Contents = ({
                 />
               ))}
           </div>
+
+          <PageIndex index={pageIndex} side="right" />
           {pageIndex !== pagesLength - 1 && (
             <Curl side="right" changePage={changePage} />
           )}
