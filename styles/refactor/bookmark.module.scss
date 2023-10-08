@@ -1,0 +1,18 @@
+.container {
+  position: absolute;
+  left: -149px;
+
+  background-color: #efefef;
+  color: #232323;
+
+  text-align: center;
+  user-select: none;
+  font-size: 2vh;
+
+  padding: 10px;
+  min-width: 150px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

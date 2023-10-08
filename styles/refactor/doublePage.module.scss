@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  
+  perspective: 3000px;
+
+  .leftPage, .rightPage {
+    background-size: cover;
+    transition: transform 1s ease-in-out;
+    position: relative;
+
+    width: 50%;
+
+    .content {
+      height: 100%;
+      width: 100%;
+      padding: 20px 40px;
+    }
+  }
+
+  .leftPage {
+      transform-origin: right;
+
+      border-right: 1px solid hwb(235 26% 65% / 0.5);
+      -webkit-box-shadow: inset -42px 0px 42px -47px rgba(66, 68, 90, 1);
+      -moz-box-shadow: inset -42px 0px 42px -47px rgba(66, 68, 90, 1);
+      box-shadow: inset -42px 0px 42px -47px rgba(66, 68, 90, 1);
+  }
+
+  .rightPage {
+      transform-origin: left;
+      
+      border-left: 1px solid hwb(235 26% 65% / 0.5);
+      -webkit-box-shadow: inset 42px 0px 42px -47px rgba(66, 68, 90, 1);
+      -moz-box-shadow: inset 42px 0px 42px -47px rgba(66, 68, 90, 1);
+      box-shadow: inset 42px 0px 42px -47px rgba(66, 68, 90, 1);
+  }
+
+  .flippedRight {
+      transform: rotateY(180deg);
+  }
+  
+  .flippedLeft {
+      transform: rotateY(-180deg);
+  }
+}

@@ -1,0 +1,15 @@
+.container {
+  position: relative;
+
+  transition: transform 1s ease-in-out .2s;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  & > img {
+    visibility: hidden;
+
+    height: 80vh;
+  }
+}

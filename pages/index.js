@@ -1,9 +1,8 @@
 import Book from "../components/Book.jsx";
 import style from "../styles/index.module.scss";
 import { createClient } from "contentful";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Mobile from "../components/mobile/Mobile";
-import book from "../components/Book.jsx";
 
 export async function getStaticProps() {
   const client = createClient({
