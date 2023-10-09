@@ -13,7 +13,8 @@ const DoublePage = ({
   changeCustomPage,
   bgLeft,
   bgRight,
-  page,
+  leftContent,
+  rightContent,
   bookmark,
   bookmarkIndex
 }) => {
@@ -32,6 +33,8 @@ const DoublePage = ({
 				backgroundImage: bgLeft
 			}} >
 				<div className={classNames(style.content)}>
+
+          {leftContent}
 
           {bookmark && 
             <Bookmark 
@@ -58,6 +61,7 @@ const DoublePage = ({
 			}} >
 				<div className={classNames(style.content)}>
 
+          {rightContent}
 
           <PageIndex side='right' thisPageIndex={thisPageIndex} />
 				</div>
