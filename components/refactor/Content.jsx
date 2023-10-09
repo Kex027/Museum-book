@@ -1,5 +1,5 @@
 import React from "react";
-import style from '../../styles/refactor/content.module.scsss'
+import style from '../../styles/refactor/content.module.scss'
 
 const Content = ({ id, name, description, changeCustomPage, indexOfFirstVideoPage }) => {
   const displayId = () => {
