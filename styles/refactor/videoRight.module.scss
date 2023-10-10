@@ -19,5 +19,10 @@
     background-image: url("/videoPlaceholderImage.webp");
     background-position: right;
     background-size: cover;
+
+    border-left: 1px solid hwb(235 26% 65% / 0.5);
+    -webkit-box-shadow: inset 42px 0px 42px -47px rgba(66, 68, 90, 1);
+    -moz-box-shadow: inset 42px 0px 42px -47px rgba(66, 68, 90, 1);
+    box-shadow: inset 42px 0px 42px -47px rgba(66, 68, 90, 1);
   }
 }

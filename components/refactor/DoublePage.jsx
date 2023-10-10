@@ -29,6 +29,7 @@ const DoublePage = ({
 {/* LEFT PAGE */}
 			<div className={classNames(style.leftPage, {
 				[style.flippedRight]: thisPageIndex > currentPage,
+        // [style.before]: currentPage !== -1 && currentPage !== pagesLength
 			})} style={{
 				backgroundImage: bgLeft
 			}} >
@@ -55,6 +56,7 @@ const DoublePage = ({
 			<div className={
 				classNames(style.rightPage, {
           [style.flippedLeft]: thisPageIndex < currentPage,
+          // [style.after]: currentPage !== -1 && currentPage !== pagesLength
         })
 			} style={{
 				backgroundImage: bgRight

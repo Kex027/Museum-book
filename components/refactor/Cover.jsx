@@ -14,6 +14,7 @@ const Cover = ({
       className={style.container}
       style={{
         zIndex: pagesLength - Math.abs(zIndexPage - thisPageIndex),
+        width: currentPage === -1 || currentPage === pagesLength ? "51%" : '52%',
       }}
     >
       <div

@@ -3,6 +3,7 @@
 
   min-width: 51%;
   height: 100%;
+  transition: width 1s ease;
 
   perspective: 3000px;
 
@@ -12,8 +13,6 @@
   .content {
     background-image: url("/blackBookCover.webp");
     background-size: cover;
-
-    // border-radius: 1%;
 
     -webkit-box-shadow: -16px 12px 30px 0px rgba(66, 68, 90, 1);
     -moz-box-shadow: -16px 12px 30px 0px rgba(66, 68, 90, 1);
@@ -25,8 +24,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    // padding-left: 11%;
 
     transition: transform 1s ease-in-out;
     transform-origin: left;
