@@ -26,11 +26,11 @@ const ContentsRight = ({
         .slice(5, 10)
         .map(({ fields: { id, name, description } }, index) => (
           <Content
+            key={id}
             id={id}
             name={name}
             description={description}
             changeCustomPage={changeCustomPage}
-            key={index}
             indexOfFirstVideoPage={indexOfFirstVideoPage}
           />
       ))}
