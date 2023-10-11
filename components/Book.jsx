@@ -44,8 +44,16 @@ const Book = forwardRef(({
   return (
     <HTMLFlipBook 
       showCover
-      width={300}
-      height={460}
+
+      width={540}
+      height={770}
+
+      minWidth={250}
+      maxWidth={500}
+
+      minHeight={100}
+      maxHeight={330}
+
       size="stretch"
       maxShadowOpacity={0.5}
       onFlip={({object}) => {

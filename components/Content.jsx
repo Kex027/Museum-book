@@ -11,7 +11,7 @@ const Content = ({ id, name, description, changeCustomPage, indexOfFirstVideoPag
     <div
       className={style.container}
       onClick={() => {
-        changeCustomPage(id + indexOfFirstVideoPage - 1);
+        // changeCustomPage(id + indexOfFirstVideoPage - 1);
       }}
     >
       <p className={style.description}>{description}</p>
