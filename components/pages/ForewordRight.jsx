@@ -1,5 +1,4 @@
 const ForewordRight = ({page: {fields: {title, category, text}}}) => {
-  // console.log(page);
   return (
     <div style={{
       marginTop: "70%",

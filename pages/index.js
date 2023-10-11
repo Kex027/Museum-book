@@ -68,14 +68,16 @@ export default function Index({ bookData }) {
 
   return (
     <div className={classNames(style.container)}>
-      <Book 
-        pages={bookData.fields.pages} 
-        bookmarks={bookData.fields.bookmarks} 
-        currentPage={currentPage} 
-        zIndexPage={zIndexPage} 
-        changePage={changePage} 
-        changeCustomPage={changeCustomPage}
-      />  
+      <div className={classNames(style.book)}>
+        <Book 
+          pages={bookData.fields.pages} 
+          bookmarks={bookData.fields.bookmarks} 
+          currentPage={currentPage} 
+          zIndexPage={zIndexPage} 
+          changePage={changePage} 
+          changeCustomPage={changeCustomPage}
+        /> 
+      </div> 
     </div>
   );
 }
