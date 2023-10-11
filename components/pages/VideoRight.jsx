@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect } from "react";
 import classNames from 'classnames';
-import style from '../../../styles/refactor/videoRight.module.scss'
+import style from '../../styles/videoRight.module.scss'
 
 const VideoRight = ({
   page: {fields: {heading, video: {fields: {file: {url}}}}}

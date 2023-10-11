@@ -1,5 +1,5 @@
-import Book from "../components/refactor/Book";
-import style from "../styles/refactor/refactor.module.scss";
+import Book from "../components/Book";
+import style from "../styles/refactor.module.scss";
 import { createClient } from "contentful";
 import { useState } from "react";
 import classNames from "classnames";

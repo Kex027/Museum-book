@@ -1,43 +1,10 @@
 .container {
-    width: 100vw;
-    height: 100vh;
+  width: 100vw;
+  height: 100vh;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .bg {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-
-        background-image: url("/background.webp");
-        background-position: center;
-        background-size: cover;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        .content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 20px;
-            justify-content: center;
-            height: 100%;
-
-            .museumTitle {
-                width: 200px;
-                cursor: pointer;
-            }
-    
-            .book {
-                img {
-                    height: 80vh;
-                }
-            }
-        }
-
-        .link {
-            color: red;
-            font-weight: bold;
-            font-size: 2em;
-        }
-    }
+  overflow: hidden;
 }

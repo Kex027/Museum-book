@@ -1,7 +1,7 @@
 import React from "react";
-import style from "../styles/Content.module.scss";
+import style from '../styles/content.module.scss'
 
-const Content = ({ id, name, description, changeCustomPage }) => {
+const Content = ({ id, name, description, changeCustomPage, indexOfFirstVideoPage }) => {
   const displayId = () => {
     if (id < 10) return "0" + id;
     return id;
@@ -10,8 +10,8 @@ const Content = ({ id, name, description, changeCustomPage }) => {
   return (
     <div
       className={style.container}
-      onClick={(e) => {
-        changeCustomPage(e, id);
+      onClick={() => {
+        changeCustomPage(id + indexOfFirstVideoPage - 1);
       }}
     >
       <p className={style.description}>{description}</p>
