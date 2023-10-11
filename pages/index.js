@@ -22,7 +22,7 @@ export async function getStaticProps() {
   };
 }
 
-export default function Refactor({ bookData }) {
+export default function Index({ bookData }) {
   const pagesLength = bookData.fields.pages;
   const [currentPage, setCurrentPage] = useState(-1)
   const [zIndexPage, setZIndexPage] = useState(-1)
