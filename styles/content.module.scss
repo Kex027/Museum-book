@@ -5,7 +5,7 @@
 
   width: 50%;
 
-  -webkit-transition: background-color 1.4s ease, width 1s cubic-bezier(1,0,.5,1);
+  transition: background-color 1.4s ease, width 1s cubic-bezier(1,0,.5,1);
 
   .title {
     display: flex;
@@ -29,7 +29,7 @@
   .description {
     font-size: 0;
     opacity: 0;
-    -webkit-transition: opacity .1s ease, font-size .5s ease .5s, background-color 1s ease;
+    transition: opacity .1s ease, font-size .5s ease .5s, background-color 1s ease;
   }
 
   &:hover {
@@ -52,7 +52,7 @@
       opacity: 1;
       font-size: 1.2vh;
 
-      -webkit-transition: opacity 1s ease 1.6s, font-size 1.4s cubic-bezier(1,0,0,1.28) .5s, background-color 1s ease;
+      transition: opacity 1s ease 1.6s, font-size 1.4s cubic-bezier(1,0,0,1.28) .5s, background-color 1s ease;
     }
   }
 }

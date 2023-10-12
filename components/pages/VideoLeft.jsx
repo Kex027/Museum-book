@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import { useRef, useState, useEffect } from "react";
-import style from '../../../styles/refactor/videoLeft.module.scss'
+import style from '../../styles/videoLeft.module.scss'
 import { AiFillPlayCircle } from "react-icons/ai";
 
 const VideoLeft = ({

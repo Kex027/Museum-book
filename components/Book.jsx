@@ -1,258 +1,95 @@
-import style from "../styles/book.module.scss";
-import VideoPage from "./VideoPage";
-import React from "react";
-import Contents from "./Contents";
-import Foreword from "./Foreword";
-import Into from "./Into";
+import { useRef, useState } from "react";
+import classNames from "classnames";
+import style from '../styles/book.module.scss'
+import DoublePage from "./DoublePage";
 import Cover from "./Cover";
-import ContextPage from "./ContextPage";
-import ForTeachers from "./ForTeachers";
-import ForParents from "./ForParents";
-import FAQ from "./FAQ";
-import GetInTouch from "./GetInTouch";
+import IntoLeft from "./pages/IntoLeft";
+import IntoRight from "./pages/IntoRight";
+import ForewordLeft from "./pages/ForewordLeft";
+import ForewordRight from "./pages/ForewordRight";
+import ContentsLeft from "./pages/ContentsLeft";
+import ContentsRight from "./pages/ContentsRight";
+import ContextLeft from "./pages/ContextLeft";
+import ContextRight from "./pages/ContextRight";
+import VideoLeft from "./pages/VideoLeft";
+import VideoRight from "./pages/VideoRight";
 
 const Book = ({
   pages,
-  bookmarks,
-  pageIndex,
-  pageIndexStyle,
-  setPageIndex,
-  setPageIndexStyle,
-  changeCustomPage,
+  bookmarks, 
+  currentPage, 
+  zIndexPage, 
+  changePage, 
+  changeCustomPage
 }) => {
-  const changePage = (value) => {
-    setTimeout(() => {
-      setTimeout(() => {
-        setPageIndex((oldIndex) => {
-          if (oldIndex === -1) {
-            const audio = new Audio("/pageturn.mp3");
-            audio.play();
-          }
-          if (oldIndex + value < -1 || oldIndex + value > pages.length - 1)
-            return oldIndex;
-          return oldIndex + value;
-        });
-      }, 280);
-      setPageIndexStyle((oldIndex) => {
-        if (oldIndex + value < -1 || oldIndex + value > pages.length - 1)
-          return oldIndex;
-        return oldIndex + value;
-      });
-    }, 50);
-  };
-
-  const getIndexOfFirstBookmark = (bookmark) =>
-    pages.findIndex(
-      ({ fields: { category } }) =>
-        category &&
-        bookmark &&
-        category.toLowerCase() === bookmark.toLowerCase()
-    );
-
-  const getProperBookmark = (cat) => {
-    const properBookmark = bookmarks.filter(
-      ({ fields: { category } }) => 
-        category.toLowerCase() === cat.toLowerCase()
-    )[0]?.fields
-    const indexOfProperBookmark = bookmarks.findIndex(({fields}) => fields === properBookmark)
-
-    return {
-      ...properBookmark,
-      index: indexOfProperBookmark
-    }
+  const getContent = (id, side, page) => {
+    if (id === 'intoPage')
+      return side === 'left' ? <IntoLeft page={page} /> : <IntoRight page={page} />
+    else if (id === 'forewordPage')
+      return side === 'left' ? <ForewordLeft page={page} /> : <ForewordRight page={page} />
+    else if (id === 'contentsPage')
+      return side === 'left' ? <ContentsLeft page={page} changeCustomPage={changeCustomPage} pages={pages} /> : <ContentsRight page={page} changeCustomPage={changeCustomPage} pages={pages} />
+    else if (id === 'contextPage')
+      return side === 'left' ? <ContextLeft page={page} /> : <ContextRight page={page} />
+    else if (id === 'page')
+        return side === 'left' ? <VideoLeft page={page} /> : <VideoRight page={page} />
+    else if (id === 'forTeachers')
+      return side === 'left' ? <ContextLeft page={page} /> : <ContextRight page={page} />
+    else if (id === 'forParents')
+      return side === 'left' ? <ContextLeft page={page} /> : <ContextRight page={page} />
+    return ""
   }
-    
-  return (
-    <div
-      className={style.container}
-      style={{
-        transform: pageIndex === -1 ? "translateX(-25%)" : "translateX(0%)",
-      }}
-    >
-      <div className={style.book}>
-        <img src="/book.webp" alt="Book" />
 
-        <div className={style.bookContent}>
-          <Cover
-            changePage={changePage}
-            pageIndex={pageIndex}
-            pageIndexStyle={pageIndexStyle}
-            pagesLength={pages.length}
-            currentPage={-1}
-          />
-          {pages?.map(
-            (
-              {
-                fields: {
-                  id,
-                  quote,
-                  heading,
-                  title,
-                  description,
-                  video,
-                  listOfContents,
-                  text,
-                  logo,
-                  subtitle,
-                  footer,
-                  category,
-                },
-                sys: {
-                  contentType: {
-                    sys: { id: content_id },
-                  },
-                },
-              },
-              index
-            ) => {
-              if (content_id === "page")
-                return (
-                  <VideoPage
-                    key={`${id}-${content_id}`}
-                    currentPage={index}
-                    pageIndex={pageIndex}
-                    pageIndexStyle={pageIndexStyle}
-                    pagesLength={pages.length}
-                    quote={quote}
-                    heading={heading}
-                    description={description}
-                    video={video}
-                    changePage={changePage}
-                    changeCustomPage={changeCustomPage}
-                  />
-                );
-              else if (content_id === "intoPage")
-                return (
-                  <Into
-                    key={`${id}-${content_id}`}
-                    currentPage={index}
-                    pageIndex={pageIndex}
-                    pageIndexStyle={pageIndexStyle}
-                    pagesLength={pages.length}
-                    page={{ logo, subtitle, footer }}
-                    changePage={changePage}
-                    changeCustomPage={changeCustomPage}
-                  />
-                );
-              else if (content_id === "contentsPage")
-                return (
-                  <Contents
-                    key={`${id}-${content_id}`}
-                    currentPage={index}
-                    pageIndex={pageIndex}
-                    pageIndexStyle={pageIndexStyle}
-                    pagesLength={pages.length}
-                    page={{ category, title, listOfContents }}
-                    changePage={changePage}
-                    changeCustomPage={changeCustomPage}
-                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
-                    bookmarkInfo={getProperBookmark(category)}
-                  />
-                );
-              else if (content_id === "forewordPage")
-                return (
-                  <Foreword
-                    key={`${id}-${content_id}`}
-                    currentPage={index}
-                    pageIndex={pageIndex}
-                    pageIndexStyle={pageIndexStyle}
-                    pagesLength={pages.length}
-                    page={{ title, text, category }}
-                    changePage={changePage}
-                    changeCustomPage={changeCustomPage}
-                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
-                    bookmarkInfo={getProperBookmark(category)}
-                  />
-                );
-              else if (content_id === "contextPage")
-                return (
-                  <ContextPage
-                    key={`${id}-${content_id}`}
-                    currentPage={index}
-                    pageIndex={pageIndex}
-                    pageIndexStyle={pageIndexStyle}
-                    pagesLength={pages.length}
-                    page={{ category, heading }}
-                    changePage={changePage}
-                    changeCustomPage={changeCustomPage}
-                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
-                    bookmarkInfo={getProperBookmark(category)}
-                  />
-                );
-              else if (content_id === "forTeachers")
-                return (
-                  <ForTeachers
-                    key={`${id}-${content_id}`}
-                    currentPage={index}
-                    pageIndex={pageIndex}
-                    pageIndexStyle={pageIndexStyle}
-                    pagesLength={pages.length}
-                    page={{ category, heading }}
-                    changePage={changePage}
-                    changeCustomPage={changeCustomPage}
-                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
-                    bookmarkInfo={getProperBookmark(category)}
-                  />
-                );
-              else if (content_id === "forParents")
-                return (
-                  <ForParents
-                    key={`${id}-${content_id}`}
-                    currentPage={index}
-                    pageIndex={pageIndex}
-                    pageIndexStyle={pageIndexStyle}
-                    pagesLength={pages.length}
-                    page={{ category, heading }}
-                    changePage={changePage}
-                    changeCustomPage={changeCustomPage}
-                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
-                    bookmarkInfo={getProperBookmark(category)}
-                  />
-                );
-              else if (content_id === "faq")
-                return (
-                  <FAQ
-                    key={`${id}-${content_id}`}
-                    currentPage={index}
-                    pageIndex={pageIndex}
-                    pageIndexStyle={pageIndexStyle}
-                    pagesLength={pages.length}
-                    page={{ id, category }}
-                    changePage={changePage}
-                    changeCustomPage={changeCustomPage}
-                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
-                    bookmarkInfo={getProperBookmark(category)}
-                  />
-                );
-              else if (content_id === "getInTouch")
-                return (
-                  <GetInTouch
-                    key={`${id}-${content_id}`}
-                    currentPage={index}
-                    pageIndex={pageIndex}
-                    pageIndexStyle={pageIndexStyle}
-                    pagesLength={pages.length}
-                    page={{ id, category }}
-                    changePage={changePage}
-                    changeCustomPage={changeCustomPage}
-                    getIndexOfFirstBookmark={getIndexOfFirstBookmark}
-                    bookmarkInfo={getProperBookmark(category)}
-                  />
-                );
-              return <></>;
-            }
-          )}
-          <Cover
-            changePage={changePage}
-            pageIndex={pageIndex}
-            pageIndexStyle={pageIndexStyle}
-            pagesLength={pages.length}
-            currentPage={pages.length}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
+  return (
+    <div className={classNames(style.container)} style={{
+      transform: currentPage === -1 ? "translateX(-25%)" : "translateX(0%)",
+    }}>
+      <img src="/book2.webp" alt="Book" />
+  
+      <Cover
+        thisPageIndex={-1}
+        currentPage={currentPage} 
+        pagesLength={pages.length} 
+        zIndexPage={zIndexPage} 
+        changePage={changePage} 
+      />
+      {
+        pages?.map((page, index) => {
+          const bookmark = bookmarks.filter(({fields: {category}}) => 
+            page.fields.category?.toLowerCase() === category?.toLowerCase()
+          )[0]?.fields;
+
+          const bookmarkIndex = bookmarks.findIndex(({fields}) => 
+            fields === bookmark
+          )
+          return (
+            <DoublePage 
+              key={page.sys.id}
+              thisPageIndex={index}
+              currentPage={currentPage} 
+              pagesLength={pages.length} 
+              zIndexPage={zIndexPage} 
+              changePage={changePage} 
+              changeCustomPage={changeCustomPage}
+              bgLeft={`url('${page.fields.backgroundImage[0].fields.file.url}')`}
+              bgRight={`url('${page.fields.backgroundImage[1].fields.file.url}')`}
+              leftContent={getContent(page.sys.contentType.sys.id, "left", page)}
+              rightContent={getContent(page.sys.contentType.sys.id, "right", page)}
+              bookmark={bookmark}
+              bookmarkIndex={bookmarkIndex}
+            />
+          )
+        })
+      }
+      <Cover
+        thisPageIndex={pages.length}
+        currentPage={currentPage} 
+        pagesLength={pages.length} 
+        zIndexPage={zIndexPage} 
+        changePage={changePage} 
+      />
+    </div> 
+  )
+}
 
 export default Book;

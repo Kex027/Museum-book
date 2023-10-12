@@ -1,28 +1,23 @@
-import React from "react";
-import style from '../styles/doublePage.module.scss'
+import style from '../styles/pageIndex.module.scss'
+import classNames from 'classnames';
 
-const PageIndex = ({index, side}) => {
-  const getPageIndex = (side = 'left' || 'right') => {
-    if (index !== 0 && !index)
-        return ""
-
-    if (side === 'left') 
-      return (index + 1) * 2 - 1
-    else if (side === 'right') 
-      return (index + 1) * 2
-    else 
-      return ""
-  }
-
+const PageIndex = ({side, thisPageIndex}) => {
   return (
-    <div 
-      className={style.pageIndex} 
-      style={{
-        left: side === "left" ? "3%" : "96%"
-      }} 
-    >
-      {getPageIndex(side)}
-    </div>
+    <span className={classNames(style.container)} style={
+      side === "left" ? 
+      {
+        left: '2%'
+      } : 
+      {
+        right: '2%'
+      }
+    }>
+      {
+        side === "left" ? 
+        (thisPageIndex + 1) * 2 - 1 : 
+        (thisPageIndex + 1) * 2
+      }
+    </span>
   )
 }
 

@@ -1,8 +1,8 @@
-import Book from "../components/Book.jsx";
+import Book from "../components/Book";
 import style from "../styles/index.module.scss";
 import { createClient } from "contentful";
-import { useEffect, useState } from "react";
-import Mobile from "../components/mobile/Mobile";
+import { useState } from "react";
+import classNames from "classnames";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -23,99 +23,59 @@ export async function getStaticProps() {
 }
 
 export default function Index({ bookData }) {
-  const size = useWindowSize();
-  function useWindowSize() {
-    const [windowSize, setWindowSize] = useState({
-      width: undefined,
-      height: undefined,
-    });
+  const pagesLength = bookData.fields.pages;
+  const [currentPage, setCurrentPage] = useState(-1)
+  const [zIndexPage, setZIndexPage] = useState(-1)
 
-    useEffect(() => {
-      function handleResize() {
-        setWindowSize({
-          width: window.innerWidth,
-          height: window.innerHeight,
-        });
-      }
-
-      window.addEventListener("resize", handleResize);
-
-      handleResize();
-
-      return () => window.removeEventListener("resize", handleResize);
-    }, []);
-    return windowSize;
-  }
-
-  const [pageIndex, setPageIndex] = useState(-1);
-  const [pageIndexStyle, setPageIndexStyle] = useState(-1);
-  const [changedPage, setChangedPage] = useState(true);
-  const pages = bookData.fields.pages;
-
-  const changeCustomPage = (e, bookmark) => {
-    if (!changedPage) return;
-
-    e.preventDefault();
-    setChangedPage(false);
-    
-    const indexOfFirstBookmarkItem = pages.findIndex(
-      ({ fields: { category, id } }) =>
-        (typeof bookmark === "string" &&
-          category &&
-          bookmark &&
-          category.toLowerCase() === bookmark.toLowerCase()) ||
-        (typeof bookmark === "number" && id === bookmark)
-    );
+  const changePage = (value) => {
+    setCurrentPage(oldValue => {
+      if (oldValue + value < -1 || oldValue + value > pagesLength - 1)
+        return oldValue;
+      return oldValue + value;
+    })
     setTimeout(() => {
-      setTimeout(() => {
-        setPageIndex((oldIndex) => {
-          if (oldIndex === -1) {
+        setZIndexPage(oldValue => {
+          if (oldValue === -1) {
             const audio = new Audio("/pageturn.mp3");
             audio.play();
           }
-          return indexOfFirstBookmarkItem;
-        });
-      }, 280);
-      setPageIndexStyle(indexOfFirstBookmarkItem);
-    }, 50);
+          if (oldValue + value < -1 || oldValue + value > pagesLength - 1)
+            return oldValue;
+          return oldValue + value;
+        })
+    }, 500)
+  }
 
+  const changeCustomPage = (value) => {
+    setCurrentPage(oldValue => {
+      
+      if (value >= -1 || value <= pagesLength - 1)
+        return value;
+      return oldValue;
+    })
     setTimeout(() => {
-      setChangedPage(true);
-    }, 500);
-  };
+        setZIndexPage(oldValue => {
+          if (oldValue === -1) {
+            const audio = new Audio("/pageturn.mp3");
+            audio.play();
+          }
+          if (value >= -1 || value <= pagesLength - 1)
+            return value;
+          return oldValue;
+        })
+    }, 500)
+  }
 
   return (
-    <div
-      className={style.container}
-      style={{
-        backgroundColor: size.width >= 900 ? "white" : "#565656",
-      }}
-    >
-      {size.width >= 900 ? (
-        <>
-          <div className={style.bg}>
-            <div className={style.content}>
-              <img
-                src="/museum_title.webp"
-                alt="Museum Title"
-                className={style.museumTitle}
-                onClick={(e) => changeCustomPage(e, "Home")}
-              />
-              <Book
-                pages={bookData.fields.pages}
-                bookmarks={bookData.fields.bookmarks}
-                pageIndex={pageIndex}
-                setPageIndex={setPageIndex}
-                pageIndexStyle={pageIndexStyle}
-                setPageIndexStyle={setPageIndexStyle}
-                changeCustomPage={changeCustomPage}
-              />
-            </div>
-          </div>
-        </>
-      ) : (
-        <Mobile pages={bookData.fields.pages} />
-      )}
+    <div className={classNames(style.container)}>
+      <Book 
+        pages={bookData.fields.pages} 
+        bookmarks={bookData.fields.bookmarks} 
+        currentPage={currentPage} 
+        zIndexPage={zIndexPage} 
+        changePage={changePage} 
+        changeCustomPage={changeCustomPage}
+      />  
     </div>
   );
 }

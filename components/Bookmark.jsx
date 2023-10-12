@@ -1,47 +1,29 @@
-import React, { useRef, useState } from "react";
-import classNames from "classnames";
-import style from "../styles/doublePage.module.scss";
+import style from '../styles/bookmark.module.scss'
+import classNames from 'classnames';
 
-const Bookmark = ({ changeCustomPage, category, info }) => {
-  const [isPositionChanged, setIsPositionChanged] = useState(false);
-  const ref = useRef(null);
-
-  // cos dziwnego sie dzieje z ostatnia zakladka od dolu
-  // nawet przy przewracaniu zawsze tylko ostatnia idzie dolem
-  // zakladam ze jesli to sie rowiaze,
-  // to rowniez rozwiazany bedzie problem wyswietlania get in touch, 
-  // ktory w ogole jest pod wszystkimi kartkami
-
-  setTimeout(() => {
-    setIsPositionChanged(
-      ref.current?.getBoundingClientRect().x < window.innerWidth / 2
-    );
-  }, 300);
-
+const Bookmark = ({
+  bookmark, 
+  bookmarkIndex, 
+  thisPageIndex, 
+  zIndexPage, 
+  changeCustomPage
+}) => {
   return (
-    <div
-      key={category}
+    <div 
+      className={classNames(style.container)} 
       style={{
-        top: (info.index * 10 + 10) + "%",
-        backgroundColor: info?.color,
+        top: (bookmarkIndex + 1) * 8 - 4 + "%",
+        color: bookmark.textColor,
+        backgroundColor: bookmark.color,
+        transform: thisPageIndex > zIndexPage ? "rotateY(180deg)" : "",
       }}
-      className={classNames(style.bookmark)}
-      onClick={(e) => {
-        changeCustomPage(e, category);
+      onClick={() => {
+        changeCustomPage(thisPageIndex);
       }}
     >
-      <span
-        className={classNames(style.bookmarkText)}
-        ref={ref}
-        style={{
-          transform: isPositionChanged ? "" : "rotateY(180deg)",
-          color: info?.textColor,
-        }}
-      >
-        {info?.name}
-      </span>
+      {bookmark?.name}
     </div>
-  );
-};
+  )
+}
 
 export default Bookmark;

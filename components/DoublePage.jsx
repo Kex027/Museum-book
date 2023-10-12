@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import style from '../../styles/refactor/doublePage.module.scss'
+import style from '../styles/doublePage.module.scss'
 import Curl from "./Curl";
 import Bookmark from "./Bookmark";
 import PageIndex from "./PageIndex";
