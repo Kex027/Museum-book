@@ -15,7 +15,7 @@ const ContextLeft = ({
             fontWeight: "bold",
           }}
         >
-          {heading}
+          {heading?.toUpperCase()}
         </h2>
       </div>
       <div

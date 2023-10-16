@@ -23,59 +23,56 @@ export async function getStaticProps() {
 }
 
 export default function Index({ bookData }) {
-  const pagesLength = bookData.fields.pages;
-  const [currentPage, setCurrentPage] = useState(-1)
-  const [zIndexPage, setZIndexPage] = useState(-1)
+  const pagesLength = bookData.fields.pages.length;
+  const [currentPage, setCurrentPage] = useState(-1);
+  const [zIndexPage, setZIndexPage] = useState(-1);
 
   const changePage = (value) => {
-    setCurrentPage(oldValue => {
+    setCurrentPage((oldValue) => {
       if (oldValue + value < -1 || oldValue + value > pagesLength - 1)
         return oldValue;
       return oldValue + value;
-    })
+    });
     setTimeout(() => {
-        setZIndexPage(oldValue => {
-          if (oldValue === -1) {
-            const audio = new Audio("/pageturn.mp3");
-            audio.play();
-          }
-          if (oldValue + value < -1 || oldValue + value > pagesLength - 1)
-            return oldValue;
-          return oldValue + value;
-        })
-    }, 500)
-  }
+      setZIndexPage((oldValue) => {
+        if (oldValue === -1) {
+          const audio = new Audio("/pageturn.mp3");
+          audio.play();
+        }
+        if (oldValue + value < -1 || oldValue + value > pagesLength - 1)
+          return oldValue;
+        return oldValue + value;
+      });
+    }, 500);
+  };
 
   const changeCustomPage = (value) => {
-    setCurrentPage(oldValue => {
-      
-      if (value >= -1 || value <= pagesLength - 1)
-        return value;
+    setCurrentPage((oldValue) => {
+      if (value >= -1 || value <= pagesLength - 1) return value;
       return oldValue;
-    })
+    });
     setTimeout(() => {
-        setZIndexPage(oldValue => {
-          if (oldValue === -1) {
-            const audio = new Audio("/pageturn.mp3");
-            audio.play();
-          }
-          if (value >= -1 || value <= pagesLength - 1)
-            return value;
-          return oldValue;
-        })
-    }, 500)
-  }
+      setZIndexPage((oldValue) => {
+        if (oldValue === -1) {
+          const audio = new Audio("/pageturn.mp3");
+          audio.play();
+        }
+        if (value >= -1 || value <= pagesLength - 1) return value;
+        return oldValue;
+      });
+    }, 500);
+  };
 
   return (
     <div className={classNames(style.container)}>
-      <Book 
-        pages={bookData.fields.pages} 
-        bookmarks={bookData.fields.bookmarks} 
-        currentPage={currentPage} 
-        zIndexPage={zIndexPage} 
-        changePage={changePage} 
+      <Book
+        pages={bookData.fields.pages}
+        bookmarks={bookData.fields.bookmarks}
+        currentPage={currentPage}
+        zIndexPage={zIndexPage}
+        changePage={changePage}
         changeCustomPage={changeCustomPage}
-      />  
+      />
     </div>
   );
 }
