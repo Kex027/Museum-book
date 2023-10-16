@@ -1,9 +1,13 @@
 .container {
   .heading {
-    color: greenyellow;
+    padding-right: 4%;
+
+    color: #0f0;
+
     font-size: 15vh;
     line-height: 14vh;
     word-break: break-all;
+
 
     position: absolute;
     z-index: 1;
@@ -21,8 +25,8 @@
     background-size: cover;
 
     border-left: 1px solid hwb(235 26% 65% / 0.5);
-    -webkit-box-shadow: inset 42px 0px 42px -47px rgba(66, 68, 90, 1);
-    -moz-box-shadow: inset 42px 0px 42px -47px rgba(66, 68, 90, 1);
-    box-shadow: inset 42px 0px 42px -47px rgba(66, 68, 90, 1);
+    -webkit-box-shadow: inset 42px 0 42px -47px rgba(66, 68, 90, 1);
+    -moz-box-shadow: inset 42px 0 42px -47px rgba(66, 68, 90, 1);
+    box-shadow: inset 42px 0 42px -47px rgba(66, 68, 90, 1);
   }
 }
