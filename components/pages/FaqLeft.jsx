@@ -13,8 +13,9 @@ const FaqLeft = ({
     <div className={classNames(style.container)}>
       <h2 className={classNames(style.heading)}>{category}</h2>
       <div className={classNames(style.questions)}>
-        {qa.map(({ fields: { id, question } }, index) => (
+        {qa.map(({ fields: { question }, sys: { id } }, index) => (
           <div
+            key={id}
             className={classNames(style.question)}
             onClick={() => {
               setQaIndex(index);

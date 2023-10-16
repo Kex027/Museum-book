@@ -23,8 +23,9 @@ const ContextLeft = ({
           fontSize: "1.45vh",
         }}
       >
-        {description?.content.map(({ content }) => (
+        {description?.content.map(({ content }, index) => (
           <span
+            key={index}
             style={{
               fontWeight: content[0].marks[0],
             }}
