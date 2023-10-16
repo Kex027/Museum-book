@@ -1,20 +1,18 @@
+@import url('fonts');
+
 /* purgecss start ignore */
 @tailwind base;
 @tailwind components;
 /* purgecss end ignore */
 @tailwind utilities;
 
-@font-face {
-    font-family: 'MuseumFont';
-    src: url('/AktivGrotesk-Regular.otf') format('opentype');
-}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 
-    font-family: 'MuseumFont', sans-serif;
+    font-family: AktivGrotesk, sans-serif;
 }
 
 body {
