@@ -12,7 +12,7 @@ const FaqRight = ({
       <div
         style={{
           height: "24%",
-          fontSize: "1.6vh",
+          fontSize: "1.5vh",
           paddingRight: "8%",
           display: "flex",
           justifyContent: "center",

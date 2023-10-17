@@ -10,19 +10,20 @@ const ForewordRight = ({
           height: "39%",
           color: "#0f0",
           fontSize: "13vh",
-          lineHeight: "12vh",
+          lineHeight: "11vh",
           wordBreak: "break-all",
           fontWeight: "bold",
         }}
       >
-        {title?.toUpperCase()}
+        {/*{title?.toUpperCase()}*/}
+        FORE&shy;WORD
       </h2>
       <div
         style={{
-          fontSize: "1.8vh",
+          fontSize: "1.4vh",
           lineHeight: "2.0vh",
           color: "white",
-          paddingRight: "8%",
+          padding: "8% 8% 8% 0",
         }}
       >
         {Object.entries(text?.content).map((content) => (

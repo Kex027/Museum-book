@@ -15,10 +15,12 @@ const ContentsLeft = ({
       <h2
         style={{
           color: "white",
-          fontSize: "7vh",
+          fontSize: "7.7vh",
+          lineHeight: "7vh",
           height: "18%",
-          paddingLeft: "10%",
+          paddingLeft: "5%",
           fontWeight: "bold",
+          opacity: "85%",
         }}
       >
         {title.toUpperCase()}

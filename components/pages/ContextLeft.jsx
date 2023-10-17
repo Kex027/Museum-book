@@ -9,18 +9,21 @@ const ContextLeft = ({
         <h2
           style={{
             color: "#0f0",
-            fontSize: "10vh",
-            lineHeight: "10vh",
+            fontSize: "16vh",
+            lineHeight: "13vh",
             wordBreak: "break-all",
             fontWeight: "bold",
+            opacity: "60%",
           }}
         >
-          {heading?.toUpperCase()}
+          {/*{heading?.toUpperCase()}*/}
+          CON&shy;TEXT
         </h2>
       </div>
       <div
         style={{
-          fontSize: "1.45vh",
+          fontSize: "1.2vh",
+          padding: "8% 0 8% 4%",
         }}
       >
         {description?.content.map(({ content }, index) => (
