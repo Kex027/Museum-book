@@ -29,16 +29,16 @@ const Cover = ({
           changePage(1);
         }}
       >
-        <div
-          style={{
-            display: zIndexPage === thisPageIndex ? "none" : "block",
-            backgroundColor: thisPageIndex === pagesLength ? "#ddd" : "#605F5A",
-            position: "absolute",
-            zIndex: thisPageIndex === pagesLength ? 0 : -1,
-            width: "88%",
-            height: "100%",
-          }}
-        ></div>
+        {/*<div*/}
+        {/*  style={{*/}
+        {/*    display: zIndexPage === thisPageIndex ? "none" : "block",*/}
+        {/*    backgroundColor: thisPageIndex === pagesLength ? "#ddd" : "#605F5A",*/}
+        {/*    position: "absolute",*/}
+        {/*    zIndex: thisPageIndex === pagesLength ? 0 : -1,*/}
+        {/*    width: "88%",*/}
+        {/*    height: "100%",*/}
+        {/*  }}*/}
+        {/*></div>*/}
       </div>
     </div>
   );

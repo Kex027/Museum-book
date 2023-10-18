@@ -50,6 +50,20 @@ const DoublePage = ({
           <PageIndex side="left" thisPageIndex={thisPageIndex} />
         </div>
         <Curl side="left" changePage={changePage} />
+        <div
+          style={{
+            position: "absolute",
+            color: "#0ff",
+            left: "-6%",
+            top: 0,
+            backgroundColor: "#343434",
+            height: "100%",
+            width: "6%",
+            zIndex: "-1",
+            transform: currentPage === -1 ? "translateX(100%)" : "",
+            transition: "transform 1s ease-in-out",
+          }}
+        ></div>
       </div>
 
       {/* RIGHT PAGE */}
@@ -69,6 +83,21 @@ const DoublePage = ({
         {thisPageIndex !== pagesLength - 1 && (
           <Curl side="right" changePage={changePage} />
         )}
+
+        <div
+          style={{
+            position: "absolute",
+            color: "#0ff",
+            right: "-6%",
+            top: 0,
+            backgroundColor: "#ddd",
+            height: "100%",
+            width: "6%",
+            zIndex: "-1",
+            transform: currentPage === -1 ? "translateX(-100%)" : "",
+            transition: "transform 1s ease-in-out",
+          }}
+        ></div>
       </div>
     </div>
   );
