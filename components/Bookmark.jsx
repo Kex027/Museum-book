@@ -1,20 +1,20 @@
-import style from '../styles/bookmark.module.scss'
-import classNames from 'classnames';
+import style from "../styles/bookmark.module.scss";
+import classNames from "classnames";
 
 const Bookmark = ({
-  bookmark, 
-  bookmarkIndex, 
-  thisPageIndex, 
-  zIndexPage, 
-  changeCustomPage
+  bookmark,
+  bookmarkIndex,
+  thisPageIndex,
+  zIndexPage,
+  changeCustomPage,
 }) => {
   return (
-    <div 
-      className={classNames(style.container)} 
+    <div
+      className={classNames(style.container)}
       style={{
         top: (bookmarkIndex + 1) * 8 - 4 + "%",
-        color: bookmark.textColor,
-        backgroundColor: bookmark.color,
+        color: zIndexPage === thisPageIndex ? "#0f0" : "#232323",
+        backgroundColor: zIndexPage === thisPageIndex ? "#232323" : "#fefefe",
         transform: thisPageIndex > zIndexPage ? "rotateY(180deg)" : "",
       }}
       onClick={() => {
@@ -23,7 +23,7 @@ const Bookmark = ({
     >
       {bookmark?.name}
     </div>
-  )
-}
+  );
+};
 
 export default Bookmark;
