@@ -1,10 +1,22 @@
 import classNames from "classnames";
 import { useRef, useState, useEffect } from "react";
-import style from '../../styles/videoLeft.module.scss'
+import style from "../../styles/videoLeft.module.scss";
 import { AiFillPlayCircle } from "react-icons/ai";
 
 const VideoLeft = ({
-  page: {fields: {description, video: {fields: {file: {url}}}}},
+  page: {
+    fields: {
+      id,
+      heading,
+      description,
+      topics,
+      video: {
+        fields: {
+          file: { url },
+        },
+      },
+    },
+  },
 }) => {
   const [showVideo, setShowVideo] = useState(false);
   const [showPlay, setShowPlay] = useState(false);
@@ -27,57 +39,55 @@ const VideoLeft = ({
   };
 
   const getCurrentDimension = () => {
-    if (typeof window === "undefined")
-      return
+    if (typeof window === "undefined") return;
     return {
       width: window.innerWidth,
-      height: window.innerHeight
-    }
-  }
+      height: window.innerHeight,
+    };
+  };
 
   const getVideoSize = () => {
-    if (typeof window === "undefined")
-      return
+    if (typeof window === "undefined") return;
     return {
       width: videoRef.current?.offsetWidth,
       height: videoRef.current?.offsetHeight,
-    }
-  }
+    };
+  };
 
   const [screenSize, setScreenSize] = useState(getCurrentDimension());
   const [videoSize, setVideoSize] = useState(getVideoSize());
 
   useEffect(() => {
     const updateDimension = () => {
-      setScreenSize(getCurrentDimension())
-      setVideoSize(getVideoSize())
-    }
-    window.addEventListener('resize', updateDimension);
+      setScreenSize(getCurrentDimension());
+      setVideoSize(getVideoSize());
+    };
+    window.addEventListener("resize", updateDimension);
 
     if (videoSize.width !== screenSize.width) {
       videoRef?.current?.pause();
       setShowVideo(false);
     }
 
-    return(() => {
-      window.removeEventListener('resize', updateDimension);
-    })
-  }, [screenSize, videoSize])
+    return () => {
+      window.removeEventListener("resize", updateDimension);
+    };
+  }, [screenSize, videoSize]);
 
   return (
     <div className={classNames(style.container)}>
-
-      <video ref={videoRef} controls 
-        className={classNames(style.video)}
+      <video
+        ref={videoRef}
+        controls
         style={{
-          display: showVideo ? "block" : 'none'
+          display: showVideo ? "block" : "none",
         }}
       >
-        <source src={url} type="video/mp4" />  
+        <source src={url} type="video/mp4" />
       </video>
 
-      <div 
-        className={classNames(style.videoRect)} 
+      <div
+        className={classNames(style.videoRect)}
         onClick={() => {
           setShowVideo(true);
           fullScreen();
@@ -85,18 +95,30 @@ const VideoLeft = ({
         onMouseOver={() => setShowPlay(true)}
         onMouseLeave={() => setShowPlay(false)}
       >
-        <div 
-          className={classNames(style.videoRectClickable)}
-        ></div>
+        <div className={classNames(style.videoRectClickable)}></div>
 
-        {showPlay && <AiFillPlayCircle className={classNames(style.playButton)} />}  
+        {showPlay && (
+          <AiFillPlayCircle className={classNames(style.playButton)} />
+        )}
       </div>
 
-      <div className={classNames(style.description)}>
-        {description}
+      <div className={classNames(style.info)}>
+        <h3 className={classNames(style.heading)}>
+          CHAPTER {id}: {heading}
+        </h3>
+        <p>{description}</p>
+        <div className={classNames(style.topics)}>
+          Topics:{" "}
+          {topics.map((topic, index) => {
+            if (index !== topics.length - 1) {
+              return `${topic}, `;
+            }
+            return topic;
+          })}
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default VideoLeft;

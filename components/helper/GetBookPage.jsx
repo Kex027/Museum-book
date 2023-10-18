@@ -13,6 +13,10 @@ import FaqLeft from "../pages/FaqLeft";
 import FaqRight from "../pages/FaqRight";
 import GetInTouchLeft from "../pages/GetInTouchLeft";
 import GetInTouchRight from "../pages/GetInTouchRight";
+import ForTeachersLeft from "../pages/ForTeachersLeft";
+import ForTeachersRight from "../pages/ForTeachersRight";
+import ForParentsLeft from "../pages/ForParentsLeft";
+import ForParentsRight from "../pages/ForParentsRight";
 
 const GetBookPage = ({
   id,
@@ -63,15 +67,15 @@ const GetBookPage = ({
     );
   else if (id === "forTeachers")
     return side === "left" ? (
-      <ContextLeft page={page} />
+      <ForTeachersLeft page={page} />
     ) : (
-      <ContextRight page={page} />
+      <ForTeachersRight page={page} />
     );
   else if (id === "forParents")
     return side === "left" ? (
-      <ContextLeft page={page} />
+      <ForParentsLeft page={page} />
     ) : (
-      <ContextRight page={page} />
+      <ForParentsRight page={page} />
     );
   else if (id === "faq") {
     return side === "left" ? (
