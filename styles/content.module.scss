@@ -1,58 +1,84 @@
 .container {
-  display: flex;
-  align-items: center;
+  position: relative;
+
+  display: grid;
+  grid-template-columns: 0fr 1fr;
+
+  height: 20%;
   padding: 10px;
 
-  width: 60%;
+  transition: grid-template-columns 1s ease, color 1s ease, background-color 1s ease;
 
-  transition: background-color 1.4s ease, width 1s cubic-bezier(1,0,.5,1);
+  .description {
+    font-size: 1vh;
+    opacity: 0;
 
-  .title {
+    width: 0;
+
     display: flex;
-    flex-direction: column;
+    align-self: center;
 
-    transition: flex-basis 3s ease; 
+    transition: opacity 0s ease, font-size 1s ease .5s, width 2s ease 8s;
+  }
 
-    line-height: 4vh;
-    font-weight: bold;
-    font-size: 2vh;
+  .wrapper {
+    display: flex;
+
+    .id, .name {
+      line-height: 4vh;
+      font-weight: bold;
+
+      max-width: fit-content;
+
+      flex: 1;
+
+      transition: justify-content 1s ease .5s;
+    }
 
     .id {
-      font-size: 6vh;
+      font-size: 5vh;
+
+      transition: color 1s ease;
+    }
+
+    .dummy {
+      flex: 0;
+
+      transition: flex 1s ease;
     }
 
     .name {
       white-space: nowrap;
+      font-size: 1.8vh;
     }
-  }
-
-  .description {
-    font-size: 0;
-    opacity: 0;
-    transition: opacity .1s ease, font-size .5s ease .5s, background-color 1s ease;
   }
 
   &:hover {
-    gap: 15px;
-    background-color: #000;
+    grid-template-columns: 4fr 1fr;
+
     cursor: pointer;
-    color: white;
-    width: 100%;
-    transition: width 1.4s cubic-bezier(1,-0.1,.42,1.01) .2s;
 
-    .title {
-      align-items: flex-end;
-
-      .id {
-        color: #77FD02;
-      }
-    }
+    background-color: #000;
+    color: #fff;
 
     .description {
       opacity: 1;
-      font-size: 1.2vh;
+      width: auto;
 
-      transition: opacity 1s ease 1.6s, font-size 1.4s cubic-bezier(1,0,0,1.28) .5s, background-color 1s ease;
+      transition: opacity 1s ease .4s, font-size 1s ease .5s, width 2s ease 8s;
+    }
+
+    .wrapper {
+      .id {
+        padding-left: 5px;
+        color: #0f0;
+      }
+      .name {
+        padding-left: 5px;
+      }
+      .dummy {
+        flex: auto;
+      }
     }
   }
 }
