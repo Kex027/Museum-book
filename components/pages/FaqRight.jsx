@@ -17,11 +17,25 @@ const FaqRight = ({
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          position: "relative",
         }}
       >
-        <div>
-          A{qaIndex + 1}: {qa[qaIndex].fields.answer}
-        </div>
+        {qa.map(({ fields: { answer } }, index) => (
+          <div
+            style={{
+              position: "absolute",
+              transition: "transform 1s ease .25s, opacity 1s ease",
+              transform:
+                index === qaIndex ? "translateX(0%)" : "translateX(-125%)",
+              opacity: index === qaIndex ? 1 : 0,
+            }}
+          >
+            {answer}
+          </div>
+        ))}
+        {/*<div>*/}
+        {/*  A{qaIndex + 1}: {qa[qaIndex].fields.answer}*/}
+        {/*</div>*/}
       </div>
     </>
   );

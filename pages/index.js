@@ -65,6 +65,9 @@ export default function Index({ bookData }) {
 
   return (
     <div className={classNames(style.container)}>
+      <div className={style.imgWrapper}>
+        <img src="/museum_title.webp" alt="Museum logo" className={style.img} />
+      </div>
       <Book
         pages={bookData.fields.pages}
         bookmarks={bookData.fields.bookmarks}

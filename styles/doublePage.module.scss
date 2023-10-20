@@ -20,12 +20,34 @@
       width: 100%;
       padding: 8%;
     }
+
+    .rightPageShadow {
+      -webkit-box-shadow: inset 26px 0 25px -30px rgba(43, 41, 55, 1);
+      -moz-box-shadow: inset 26px 0 25px -30px rgba(43, 41, 55, 1);
+      box-shadow: inset 26px 0 25px -30px rgba(43, 41, 55, 1);
+    }
+
+    .leftPageShadow {
+      -webkit-box-shadow: inset -30px 0 25px -30px rgba(0, 0, 0, 1);
+      -moz-box-shadow: inset -30px 0 25px -30px rgba(0, 0, 0, 1);
+      box-shadow: inset -30px 0 25px -30px rgba(0, 0, 0, 1);
+    }
+
+    .banner {
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 5%;
+      z-index: -1;
+      transition: transform 1s ease-in-out;
+    }
   }
 
   .leftPage {
     transform-origin: right;
 
     border-right: 1px solid hwb(235 26% 65% / 0.5);
+
     -webkit-box-shadow: inset -42px 0px 42px -47px rgba(66, 68, 90, 1);
     -moz-box-shadow: inset -42px 0px 42px -47px rgba(66, 68, 90, 1);
     box-shadow: inset -42px 0px 42px -47px rgba(66, 68, 90, 1);

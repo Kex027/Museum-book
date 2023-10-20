@@ -1,6 +1,6 @@
 const ContextLeft = ({
   page: {
-    fields: { heading, description },
+    fields: { description },
   },
 }) => {
   return (
@@ -16,13 +16,12 @@ const ContextLeft = ({
             opacity: "60%",
           }}
         >
-          {/*{heading?.toUpperCase()}*/}
           CON&shy;TEXT
         </h2>
       </div>
       <div
         style={{
-          fontSize: "1.2vh",
+          fontSize: "1.3vh",
           padding: "8% 0 8% 4%",
         }}
       >

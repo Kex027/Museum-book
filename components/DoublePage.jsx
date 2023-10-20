@@ -51,17 +51,11 @@ const DoublePage = ({
         </div>
         <Curl side="left" changePage={changePage} />
         <div
+          className={classNames(style.banner, style.leftPageShadow)}
           style={{
-            position: "absolute",
-            color: "#0ff",
-            left: "-6%",
-            top: 0,
-            backgroundColor: "#343434",
-            height: "100%",
-            width: "6%",
-            zIndex: "-1",
+            left: "-5%",
+            backgroundColor: "#565656",
             transform: currentPage === -1 ? "translateX(100%)" : "",
-            transition: "transform 1s ease-in-out",
           }}
         ></div>
       </div>
@@ -85,17 +79,11 @@ const DoublePage = ({
         )}
 
         <div
+          className={classNames(style.banner, style.rightPageShadow)}
           style={{
-            position: "absolute",
-            color: "#0ff",
-            right: "-6%",
-            top: 0,
+            right: "-5%",
             backgroundColor: "#ddd",
-            height: "100%",
-            width: "6%",
-            zIndex: "-1",
             transform: currentPage === -1 ? "translateX(-100%)" : "",
-            transition: "transform 1s ease-in-out",
           }}
         ></div>
       </div>

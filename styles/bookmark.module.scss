@@ -1,9 +1,9 @@
 .container {
   position: absolute;
-  left: -16vw;
+  left: -13vw;
 
   background-color: #efefef;
-  color: #232323;
+  color: #121212;
 
   text-align: left;
   user-select: none;
@@ -11,11 +11,15 @@
   font-weight: 500;
 
   height: 7%;
-  min-width: 16vw;
-  padding: 0 10%;
+  min-width: 13vw;
+  padding: 0 4% 0 0;
 
   display: flex;
   align-items: center;
+
+  -webkit-box-shadow: 0 0 4px 0 rgba(43, 41, 55, 1);
+  -moz-box-shadow: 0 0 4px 0 rgba(43, 41, 55, 1);
+  box-shadow: 0 0 4px 0 rgba(43, 41, 55, 1);
 
   &:hover {
     cursor: pointer;

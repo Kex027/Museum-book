@@ -22,6 +22,7 @@ const FaqLeft = ({
             }}
             style={{
               color: qaIndex === index ? "#0f0" : "",
+              zIndex: 1,
             }}
           >
             <span>

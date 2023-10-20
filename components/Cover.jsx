@@ -14,10 +14,10 @@ const Cover = ({
       className={style.container}
       style={{
         zIndex: pagesLength - Math.abs(zIndexPage - thisPageIndex),
-        width: currentPage === -1 ? "51%" : "53%",
+        width: currentPage === -1 ? "51%" : "52.5%",
         transform:
           currentPage !== -1 && thisPageIndex === pagesLength
-            ? "translateX(12%)"
+            ? "translateX(10%)"
             : "",
       }}
     >
@@ -28,18 +28,7 @@ const Cover = ({
         onClick={() => {
           changePage(1);
         }}
-      >
-        {/*<div*/}
-        {/*  style={{*/}
-        {/*    display: zIndexPage === thisPageIndex ? "none" : "block",*/}
-        {/*    backgroundColor: thisPageIndex === pagesLength ? "#ddd" : "#605F5A",*/}
-        {/*    position: "absolute",*/}
-        {/*    zIndex: thisPageIndex === pagesLength ? 0 : -1,*/}
-        {/*    width: "88%",*/}
-        {/*    height: "100%",*/}
-        {/*  }}*/}
-        {/*></div>*/}
-      </div>
+      ></div>
     </div>
   );
 };
