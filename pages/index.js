@@ -1,8 +1,9 @@
 import Book from "../components/Book";
 import style from "../styles/index.module.scss";
 import { createClient } from "contentful";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classNames from "classnames";
+import { BiLoaderCircle } from "react-icons/bi";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -26,6 +27,13 @@ export default function Index({ bookData }) {
   const pagesLength = bookData.fields.pages.length;
   const [currentPage, setCurrentPage] = useState(-1);
   const [zIndexPage, setZIndexPage] = useState(-1);
+  const [showBook, setShowBook] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowBook(true);
+    }, 250);
+  });
 
   const changePage = (value) => {
     setCurrentPage((oldValue) => {
@@ -65,17 +73,27 @@ export default function Index({ bookData }) {
 
   return (
     <div className={classNames(style.container)}>
-      <div className={style.imgWrapper}>
-        <img src="/museum_title.webp" alt="Museum logo" className={style.img} />
-      </div>
-      <Book
-        pages={bookData.fields.pages}
-        bookmarks={bookData.fields.bookmarks}
-        currentPage={currentPage}
-        zIndexPage={zIndexPage}
-        changePage={changePage}
-        changeCustomPage={changeCustomPage}
-      />
+      {showBook ? (
+        <>
+          <div className={style.imgWrapper}>
+            <img
+              src="/museum_title.webp"
+              alt="Museum logo"
+              className={style.img}
+            />
+          </div>
+          <Book
+            pages={bookData.fields.pages}
+            bookmarks={bookData.fields.bookmarks}
+            currentPage={currentPage}
+            zIndexPage={zIndexPage}
+            changePage={changePage}
+            changeCustomPage={changeCustomPage}
+          />
+        </>
+      ) : (
+        <BiLoaderCircle className={style.loader} />
+      )}
     </div>
   );
 }
