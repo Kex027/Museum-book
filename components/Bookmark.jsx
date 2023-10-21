@@ -12,7 +12,7 @@ const Bookmark = ({
     <div
       className={classNames(style.container)}
       style={{
-        top: (bookmarkIndex + 1) * 8 - 4 + "%",
+        top: (bookmarkIndex + 1) * 7.25 - 4 + "%",
         color: zIndexPage === thisPageIndex ? "#0f0" : "#232323",
         backgroundColor: zIndexPage === thisPageIndex ? "#232323" : "#fefefe",
         transform: thisPageIndex <= zIndexPage ? "" : "rotateY(180deg)",
