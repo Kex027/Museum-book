@@ -22,6 +22,7 @@ const FaqRight = ({
       >
         {qa.map(({ fields: { answer } }, index) => (
           <div
+            key={index}
             style={{
               position: "absolute",
               transition: "transform 1s ease .25s, opacity 1s ease",
@@ -33,9 +34,6 @@ const FaqRight = ({
             {answer}
           </div>
         ))}
-        {/*<div>*/}
-        {/*  A{qaIndex + 1}: {qa[qaIndex].fields.answer}*/}
-        {/*</div>*/}
       </div>
     </>
   );
