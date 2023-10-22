@@ -3,8 +3,10 @@
   height: 100vh;
   
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 2%;
 
   overflow: hidden;
 
@@ -14,6 +16,17 @@
     align-items: center;
 
     width: 70%;
-    // height: 80%;
+    //max-height: 80%;
+     //height: 80%;
+  //.imgWrapper {
+  //  width: 65%;
+  //  max-height: 7.5%;
+  //
+  //  display: flex;
+  //  justify-content: flex-end;
+  //
+  //  .img {
+  //    height: 90%;
+  //  }
   }
 }

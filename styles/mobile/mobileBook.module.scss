@@ -1,0 +1,50 @@
+.container {
+  width: 100vw;
+  min-height: 100vh;
+  //height: 200vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .coverWrapper {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    height: 90%;
+
+    .cover {
+      object-fit: contain;
+      max-height: 90vh;
+    }
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .navigation {
+    position: sticky;
+    bottom: 0;
+    border: 1px solid black;
+    width: 100%;
+    background-color: #C2C2C0;
+
+    display: flex;
+    justify-content: space-between;
+    min-height: 70px;
+    height: 70px;
+
+    .btn {
+      height: 100%;
+      border: 1px solid black;
+      padding: 5px;
+      font-size: 2rem;
+      width: 50%;
+
+      &:hover {
+        background-color: #bbb;
+      }
+    }
+  }
+}

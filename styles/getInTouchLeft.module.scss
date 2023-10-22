@@ -1,0 +1,41 @@
+.container {
+  height: 100%;
+
+  .heading {
+    color: #0f0;
+    font-size: 12vh;
+    line-height: 11vh;
+    word-break: break-all;
+    font-weight: bold;
+    height: 34%;
+    opacity: 90%;
+  }
+
+  .form {
+    height: 66%;
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 6px;
+
+    padding: 4% 4% 4% 0;
+
+    .label {
+      font-size: 1.8vh;
+    }
+
+    .input {
+      color: #232323;
+      font-size: 1.8vh;
+      padding: 4px;
+    }
+
+    .button {
+      color: #0f0;
+      font-size: 2.2vh;
+    }
+  }
+}

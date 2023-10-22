@@ -12,28 +12,20 @@ import VideoRight from "./pages/VideoRight";
 import HTMLFlipBook from "react-pageflip";
 import LeftPage from "./LeftPage";
 import RightPage from "./RightPage";
+import GetBookPage from "./helper/GetBookPage";
+// import { useState } from "react";
+// import classNames from "classnames";
+// import style from "../styles/book.module.scss";
+// import DoublePage from "./DoublePage";
+// import Cover from "./Cover";
+// import GetBookPage from "./helper/GetBookPage";
 
-const Book = forwardRef(({
-  pages,
-  bookmarks,
-}, ref) => {
-  const getContent = (id, side, page) => {
-    if (id === 'intoPage')
-      return side === 'left' ? <IntoLeft page={page} /> : <IntoRight page={page} />
-    else if (id === 'forewordPage')
-      return side === 'left' ? <ForewordLeft page={page} /> : <ForewordRight page={page} />
-    else if (id === 'contentsPage')
-      return side === 'left' ? <ContentsLeft page={page} changeCustomPage={changeCustomPage} pages={pages} /> : <ContentsRight page={page} changeCustomPage={changeCustomPage} pages={pages} />
-    else if (id === 'contextPage')
-      return side === 'left' ? <ContextLeft page={page} /> : <ContextRight page={page} />
-    else if (id === 'page')
-        return side === 'left' ? <VideoLeft page={page} /> : <VideoRight page={page} />
-    else if (id === 'forTeachers')
-      return side === 'left' ? <ContextLeft page={page} /> : <ContextRight page={page} />
-    else if (id === 'forParents')
-      return side === 'left' ? <ContextLeft page={page} /> : <ContextRight page={page} />
-    return ""
-  }
+const Book = forwardRef(({ pages, bookmarks }, ref) => {
+  // currentPage,
+  // zIndexPage,
+  // changePage,
+  // changeCustomPage,
+  const [qaIndex, setQaIndex] = useState(0);
 
   const [currentPage, setCurrentPage] = useState(0);
   const [changeCustomPage, setChangeCustomPage] = useState(0);
@@ -42,61 +34,143 @@ const Book = forwardRef(({
 
   // console.log(bookRef.current?.pageFlip().pages.pages.length);
   return (
-    <HTMLFlipBook 
+    <HTMLFlipBook
       showCover
-
-      width={540}
-      height={770}
-
-      minWidth={250}
-      maxWidth={500}
-
-      minHeight={100}
-      maxHeight={330}
-
+      width={270}
+      height={385}
+      // minWidth={250}
+      // maxWidth={500}
+      // minHeight={100}
+      // maxHeight={330}
       size="stretch"
       maxShadowOpacity={0.5}
-      onFlip={({object}) => {
-        setCurrentPage(object.pages.currentSpreadIndex);
-      }}
+      // onFlip={({ object }) => {
+      //   setCurrentPage(object.pages.currentSpreadIndex);
+      // }}
       style={{
         transform: currentPage === 0 ? "translateX(-25%)" : "translateX(0%)",
-        transition: "transform 1s ease-in-out"
+        transition: "transform .75s ease-in-out",
       }}
     >
       <img src="/blackBookCover.webp" alt="" />
 
       {pages?.map((page, index) => {
-          const bookmark = bookmarks.filter(({fields: {category}}) => 
-            page.fields.category?.toLowerCase() === category?.toLowerCase()
-          )[0]?.fields;
-
-          const bookmarkIndex = bookmarks.findIndex(({fields}) => 
-            fields === bookmark
-          )
-          return [
-            (
-              <div>
-                <LeftPage 
-                  backgroundImg={`url('${page.fields.backgroundImage[0].fields.file.url}')`} 
-                  content={getContent(page.sys.contentType.sys.id, "left", page)} 
+        // const bookmark = bookmarks.filter(
+        //   ({ fields: { category } }) =>
+        //     // <div
+        //     //   className={classNames(style.container)}
+        //     //   style={{
+        //     //     transform: currentPage === -1 ? "translateX(-25%)" : "translateX(0%)",
+        //     //   }}
+        //     // >
+        //     //   <img src="/book2.webp" alt="Book" />
+        //     //
+        //     //   <Cover
+        //     //     thisPageIndex={-1}
+        //     //     currentPage={currentPage}
+        //     //     pagesLength={pages.length}
+        //     //     zIndexPage={zIndexPage}
+        //     //     changePage={changePage}
+        //     //   />
+        //     //   {pages?.map((page, index) => {
+        //     //     const bookmark = bookmarks.filter(
+        //     //       ({ fields: { category } }) =>
+        //     page.fields.category?.toLowerCase() === category?.toLowerCase()
+        // )[0]?.fields;
+        //
+        // const bookmarkIndex = bookmarks.findIndex(
+        //   ({ fields }) => fields === bookmark
+        // );
+        return [
+          <div key={`${page.sys.contentType.sys.id}-left`}>
+            <LeftPage
+              backgroundImg={`url('${page.fields.backgroundImage[0].fields.file.url}')`}
+              content={
+                <GetBookPage
+                  page={page}
+                  changeCustomPage={changeCustomPage}
+                  pages={pages}
+                  setQaIndex={setQaIndex}
+                  qaIndex={qaIndex}
+                  id={page.sys.contentType.sys.id}
+                  side="left"
                 />
-              </div>
-            ),
-            (
-              <div>
-                <RightPage 
-                  backgroundImg={`url('${page.fields.backgroundImage[1].fields.file.url}')`} 
-                  content={getContent(page.sys.contentType.sys.id, "right", page)} 
+              }
+              thisPageIndex={index}
+            />
+          </div>,
+          <div key={`${page.sys.contentType.sys.id}-right`}>
+            <RightPage
+              backgroundImg={`url('${page.fields.backgroundImage[1].fields.file.url}')`}
+              content={
+                <GetBookPage
+                  page={page}
+                  changeCustomPage={changeCustomPage}
+                  pages={pages}
+                  setQaIndex={setQaIndex}
+                  qaIndex={qaIndex}
+                  id={page.sys.contentType.sys.id}
+                  side="right"
                 />
-              </div>
-            )
-          ];            
-        })
-      }
+              }
+              thisPageIndex={index}
+            />
+          </div>,
+        ];
+      })}
       <img src="/blackBookCover.webp" alt="" />
-    </HTMLFlipBook> 
-  )
+    </HTMLFlipBook>
+  );
 });
+//         const bookmarkIndex = bookmarks.findIndex(
+//           ({ fields }) => fields === bookmark
+//         );
+//         return (
+//           <DoublePage
+//             key={page.sys.id}
+//             thisPageIndex={index}
+//             currentPage={currentPage}
+//             pagesLength={pages.length}
+//             zIndexPage={zIndexPage}
+//             changePage={changePage}
+//             changeCustomPage={changeCustomPage}
+//             bgLeft={`url('${page.fields.backgroundImage[0].fields.file.url}')`}
+//             bgRight={`url('${page.fields.backgroundImage[1].fields.file.url}')`}
+//             leftContent={
+//               <GetBookPage
+//                 id={page.sys.contentType.sys.id}
+//                 side={"left"}
+//                 page={page}
+//                 changeCustomPage={changeCustomPage}
+//                 pages={pages}
+//                 qaIndex={qaIndex}
+//                 setQaIndex={setQaIndex}
+//               />
+//             }
+//             rightContent={
+//               <GetBookPage
+//                 id={page.sys.contentType.sys.id}
+//                 side={"right"}
+//                 page={page}
+//                 changeCustomPage={changeCustomPage}
+//                 pages={pages}
+//                 qaIndex={qaIndex}
+//               />
+//             }
+//             bookmark={bookmark}
+//             bookmarkIndex={bookmarkIndex}
+//           />
+//         );
+//       })}
+//       <Cover
+//         thisPageIndex={pages.length}
+//         currentPage={currentPage}
+//         pagesLength={pages.length}
+//         zIndexPage={zIndexPage}
+//         changePage={changePage}
+//       />
+//     </div>
+//   );
+// };
 
 export default Book;

@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 10px;
+
+  .heading {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .contents {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+  }
+
+  .content {
+    border: 1px solid black;
+    padding: 10px;
+
+    .contentHeading {
+      font-weight: bold;
+    }
+
+    .description {
+      font-size: 0.75rem;
+    }
+
+    &:hover {
+      background-color: #a0a0a0;
+      cursor: pointer;
+    }
+  }
+}

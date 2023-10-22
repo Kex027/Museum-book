@@ -1,24 +1,22 @@
+@import url('fonts');
+
 /* purgecss start ignore */
 @tailwind base;
 @tailwind components;
 /* purgecss end ignore */
 @tailwind utilities;
 
-@font-face {
-    font-family: 'MuseumFont';
-    src: url('/FoundryFormSans_Book_Regular.otf') format('opentype');
-}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 
-    font-family: 'MuseumFont', sans-serif;
+    font-family: AktivGrotesk, sans-serif;
 }
 
 body {
-    background-color: #565656;
+    background-color: #C2C2C0;
 }
 
 .btn {
