@@ -32,9 +32,11 @@
 
     display: flex;
     justify-content: space-between;
-    height: 10%;
+    min-height: 70px;
+    height: 70px;
 
     .btn {
+      height: 100%;
       border: 1px solid black;
       padding: 5px;
       font-size: 2rem;
