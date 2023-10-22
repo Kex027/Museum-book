@@ -3,8 +3,8 @@
 
   .heading {
     color: #0f0;
-    font-size: 12vh;
-    line-height: 11vh;
+    font-size: calc(12 * var(--vh));
+    line-height: calc(11 * var(--vh));
     word-break: break-all;
     font-weight: bold;
     height: 34%;
@@ -24,18 +24,18 @@
     padding: 4% 4% 4% 0;
 
     .label {
-      font-size: 1.8vh;
+      font-size: calc(1.8 * var(--vh));
     }
 
     .input {
       color: #232323;
-      font-size: 1.8vh;
+      font-size: calc(1.8 * var(--vh));
       padding: 4px;
     }
 
     .button {
       color: #0f0;
-      font-size: 2.2vh;
+      font-size: calc(2.2 * var(--vh));
     }
   }
 }

@@ -34,20 +34,31 @@ export default function Index({ bookData }) {
       width: undefined,
       height: undefined,
     });
+    function updateWindowSize() {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    function adjustVH() {
+      const htmlElement = document.getElementsByTagName("html")[0];
+      const maxRatio = 0.75;
+      let maxHeight = innerWidth * maxRatio;
+      const adjustedHeight = Math.min(innerHeight, maxHeight);
+
+      htmlElement.style.setProperty("--vh", adjustedHeight / 110 + "px");
+    }
 
     useEffect(() => {
-      function handleResize() {
-        setWindowSize({
-          width: window.innerWidth,
-          height: window.innerHeight,
-        });
-      }
+      window.addEventListener("resize", () => {
+        updateWindowSize();
+        adjustVH();
+      });
 
-      window.addEventListener("resize", handleResize);
+      adjustVH();
+      updateWindowSize();
 
-      handleResize();
-
-      return () => window.removeEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", updateWindowSize);
     }, []);
     return windowSize;
   }
@@ -88,11 +99,7 @@ export default function Index({ bookData }) {
     }, 500);
   };
 
-  if (
-    windowSize.width / windowSize.height < 1.5 ||
-    windowSize.width < 600 ||
-    windowSize.height < 600
-  )
+  if (windowSize.width < 700 || windowSize.height < 520)
     return (
       <div className={style.container} style={{ overflowY: "visible" }}>
         <MobileBook

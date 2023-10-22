@@ -11,8 +11,8 @@ const ForTeachersLeft = ({
         <h2
           style={{
             color: "#0f0",
-            fontSize: "9.5vh",
-            lineHeight: "13vh",
+            fontSize: "calc(9.5 * var(--vh))",
+            lineHeight: "calc(13 * var(--vh))",
             wordBreak: "break-all",
             fontWeight: "bold",
             opacity: "60%",
@@ -23,8 +23,8 @@ const ForTeachersLeft = ({
       </div>
       <div
         style={{
-          lineHeight: "1.4vh",
-          fontSize: "1.1vh",
+          lineHeight: "calc(1.4 * var(--vh))",
+          fontSize: "calc(1.1 * var(--vh))",
           padding: "2% 2% 0 0",
         }}
       >

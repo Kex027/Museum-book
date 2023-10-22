@@ -7,7 +7,7 @@
 
   text-align: left;
   user-select: none;
-  font-size: 2vh;
+  font-size: calc(2 * var(--vh));
   font-weight: 500;
 
   height: 6%;

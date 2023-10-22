@@ -1,6 +1,6 @@
 const ForewordRight = ({
   page: {
-    fields: { title, text },
+    fields: { text },
   },
 }) => {
   return (
@@ -9,19 +9,18 @@ const ForewordRight = ({
         style={{
           height: "39%",
           color: "#0f0",
-          fontSize: "13vh",
-          lineHeight: "11vh",
+          fontSize: "calc(13 * var(--vh))",
+          lineHeight: "calc(11 * var(--vh))",
           wordBreak: "break-all",
           fontWeight: "bold",
         }}
       >
-        {/*{title?.toUpperCase()}*/}
         FORE&shy;WORD
       </h2>
       <div
         style={{
-          fontSize: "1.4vh",
-          lineHeight: "2.0vh",
+          fontSize: "calc(1.4 * var(--vh))",
+          lineHeight: "calc(2 * var(--vh))",
           color: "white",
           padding: "8% 8% 8% 0",
         }}

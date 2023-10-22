@@ -4,8 +4,8 @@
 
     color: #0f0;
 
-    font-size: 13vh;
-    line-height: 11.5vh;
+    font-size: calc(13 * var(--vh));
+    line-height: calc(11.5 * var(--vh));
     word-break: break-all;
     font-weight: bold;
 

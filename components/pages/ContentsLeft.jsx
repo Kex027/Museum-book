@@ -15,8 +15,8 @@ const ContentsLeft = ({
       <h2
         style={{
           color: "white",
-          fontSize: "7.7vh",
-          lineHeight: "7vh",
+          fontSize: "calc(7.7 * var(--vh))",
+          lineHeight: "calc(7 * var(--vh))",
           height: "18%",
           paddingLeft: "5%",
           fontWeight: "bold",
