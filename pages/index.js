@@ -4,6 +4,7 @@ import { createClient } from "contentful";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
 import MobileBook from "../components/mobile/MobileBook";
+import { AiOutlineLoading } from "react-icons/ai";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -24,6 +25,8 @@ export async function getStaticProps() {
 }
 
 export default function Index({ bookData }) {
+  const [showLoader, setShowLoader] = useState(true);
+
   const pagesLength = bookData.fields.pages.length;
   const [currentPage, setCurrentPage] = useState(-1);
   const [zIndexPage, setZIndexPage] = useState(-1);
@@ -50,12 +53,16 @@ export default function Index({ bookData }) {
     }
 
     useEffect(() => {
+      setTimeout(() => {
+        setShowLoader(false);
+      }, 250);
+
       window.addEventListener("resize", () => {
         updateWindowSize();
         adjustVH();
       });
-
       adjustVH();
+
       updateWindowSize();
 
       return () => window.removeEventListener("resize", updateWindowSize);
@@ -123,6 +130,13 @@ export default function Index({ bookData }) {
         changePage={changePage}
         changeCustomPage={changeCustomPage}
       />
+      {showLoader && (
+        <div className={style.container}>
+          <div className={style.loader}>
+            <AiOutlineLoading className={style.loadingIcon} />
+          </div>
+        </div>
+      )}
     </div>
   );
 }

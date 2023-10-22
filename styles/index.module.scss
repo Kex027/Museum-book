@@ -21,4 +21,35 @@
       height: 90%;
     }
   }
+  
+  .loader {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #C2C2C0;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 999;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .loadingIcon {
+      color: #0f0;
+      font-size: 2rem;
+      animation: animate 2s infinite;
+
+      @keyframes animate {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(720deg);
+        }
+      }
+    }
+  }
 }
