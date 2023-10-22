@@ -3,7 +3,7 @@ import style from "../styles/index.module.scss";
 import { createClient } from "contentful";
 import { useEffect, useState } from "react";
 import classNames from "classnames";
-import { BiLoaderCircle } from "react-icons/bi";
+import MobileBook from "../components/mobile/MobileBook";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -27,13 +27,30 @@ export default function Index({ bookData }) {
   const pagesLength = bookData.fields.pages.length;
   const [currentPage, setCurrentPage] = useState(-1);
   const [zIndexPage, setZIndexPage] = useState(-1);
-  const [showBook, setShowBook] = useState(false);
+  const windowSize = useWindowSize();
 
-  useEffect(() => {
-    setTimeout(() => {
-      setShowBook(true);
-    }, 250);
-  });
+  function useWindowSize() {
+    const [windowSize, setWindowSize] = useState({
+      width: undefined,
+      height: undefined,
+    });
+
+    useEffect(() => {
+      function handleResize() {
+        setWindowSize({
+          width: window.innerWidth,
+          height: window.innerHeight,
+        });
+      }
+
+      window.addEventListener("resize", handleResize);
+
+      handleResize();
+
+      return () => window.removeEventListener("resize", handleResize);
+    }, []);
+    return windowSize;
+  }
 
   const changePage = (value) => {
     setCurrentPage((oldValue) => {
@@ -43,7 +60,7 @@ export default function Index({ bookData }) {
     });
     setTimeout(() => {
       setZIndexPage((oldValue) => {
-        if (oldValue === -1) {
+        if (oldValue === -1 && value === 1) {
           const audio = new Audio("/pageturn.mp3");
           audio.play();
         }
@@ -71,29 +88,34 @@ export default function Index({ bookData }) {
     }, 500);
   };
 
+  if (
+    windowSize.width / windowSize.height < 1.5 ||
+    windowSize.width < 600 ||
+    windowSize.height < 600
+  )
+    return (
+      <div className={style.container} style={{ overflowY: "visible" }}>
+        <MobileBook
+          pages={bookData.fields.pages}
+          currentPage={currentPage}
+          changePage={changePage}
+          changeCustomPage={changeCustomPage}
+        />
+      </div>
+    );
   return (
     <div className={classNames(style.container)}>
-      {showBook ? (
-        <>
-          <div className={style.imgWrapper}>
-            <img
-              src="/museum_title.webp"
-              alt="Museum logo"
-              className={style.img}
-            />
-          </div>
-          <Book
-            pages={bookData.fields.pages}
-            bookmarks={bookData.fields.bookmarks}
-            currentPage={currentPage}
-            zIndexPage={zIndexPage}
-            changePage={changePage}
-            changeCustomPage={changeCustomPage}
-          />
-        </>
-      ) : (
-        <BiLoaderCircle className={style.loader} />
-      )}
+      <div className={style.imgWrapper}>
+        <img src="/museum_title.webp" alt="Museum logo" className={style.img} />
+      </div>
+      <Book
+        pages={bookData.fields.pages}
+        bookmarks={bookData.fields.bookmarks}
+        currentPage={currentPage}
+        zIndexPage={zIndexPage}
+        changePage={changePage}
+        changeCustomPage={changeCustomPage}
+      />
     </div>
   );
 }

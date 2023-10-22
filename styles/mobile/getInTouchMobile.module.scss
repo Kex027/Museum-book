@@ -1,0 +1,44 @@
+.container {
+  width: 100%;
+  height: 80vh;
+
+  display: grid;
+  gap: 10px;
+
+  .heading {
+    font-weight: bold;
+    font-size: 1.5rem;
+    justify-self: center;
+  }
+
+  .form {
+    width: 90%;
+    max-width: 400px;
+
+    justify-self: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 6px;
+
+    .label {
+      align-self: flex-start;
+    }
+
+    .input {
+      width: 100%;
+      color: #232323;
+      padding: 4px;
+    }
+
+    .button {
+      background-color: #0f0;
+      color: #232323;
+      border: 1px solid #232323;
+      font-size: 1.25rem;
+      padding: 5px;
+    }
+  }
+}

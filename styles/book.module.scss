@@ -7,9 +7,11 @@
   justify-content: flex-end;
   align-items: center;
 
+  max-width: 74%;
+
   & > img {
     visibility: hidden;
 
-    height: 80vh;
+    max-height: 80vh;
   }
 }
