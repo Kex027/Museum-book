@@ -21,13 +21,13 @@ const IntoRight = ({
         style={{
           objectFit: "scale-down",
           widows: "100%",
-          fontSize: "calc(2 * var(--vh))",
         }}
       />
 
       <h4
         style={{
           width: "70%",
+          fontSize: "calc(2 * var(--vh))",
         }}
       >
         {subtitle}
@@ -36,6 +36,7 @@ const IntoRight = ({
       <p
         style={{
           width: "35%",
+          fontSize: "calc(2 * var(--vh))",
         }}
       >
         {footer}

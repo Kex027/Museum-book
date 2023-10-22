@@ -48,18 +48,19 @@
 
     border-right: 1px solid hwb(235 26% 65% / 0.5);
 
-    -webkit-box-shadow: inset -42px 0px 42px -47px rgba(66, 68, 90, 1);
-    -moz-box-shadow: inset -42px 0px 42px -47px rgba(66, 68, 90, 1);
-    box-shadow: inset -42px 0px 42px -47px rgba(66, 68, 90, 1);
+    -webkit-box-shadow: inset -42px 0px 60px -40px rgba(66, 68, 90, 1);
+    -moz-box-shadow: inset -42px 0px 60px -40px rgba(66, 68, 90, 1);
+    box-shadow: inset -42px 0px 60px -40px rgba(66, 68, 90, 1);
   }
 
   .rightPage {
     transform-origin: left;
     
     border-left: 1px solid hwb(235 26% 65% / 0.5);
-    -webkit-box-shadow: inset 42px 0 42px -47px rgba(66, 68, 90, 1);
-    -moz-box-shadow: inset 42px 0 42px -47px rgba(66, 68, 90, 1);
-    box-shadow: inset 42px 0 42px -47px rgba(66, 68, 90, 1);
+
+    -webkit-box-shadow: inset 42px 0 60px -40px rgba(66, 68, 90, 1);
+    -moz-box-shadow: inset 42px 0 60px -40px rgba(66, 68, 90, 1);
+    box-shadow: inset 42px 0 60px -40px rgba(66, 68, 90, 1);
   }
 
   .flippedRight {
