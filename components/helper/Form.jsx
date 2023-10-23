@@ -14,7 +14,7 @@ const Form = ({ style }) => {
 
   const onSubmit = (data) => {
     axios
-      .post("http://sandbox.000.pe/contact.php", data)
+      .post("https://sandbox.000.pe/contact.php", data)
       .then((response) => {
         setSuccess(true);
         console.log(`${response.status}: Success!`);

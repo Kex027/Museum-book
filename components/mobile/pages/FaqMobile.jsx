@@ -37,7 +37,8 @@ const FaqMobile = ({
             <div
               className={style.answer}
               style={{
-                maxHeight: openedAnswerIndex === index ? "100px" : 0,
+                maxHeight:
+                  openedAnswerIndex === index ? "calc(100 * var(--vh))" : 0,
                 padding: openedAnswerIndex === index ? "10px" : "0 10px",
                 overflow: "hidden",
               }}

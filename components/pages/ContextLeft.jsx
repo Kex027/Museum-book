@@ -21,7 +21,7 @@ const ContextLeft = ({
       </div>
       <div
         style={{
-          fontSize: "calc(1.3 * var(--vh))",
+          fontSize: "calc(.99 * var(--vh))",
           padding: "8% 0 8% 4%",
         }}
       >

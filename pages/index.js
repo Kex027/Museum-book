@@ -61,8 +61,8 @@ export default function Index({ bookData }) {
         updateWindowSize();
         adjustVH();
       });
-      adjustVH();
 
+      adjustVH();
       updateWindowSize();
 
       return () => window.removeEventListener("resize", updateWindowSize);
@@ -106,7 +106,13 @@ export default function Index({ bookData }) {
     }, 500);
   };
 
-  if (windowSize.width < 700 || windowSize.height < 520)
+  const getOrientation = () => {
+    if (typeof window !== "undefined") {
+      return window?.screen.orientation.type;
+    }
+  };
+
+  if (windowSize.width < 1024 || getOrientation() === "portrait-primary")
     return (
       <div className={style.container} style={{ overflowY: "visible" }}>
         <MobileBook
