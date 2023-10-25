@@ -13,19 +13,20 @@ const ForParentsLeft = ({
             color: "#0f0",
             fontSize: "calc(9.5 * var(--vh))",
             lineHeight: "calc(13 * var(--vh))",
-            wordBreak: "break-all",
+            whiteSpace: "normal",
             fontWeight: "bold",
             opacity: "60%",
           }}
         >
-          FOR PAR&shy;ENTS
+          FOR&nbsp;PAR-
+          <br />
+          ENTS
         </h2>
       </div>
       <div
         style={{
-          lineHeight: "calc(1.4 * var(--vh))",
+          lineHeight: "calc(1.35 * var(--vh))",
           fontSize: "calc(1.1 * var(--vh))",
-          padding: "2% 2% 0 0",
         }}
       >
         {description?.content.map(({ content }, index) => (

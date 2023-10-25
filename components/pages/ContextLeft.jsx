@@ -11,18 +11,20 @@ const ContextLeft = ({
             color: "#0f0",
             fontSize: "calc(16 * var(--vh))",
             lineHeight: "calc(13 * var(--vh))",
-            wordBreak: "break-all",
+            whiteSpace: "normal",
             fontWeight: "bold",
             opacity: "60%",
           }}
         >
-          CON&shy;TEXT
+          CON-
+          <br />
+          TEXT
         </h2>
       </div>
       <div
         style={{
-          fontSize: "calc(.99 * var(--vh))",
-          padding: "8% 0 8% 4%",
+          lineHeight: "calc(1.35 * var(--vh))",
+          fontSize: "calc(1.1 * var(--vh))",
         }}
       >
         {description?.content.map(({ content }, index) => (

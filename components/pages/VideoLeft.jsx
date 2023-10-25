@@ -19,7 +19,6 @@ const VideoLeft = ({
   },
 }) => {
   const [showVideo, setShowVideo] = useState(false);
-  const [showPlay, setShowPlay] = useState(false);
   const videoRef = useRef(null);
 
   const fullScreen = () => {
@@ -92,14 +91,10 @@ const VideoLeft = ({
           setShowVideo(true);
           fullScreen();
         }}
-        onMouseOver={() => setShowPlay(true)}
-        onMouseLeave={() => setShowPlay(false)}
       >
         <div className={classNames(style.videoRectClickable)}></div>
 
-        {showPlay && (
-          <AiFillPlayCircle className={classNames(style.playButton)} />
-        )}
+        <AiFillPlayCircle className={classNames(style.playButton)} />
       </div>
 
       <div className={classNames(style.info)}>

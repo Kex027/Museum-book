@@ -40,13 +40,14 @@
       width: 5%;
       z-index: -1;
       transition: transform 1s ease-in-out;
+      box-shadow: 16px 0 54px -23px rgba(43, 43, 51, 1);
     }
   }
 
   .leftPage {
     transform-origin: right;
 
-    border-right: 1px solid hwb(235 26% 65% / 0.5);
+    border-right: 1px solid #696969;
 
     -webkit-box-shadow: inset -42px 0px 60px -40px rgba(66, 68, 90, 1);
     -moz-box-shadow: inset -42px 0px 60px -40px rgba(66, 68, 90, 1);
@@ -56,8 +57,6 @@
   .rightPage {
     transform-origin: left;
     
-    border-left: 1px solid hwb(235 26% 65% / 0.5);
-
     -webkit-box-shadow: inset 42px 0 60px -40px rgba(66, 68, 90, 1);
     -moz-box-shadow: inset 42px 0 60px -40px rgba(66, 68, 90, 1);
     box-shadow: inset 42px 0 60px -40px rgba(66, 68, 90, 1);

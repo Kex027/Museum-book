@@ -16,7 +16,7 @@ const Bookmark = ({
         color: zIndexPage === thisPageIndex ? "#0f0" : "#232323",
         backgroundColor: zIndexPage === thisPageIndex ? "#232323" : "#fefefe",
         transform: thisPageIndex <= zIndexPage ? "" : "rotateY(180deg)",
-        paddingLeft: thisPageIndex <= zIndexPage ? "10%" : "14%",
+        paddingLeft: thisPageIndex <= zIndexPage ? "6%" : "14%",
       }}
       onClick={() => {
         changeCustomPage(thisPageIndex);

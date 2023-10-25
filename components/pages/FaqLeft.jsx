@@ -25,9 +25,9 @@ const FaqLeft = ({
               zIndex: 1,
             }}
           >
-            <span>
-              Q{index + 1}: {question}
-            </span>
+            <div style={{ display: "flex", gap: "5px" }}>
+              <span>Q{index + 1}: </span> <span>{question}</span>
+            </div>
             <span>
               <AiOutlinePlus
                 className={classNames(style.icon)}

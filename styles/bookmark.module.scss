@@ -1,6 +1,6 @@
 .container {
   position: absolute;
-  left: -52%;
+  left: -46%;
 
   background-color: #efefef;
   color: #121212;
@@ -9,9 +9,10 @@
   user-select: none;
   font-size: calc(2 * var(--vh));
   font-weight: 500;
+  white-space: nowrap;
 
   height: 6%;
-  width: 52%;
+  width: 46%;
   padding-right: 4%;
 
   display: flex;
