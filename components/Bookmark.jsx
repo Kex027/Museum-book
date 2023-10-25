@@ -18,12 +18,12 @@ const Bookmark = ({
         background:
           zIndexPage !== thisPageIndex
             ? thisPageIndex <= zIndexPage
-              ? "linear-gradient(90deg, rgba(255,255,255,1) 80%, rgba(30,30,30,1) 90%)"
-              : "linear-gradient(90deg, rgba(90,90,90,1) 10%, rgba(255,255,255,1) 20%)"
+              ? "linear-gradient(90deg, rgba(255,255,255,1) 80%, rgba(30,30,30,1) 95%)"
+              : "linear-gradient(90deg, rgba(90,90,90,1) 5%, rgba(255,255,255,1) 20%)"
             : "#232323",
         transform: thisPageIndex <= zIndexPage ? "" : "rotateY(180deg)",
         paddingLeft: thisPageIndex <= zIndexPage ? "6%" : "14%",
-        left: zIndexPage === -1 ? "-41%" : "-46%",
+        left: zIndexPage === -1 ? "0%" : "-46%",
       }}
       onClick={() => {
         changeCustomPage(thisPageIndex);

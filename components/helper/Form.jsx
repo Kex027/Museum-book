@@ -24,7 +24,7 @@ const Form = ({ style }) => {
     data = { ...data, isVerified: isVerified };
 
     axios
-      .post("https://sandbox.000.pe/contact.php", data)
+      .post("https://moneyjar.world/museum/contact.php", data)
       .then((response) => {
         setSuccess(true);
         console.log(`${response.status}: Success!`);

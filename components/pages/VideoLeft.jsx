@@ -82,7 +82,10 @@ const VideoLeft = ({
           display: showVideo ? "block" : "none",
         }}
       >
-        <source src={url} type="video/mp4" />
+        <source
+          src={"https://moneyjar.world/museum/john-mongan.mp4"}
+          type="video/mp4"
+        />
       </video>
 
       <div

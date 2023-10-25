@@ -15,14 +15,19 @@ const IntoRight = ({
         textAlign: "center",
       }}
     >
-      <img
-        src={logo.fields.file.url}
-        alt={logo.fields.title}
+      <div
         style={{
-          objectFit: "scale-down",
-          widows: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "space-between",
+          height: "40%",
         }}
-      />
+      >
+        <img src="/The.webp" alt="The" style={{ width: "30%" }} />
+        <img src={logo.fields.file.url} alt={logo.fields.title} />
+        <img src="/Archives.webp" alt="Archives" style={{ width: "98%" }} />
+      </div>
 
       <h4
         style={{
