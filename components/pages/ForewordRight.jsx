@@ -13,6 +13,7 @@ const ForewordRight = ({
           lineHeight: "calc(11 * var(--vh))",
           wordBreak: "break-all",
           fontWeight: "bold",
+          paddingTop: "calc(3 * var(--vh))",
         }}
       >
         FORE&shy;WORD

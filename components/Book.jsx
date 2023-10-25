@@ -12,6 +12,7 @@ const Book = ({
   zIndexPage,
   changePage,
   changeCustomPage,
+  bookRef,
 }) => {
   const [qaIndex, setQaIndex] = useState(0);
 
@@ -21,6 +22,7 @@ const Book = ({
       style={{
         transform: currentPage === -1 ? "translateX(-25%)" : "translateX(0%)",
       }}
+      ref={bookRef}
     >
       <img src="/book2.webp" alt="Book" />
 

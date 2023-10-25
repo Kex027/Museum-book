@@ -1,7 +1,7 @@
 import Book from "../components/Book";
 import style from "../styles/index.module.scss";
 import { createClient } from "contentful";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import MobileBook from "../components/mobile/MobileBook";
 import { AiOutlineLoading } from "react-icons/ai";
@@ -31,6 +31,7 @@ export default function Index({ bookData }) {
   const [currentPage, setCurrentPage] = useState(-1);
   const [zIndexPage, setZIndexPage] = useState(-1);
   const windowSize = useWindowSize();
+  const bookRef = useRef(null);
 
   function useWindowSize() {
     const [windowSize, setWindowSize] = useState({
@@ -125,7 +126,10 @@ export default function Index({ bookData }) {
     );
   return (
     <div className={classNames(style.container)}>
-      <div className={style.imgWrapper}>
+      <div
+        className={style.imgWrapper}
+        style={{ width: bookRef?.current?.clientWidth + 90 + "px" || "65%" }}
+      >
         <img src="/museum_title.webp" alt="Museum logo" className={style.img} />
       </div>
       <Book
@@ -135,6 +139,7 @@ export default function Index({ bookData }) {
         zIndexPage={zIndexPage}
         changePage={changePage}
         changeCustomPage={changeCustomPage}
+        bookRef={bookRef}
       />
       {showLoader && (
         <div className={style.container}>
