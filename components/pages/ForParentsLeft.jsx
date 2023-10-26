@@ -27,6 +27,7 @@ const ForParentsLeft = ({
         style={{
           lineHeight: "calc(1.35 * var(--vh))",
           fontSize: "calc(1.1 * var(--vh))",
+          fontWeight: 300,
         }}
       >
         {description?.content.map(({ content }, index) => (

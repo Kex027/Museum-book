@@ -21,9 +21,10 @@ const ForewordRight = ({
       <div
         style={{
           fontSize: "calc(1.4 * var(--vh))",
-          lineHeight: "calc(2 * var(--vh))",
+          lineHeight: "calc(1.8 * var(--vh))",
           color: "white",
-          padding: "8% 8% 8% 0",
+          padding: "8% 20% 8% 0",
+          fontWeight: 300,
         }}
       >
         {Object.entries(text?.content).map((content) => (

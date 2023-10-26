@@ -18,6 +18,7 @@ const FaqRight = ({
           justifyContent: "center",
           alignItems: "center",
           position: "relative",
+          fontWeight: 300,
         }}
       >
         {qa.map(({ fields: { answer } }, index) => (
