@@ -5,17 +5,7 @@ import { FaPlayCircle } from "react-icons/fa";
 
 const VideoLeft = ({
   page: {
-    fields: {
-      id,
-      heading,
-      description,
-      topics,
-      video: {
-        fields: {
-          file: { url },
-        },
-      },
-    },
+    fields: { id, heading, description, topics, videoUrl },
   },
 }) => {
   const [showVideo, setShowVideo] = useState(false);
@@ -72,7 +62,7 @@ const VideoLeft = ({
       window.removeEventListener("resize", updateDimension);
     };
   }, [screenSize, videoSize]);
-
+  console.log(videoUrl);
   return (
     <div className={classNames(style.container)}>
       <video
@@ -82,10 +72,7 @@ const VideoLeft = ({
           display: showVideo ? "block" : "none",
         }}
       >
-        <source
-          src={"https://moneyjar.world/museum/john-mongan.mp4"}
-          type="video/mp4"
-        />
+        <source src={videoUrl} type="video/mp4" />
       </video>
 
       <div
