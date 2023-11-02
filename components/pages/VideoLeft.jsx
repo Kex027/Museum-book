@@ -62,7 +62,7 @@ const VideoLeft = ({
       window.removeEventListener("resize", updateDimension);
     };
   }, [screenSize, videoSize]);
-  console.log(videoUrl);
+
   return (
     <div className={classNames(style.container)}>
       <video

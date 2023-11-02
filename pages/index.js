@@ -71,6 +71,15 @@ export default function Index({ bookData }) {
     return windowSize;
   }
 
+  document.onkeydown = (e) => {
+    e = e || window.event;
+    if (e.keyCode === 37) {
+      changePage(-1);
+    } else if (e.keyCode === 39) {
+      changePage(1);
+    }
+  };
+
   const changePage = (value) => {
     setCurrentPage((oldValue) => {
       if (oldValue + value < -1 || oldValue + value > pagesLength - 1)
