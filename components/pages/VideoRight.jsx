@@ -14,7 +14,7 @@ const VideoRight = ({
   return (
     <div className={classNames(style.container)}>
       <h2 className={classNames(style.heading)}>
-        CHAP&shy;TER {displayChapterNumber()}
+        CHAPTER {displayChapterNumber()}
       </h2>
       <div className={classNames(style.videoRect)}></div>
     </div>

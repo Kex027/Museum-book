@@ -1,15 +1,14 @@
 .container {
   .heading {
-    padding-right: 10%;
+    color: #0f0;
 
-    color: rgba(0, 255, 0, 0.8);
+    font-size: calc(9 * var(--vh));
+    line-height: calc(8 * var(--vh));
 
-    font-size: calc(12.8 * var(--vh));
-    line-height: calc(11.5 * var(--vh));
-    word-break: break-all;
     font-weight: bold;
 
     position: absolute;
+    top: 3%;
     z-index: 1;
   }
 
