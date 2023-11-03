@@ -44,7 +44,7 @@ const Form = ({ style }) => {
         htmlFor="name"
         className={classNames(style.label)}
         style={{
-          color: errors.name ? "#f00" : "#fff",
+          color: errors.name ? "#f00" : "#000",
         }}
       >
         Name *
@@ -58,7 +58,7 @@ const Form = ({ style }) => {
         htmlFor="email"
         className={classNames(style.label)}
         style={{
-          color: errors.email ? "#f00" : "#fff",
+          color: errors.email ? "#f00" : "#000",
         }}
       >
         Email *
@@ -78,7 +78,7 @@ const Form = ({ style }) => {
         htmlFor="message"
         className={classNames(style.label)}
         style={{
-          color: errors.message ? "#f00" : "#fff",
+          color: errors.message ? "#f00" : "#000",
         }}
       >
         Message *
@@ -103,11 +103,7 @@ const Form = ({ style }) => {
         Submit
       </button>
       {success && (
-        <span
-          style={{ color: "#0f0", fontWeight: "bold", alignSelf: "center" }}
-        >
-          Thank you for getting in touch!
-        </span>
+        <span className={style.success}>Thank you for getting in touch!</span>
       )}
     </form>
   );

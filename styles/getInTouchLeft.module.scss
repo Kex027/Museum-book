@@ -1,20 +1,22 @@
 .container {
   height: 100%;
+  position: relative;
 
   .heading {
     color: #0f0;
-    font-size: calc(12 * var(--vh));
-    line-height: calc(11 * var(--vh));
+    font-size: calc(10 * var(--vh));
+    line-height: calc(9 * var(--vh));
     word-break: break-all;
     font-weight: bold;
-    height: 34%;
-    opacity: 90%;
+    height: 24%;
+    position: relative;
+    top: calc(-2.25 * var(--vh));
   }
 
   .form {
-    height: 66%;
+    height: 76%;
 
-    color: white;
+    color: black;
 
     display: flex;
     flex-direction: column;
@@ -25,17 +27,29 @@
 
     .label {
       font-size: calc(1.8 * var(--vh));
+      font-weight: 500;
     }
 
     .input {
-      color: #232323;
       font-size: calc(1.8 * var(--vh));
       padding: 4px;
+      background-color: #e9e8e8;
+      border-radius: 4px;
     }
 
     .button {
-      color: #0f0;
+      color: #fff;
+      background-color: #000;
+      max-width: 50%;
+      padding: 10px 20px;
       font-size: calc(2.2 * var(--vh));
+      border-radius: 4px;
+    }
+
+    .success {
+      color: #0f0;
+      font-weight: bold;
+      align-self: center;
     }
   }
 }

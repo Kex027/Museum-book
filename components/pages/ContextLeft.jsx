@@ -13,7 +13,6 @@ const ContextLeft = ({
             lineHeight: "calc(13 * var(--vh))",
             whiteSpace: "normal",
             fontWeight: "bold",
-            opacity: "60%",
           }}
         >
           CON-

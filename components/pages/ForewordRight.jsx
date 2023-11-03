@@ -10,10 +10,10 @@ const ForewordRight = ({
           height: "39%",
           color: "#0f0",
           fontSize: "calc(13 * var(--vh))",
-          lineHeight: "calc(11 * var(--vh))",
+          lineHeight: "calc(12 * var(--vh))",
           wordBreak: "break-all",
           fontWeight: "bold",
-          paddingTop: "calc(3 * var(--vh))",
+          paddingTop: "calc(2 * var(--vh))",
         }}
       >
         FORE&shy;WORD
@@ -22,7 +22,6 @@ const ForewordRight = ({
         style={{
           fontSize: "calc(1.4 * var(--vh))",
           lineHeight: "calc(1.8 * var(--vh))",
-          color: "white",
           padding: "8% 20% 8% 0",
           fontWeight: 300,
         }}

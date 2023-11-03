@@ -96,7 +96,7 @@ const GetBookPage = ({
       );
     } else if (id === "getInTouch")
       return side === "left" ? (
-        <GetInTouchLeft page={page} />
+        <GetInTouchLeft />
       ) : (
         <GetInTouchRight page={page} />
       );

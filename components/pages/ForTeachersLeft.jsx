@@ -2,35 +2,35 @@ import React from "react";
 
 const ForTeachersLeft = ({
   page: {
-    fields: { description },
+    fields: { descriptionLeft },
   },
 }) => {
   return (
     <>
-      <div style={{ height: "48%" }}>
+      <div style={{ height: "28%" }}>
         <h2
           style={{
             color: "#0f0",
-            fontSize: "calc(9.5 * var(--vh))",
-            lineHeight: "calc(13 * var(--vh))",
+            fontSize: "calc(8 * var(--vh))",
+            lineHeight: "calc(7 * var(--vh))",
             whiteSpace: "normal",
             fontWeight: "bold",
-            opacity: "60%",
           }}
         >
-          FOR&nbsp;TEA-
+          FOR
           <br />
-          CHERS
+          TEACHERS
         </h2>
       </div>
       <div
         style={{
-          lineHeight: "calc(1.35 * var(--vh))",
-          fontSize: "calc(1.1 * var(--vh))",
+          padding: "6% 0 0 0",
+          fontSize: "calc(1.3 * var(--vh))",
+          lineHeight: "calc(1.75 * var(--vh))",
           fontWeight: 300,
         }}
       >
-        {description?.content.map(({ content }, index) => (
+        {descriptionLeft?.content.map(({ content }, index) => (
           <span
             key={index}
             style={{
