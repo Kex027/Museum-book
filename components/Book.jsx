@@ -24,7 +24,7 @@ const Book = ({
       }}
       ref={bookRef}
     >
-      <img src="/book2.webp" alt="Book" />
+      <div className={style.backgroundHolder}></div>
 
       <Cover
         thisPageIndex={-1}

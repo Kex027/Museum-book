@@ -9,7 +9,10 @@
 
   max-width: 74%;
 
-  & > img {
+
+  .backgroundHolder {
+    height: 1753px;
+    aspect-ratio: 2321 / 1753;
     visibility: hidden;
 
     max-height: calc(80 * var(--vh));
