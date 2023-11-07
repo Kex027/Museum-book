@@ -1,6 +1,6 @@
 const IntoRight = ({
   page: {
-    fields: { logo, footer, subtitle },
+    fields: { logo, subtitle },
   },
 }) => {
   return (
@@ -37,15 +37,6 @@ const IntoRight = ({
       >
         {subtitle}
       </h4>
-
-      <p
-        style={{
-          width: "35%",
-          fontSize: "calc(2 * var(--vh))",
-        }}
-      >
-        {footer}
-      </p>
     </div>
   );
 };
