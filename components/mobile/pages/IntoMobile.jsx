@@ -2,7 +2,7 @@ import React from "react";
 
 const IntoMobile = ({
   page: {
-    fields: { logo, subtitle, footer },
+    fields: { logo, subtitle },
   },
 }) => {
   return (
@@ -26,7 +26,6 @@ const IntoMobile = ({
       >
         <img src={logo.fields.file.url} alt={logo.fields.title} />
         <h4 style={{ fontSize: "1.5rem" }}>{subtitle}</h4>
-        <p style={{ fontSize: "1rem" }}>{footer}</p>
       </div>
     </div>
   );

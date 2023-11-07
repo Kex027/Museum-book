@@ -5,7 +5,7 @@ import { FaPlayCircle } from "react-icons/fa";
 
 const VideoLeft = ({
   page: {
-    fields: { id, heading, description, topics, videoUrl },
+    fields: { id, heading, text, topics, videoUrl },
   },
 }) => {
   const [showVideo, setShowVideo] = useState(false);
@@ -91,7 +91,7 @@ const VideoLeft = ({
         <h3 className={classNames(style.heading)}>
           CHAPTER {id}: {heading}
         </h3>
-        <p className={style.description}>{description}</p>
+        <p className={style.description}>{text}</p>
         <div className={classNames(style.topics)}>
           Topics:{" "}
           {topics.map((topic, index) => {

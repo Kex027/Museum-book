@@ -21,7 +21,7 @@ const FaqRight = ({
           fontWeight: 300,
         }}
       >
-        {qa.map(({ fields: { answer } }, index) => (
+        {qa?.map(({ fields: { answer } }, index) => (
           <div
             key={index}
             style={{

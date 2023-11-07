@@ -5,13 +5,13 @@ import classNames from "classnames";
 
 const FaqMobile = ({
   page: {
-    fields: { category, qa },
+    fields: { qa },
   },
 }) => {
   const [openedAnswerIndex, setOpenedAnswerIndex] = useState(0);
   return (
     <div className={style.container}>
-      <h3 className={style.heading}>{category}</h3>
+      <h3 className={style.heading}>FAQ</h3>
       {qa.map(({ fields: { question, answer } }, index) => {
         return (
           <>

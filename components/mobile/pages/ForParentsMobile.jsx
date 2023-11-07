@@ -2,7 +2,7 @@ import React from "react";
 
 const ForParentsMobile = ({
   page: {
-    fields: { heading, descriptionLeft, descriptionRight },
+    fields: { textLeft, textRight },
   },
 }) => {
   return (
@@ -16,11 +16,11 @@ const ForParentsMobile = ({
       <h3
         style={{ fontWeight: "bold", fontSize: "1.5rem", alignSelf: "center" }}
       >
-        {heading}
+        FOR PARENTS
       </h3>
       {[
-        ...Object.entries(descriptionLeft.content),
-        ...Object.entries(descriptionRight.content),
+        ...Object.entries(textLeft.content),
+        ...Object.entries(textRight.content),
       ].map((content) => (
         <div
           key={content[0]}

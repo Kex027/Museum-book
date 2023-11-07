@@ -4,6 +4,7 @@ import { createClient } from "contentful";
 import { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import MobileBook from "../components/mobile/MobileBook";
+import useWindowSize from "../components/helper/useWindowSize";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -24,54 +25,12 @@ export async function getStaticProps() {
 }
 
 export default function Index({ bookData }) {
-  const pagesLength = bookData.fields.pages.length;
+  const [loader, setLoader] = useState(true);
+  const pagesLength = bookData.fields.pages?.length;
   const [currentPage, setCurrentPage] = useState(-1);
   const [zIndexPage, setZIndexPage] = useState(-1);
-  const windowSize = useWindowSize();
   const bookRef = useRef(null);
-
-  function useWindowSize() {
-    const [windowSize, setWindowSize] = useState({
-      width: undefined,
-      height: undefined,
-    });
-    function updateWindowSize() {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    }
-    function adjustVH() {
-      const htmlElement = document.getElementsByTagName("html")[0];
-      const maxRatio = 0.75;
-      let maxHeight = innerWidth * maxRatio;
-      const adjustedHeight = Math.min(innerHeight, maxHeight);
-
-      htmlElement.style.setProperty("--vh", adjustedHeight / 100 + "px");
-    }
-
-    useEffect(() => {
-      document.onkeydown = (e) => {
-        e = e || window.event;
-        if (e.keyCode === 37) {
-          changePage(-1);
-        } else if (e.keyCode === 39) {
-          changePage(1);
-        }
-      };
-
-      window.addEventListener("resize", () => {
-        updateWindowSize();
-        adjustVH();
-      });
-
-      adjustVH();
-      updateWindowSize();
-
-      return () => window.removeEventListener("resize", updateWindowSize);
-    }, []);
-    return windowSize;
-  }
+  const windowSize = useWindowSize();
 
   const changePage = (value) => {
     setCurrentPage((oldValue) => {
@@ -109,15 +68,23 @@ export default function Index({ bookData }) {
     }, 500);
   };
 
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+
+    setTimeout(() => {
+      setLoader(false);
+    }, 250);
+  }, []);
+
   const getOrientation = () => {
-    if (typeof window !== "undefined") {
-      return window?.screen.orientation.type;
-    }
+    if (isClient) return window?.screen.orientation.type;
   };
 
   if (windowSize.width < 1024 || getOrientation() === "portrait-primary")
     return (
-      <div className={style.container} style={{ overflowY: "visible" }}>
+      <div className={style.container}>
         <MobileBook
           pages={bookData.fields.pages}
           currentPage={currentPage}
@@ -128,21 +95,33 @@ export default function Index({ bookData }) {
     );
   return (
     <div className={classNames(style.container)}>
-      <div
-        className={style.imgWrapper}
-        style={{ width: bookRef?.current?.clientWidth + 90 + "px" || "65%" }}
-      >
-        <img src="/museum_title.webp" alt="Museum logo" className={style.img} />
-      </div>
-      <Book
-        pages={bookData.fields.pages}
-        bookmarks={bookData.fields.bookmarks}
-        currentPage={currentPage}
-        zIndexPage={zIndexPage}
-        changePage={changePage}
-        changeCustomPage={changeCustomPage}
-        bookRef={bookRef}
-      />
+      {loader ? (
+        <img src="/loading.gif" alt="loader" />
+      ) : (
+        <>
+          <div
+            className={style.imgWrapper}
+            style={{
+              width: bookRef?.current?.clientWidth + 90 + "px" || "65%",
+            }}
+          >
+            <img
+              src="/museum_title.webp"
+              alt="Museum logo"
+              className={style.img}
+            />
+          </div>
+          <Book
+            pages={bookData.fields.pages}
+            bookmarks={bookData.fields.bookmarks}
+            currentPage={currentPage}
+            zIndexPage={zIndexPage}
+            changePage={changePage}
+            changeCustomPage={changeCustomPage}
+            bookRef={bookRef}
+          />
+        </>
+      )}
     </div>
   );
 }

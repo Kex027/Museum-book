@@ -3,7 +3,7 @@ import classNames from "classnames";
 import style from "/styles/getInTouchLeft.module.scss";
 import Form from "../helper/Form";
 
-const GetInTouchLeft = ({ page }) => {
+const GetInTouchLeft = () => {
   return (
     <div className={classNames(style.container)}>
       <h2 className={classNames(style.heading)}>

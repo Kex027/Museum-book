@@ -2,7 +2,7 @@ import React from "react";
 
 const ForTeachersLeft = ({
   page: {
-    fields: { descriptionLeft },
+    fields: { textLeft },
   },
 }) => {
   return (
@@ -30,7 +30,7 @@ const ForTeachersLeft = ({
           fontWeight: 300,
         }}
       >
-        {descriptionLeft?.content.map(({ content }, index) => (
+        {textLeft?.content.map(({ content }, index) => (
           <span
             key={index}
             style={{

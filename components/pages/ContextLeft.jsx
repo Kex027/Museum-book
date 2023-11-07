@@ -1,6 +1,6 @@
 const ContextLeft = ({
   page: {
-    fields: { description },
+    fields: { text },
   },
 }) => {
   return (
@@ -28,7 +28,7 @@ const ContextLeft = ({
           fontWeight: 300,
         }}
       >
-        {description?.content.map(({ content }, index) => (
+        {text?.content.map(({ content }, index) => (
           <span
             key={index}
             style={{

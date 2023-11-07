@@ -4,16 +4,16 @@ import classNames from "classnames";
 
 const FaqLeft = ({
   page: {
-    fields: { category, qa },
+    fields: { qa },
   },
   qaIndex,
   setQaIndex,
 }) => {
   return (
     <div className={classNames(style.container)}>
-      <h2 className={classNames(style.heading)}>{category}</h2>
+      <h2 className={classNames(style.heading)}>FAQ</h2>
       <div className={classNames(style.questions)}>
-        {qa.map(({ fields: { question }, sys: { id } }, index) => (
+        {qa?.map(({ fields: { question }, sys: { id } }, index) => (
           <div
             key={id}
             className={classNames(style.question)}

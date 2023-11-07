@@ -3,8 +3,7 @@ import React from "react";
 const ContextMobile = ({
   page: {
     fields: {
-      heading,
-      description: { content },
+      text: { content },
     },
   },
 }) => {
@@ -17,10 +16,10 @@ const ContextMobile = ({
         gap: "20px",
       }}
     >
-      <h3 style={{ fontWeight: "bold", fontSize: "1.5rem" }}>{heading}</h3>
+      <h3 style={{ fontWeight: "bold", fontSize: "1.5rem" }}>CONTEXT</h3>
       {content.map(({ content }) => {
         return (
-          <span style={{ fontBold: content[0].marks[0]?.type }}>
+          <span style={{ fontWeight: content[0].marks[0]?.type }}>
             {content[0].value}
           </span>
         );

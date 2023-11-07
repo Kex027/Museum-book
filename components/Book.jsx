@@ -29,17 +29,17 @@ const Book = ({
       <Cover
         thisPageIndex={-1}
         currentPage={currentPage}
-        pagesLength={pages.length}
+        pagesLength={pages?.length}
         zIndexPage={zIndexPage}
         changePage={changePage}
       />
       {pages?.map((page, index) => {
-        const bookmark = bookmarks.filter(
+        const bookmark = bookmarks?.filter(
           ({ fields: { category } }) =>
             page.fields.category?.toLowerCase() === category?.toLowerCase()
         )[0]?.fields;
 
-        const bookmarkIndex = bookmarks.findIndex(
+        const bookmarkIndex = bookmarks?.findIndex(
           ({ fields }) => fields === bookmark
         );
         return (
@@ -47,7 +47,7 @@ const Book = ({
             key={page.sys.id}
             thisPageIndex={index}
             currentPage={currentPage}
-            pagesLength={pages.length}
+            pagesLength={pages?.length}
             zIndexPage={zIndexPage}
             changePage={changePage}
             changeCustomPage={changeCustomPage}
@@ -80,9 +80,9 @@ const Book = ({
         );
       })}
       <Cover
-        thisPageIndex={pages.length}
+        thisPageIndex={pages?.length}
         currentPage={currentPage}
-        pagesLength={pages.length}
+        pagesLength={pages?.length}
         zIndexPage={zIndexPage}
         changePage={changePage}
       />

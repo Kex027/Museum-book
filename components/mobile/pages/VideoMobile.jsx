@@ -2,7 +2,7 @@ import React from "react";
 
 const VideoMobile = ({
   page: {
-    fields: { heading, video, description },
+    fields: { heading, videoUrl, text },
   },
 }) => {
   return (
@@ -16,13 +16,13 @@ const VideoMobile = ({
     >
       <h3 style={{ fontWeight: "bold", fontSize: "1.5rem" }}>{heading}</h3>
       <div style={{ display: "flex", justifyContent: "center", width: "100%" }}>
-        {video && (
+        {videoUrl && (
           <video controls style={{ width: "85%", maxWidth: "600px" }}>
-            <source src={video?.fields.file.url} type="video/mp4" />
+            <source src={videoUrl} type="video/mp4" />
           </video>
         )}
       </div>
-      <p>{description}</p>
+      <p>{text}</p>
     </div>
   );
 };

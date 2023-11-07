@@ -2,7 +2,7 @@ import React from "react";
 
 const ForParentsLeft = ({
   page: {
-    fields: { descriptionLeft },
+    fields: { textLeft },
   },
 }) => {
   return (
@@ -30,7 +30,7 @@ const ForParentsLeft = ({
           padding: "10% 0",
         }}
       >
-        {descriptionLeft?.content.map(({ content }, index) => (
+        {textLeft?.content.map(({ content }, index) => (
           <span
             key={index}
             style={{

@@ -3,7 +3,7 @@ import { BiSolidRightArrowAlt } from "react-icons/bi";
 
 const ForTeachersRight = ({
   page: {
-    fields: { descriptionRight, encouragement },
+    fields: { textRight, encouragement },
   },
 }) => {
   return (
@@ -17,7 +17,7 @@ const ForTeachersRight = ({
           fontWeight: 300,
         }}
       >
-        {descriptionRight?.content.map(({ content }, index) => (
+        {textRight?.content.map(({ content }, index) => (
           <span
             key={index}
             style={{

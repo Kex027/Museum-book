@@ -2,13 +2,13 @@ import Content from "../Content";
 
 const ContentsLeft = ({
   page: {
-    fields: { title, listOfContents },
+    fields: { listOfContents },
   },
   changeCustomPage,
   pages,
 }) => {
   const indexOfFirstVideoPage = pages.findIndex(
-    (page) => page.sys.contentType.sys.id === "page"
+    (page) => page.sys.contentType.sys.id === "videoPage"
   );
   return (
     <>
@@ -22,7 +22,7 @@ const ContentsLeft = ({
           fontWeight: "bold",
         }}
       >
-        {title.toUpperCase()}
+        CONTENTS
       </h2>
 
       <div
@@ -36,18 +36,16 @@ const ContentsLeft = ({
           height: "78%",
         }}
       >
-        {listOfContents
-          .slice(0, 5)
-          .map(({ fields: { id, name, description } }) => (
-            <Content
-              key={id}
-              id={id}
-              name={name}
-              description={description}
-              changeCustomPage={changeCustomPage}
-              indexOfFirstVideoPage={indexOfFirstVideoPage}
-            />
-          ))}
+        {listOfContents.slice(0, 5).map(({ fields: { name, text } }, index) => (
+          <Content
+            key={index}
+            index={index}
+            name={name}
+            text={text}
+            changeCustomPage={changeCustomPage}
+            indexOfFirstVideoPage={indexOfFirstVideoPage}
+          />
+        ))}
       </div>
     </>
   );

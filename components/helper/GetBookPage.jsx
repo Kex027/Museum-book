@@ -70,36 +70,32 @@ const GetBookPage = ({
           pages={pages}
         />
       );
-    else if (id === "page")
+    else if (id === "videoPage")
       return side === "left" ? (
         <VideoLeft page={page} />
       ) : (
         <VideoRight page={page} />
       );
-    else if (id === "forTeachers")
+    else if (id === "forTeachersPage")
       return side === "left" ? (
         <ForTeachersLeft page={page} />
       ) : (
         <ForTeachersRight page={page} />
       );
-    else if (id === "forParents")
+    else if (id === "forParentsPage")
       return side === "left" ? (
         <ForParentsLeft page={page} />
       ) : (
         <ForParentsRight page={page} />
       );
-    else if (id === "faq") {
+    else if (id === "faqPage") {
       return side === "left" ? (
         <FaqLeft page={page} qaIndex={qaIndex} setQaIndex={setQaIndex} />
       ) : (
         <FaqRight page={page} qaIndex={qaIndex} />
       );
-    } else if (id === "getInTouch")
-      return side === "left" ? (
-        <GetInTouchLeft />
-      ) : (
-        <GetInTouchRight page={page} />
-      );
+    } else if (id === "getInTouchPage")
+      return side === "left" ? <GetInTouchLeft /> : <GetInTouchRight />;
   } else {
     if (id === "intoPage") return <IntoMobile page={page} />;
     else if (id === "forewordPage") return <ForewordMobile page={page} />;
@@ -112,12 +108,12 @@ const GetBookPage = ({
           changeCustomPage={changeCustomPage}
         />
       );
-    else if (id === "page") return <VideoMobile page={page} />;
-    else if (id === "forTeachers") return <ForTeachersMobile page={page} />;
-    else if (id === "forParents") return <ForParentsMobile page={page} />;
-    else if (id === "faq") {
+    else if (id === "videoPage") return <VideoMobile page={page} />;
+    else if (id === "forTeachersPage") return <ForTeachersMobile page={page} />;
+    else if (id === "forParentsPage") return <ForParentsMobile page={page} />;
+    else if (id === "faqPage") {
       return <FaqMobile page={page} />;
-    } else if (id === "getInTouch") return <GetInTouchMobile page={page} />;
+    } else if (id === "getInTouchPage") return <GetInTouchMobile />;
   }
   return "";
 };

@@ -2,13 +2,13 @@ import React from "react";
 import style from "../styles/content.module.scss";
 
 const Content = ({
-  id,
+  index,
   name,
-  description,
+  text,
   changeCustomPage,
   indexOfFirstVideoPage,
 }) => {
-  const displayId = () => {
+  const displayId = (id) => {
     if (id < 10) return "0" + id;
     return id;
   };
@@ -17,15 +17,15 @@ const Content = ({
     <div
       className={style.container}
       onClick={() => {
-        changeCustomPage(id + indexOfFirstVideoPage - 1);
+        changeCustomPage(index + 1 + indexOfFirstVideoPage - 1);
       }}
     >
-      <div className={style.description}>{description}</div>
+      <div className={style.description}>{text}</div>
 
       <div>
         <div className={style.wrapper}>
           <div className={style.dummy}></div>
-          <div className={style.id}>{displayId(id)}</div>
+          <div className={style.id}>{displayId(index + 1)}</div>
         </div>
         <div className={style.wrapper}>
           <div className={style.dummy}></div>
