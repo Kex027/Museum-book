@@ -33,6 +33,7 @@ const IntoRight = ({
         style={{
           width: "70%",
           fontSize: "calc(2 * var(--vh))",
+          marginBottom: "calc(11 * var(--vh))",
         }}
       >
         {subtitle}
