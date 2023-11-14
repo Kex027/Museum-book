@@ -13,6 +13,8 @@
     box-sizing: border-box;
 
     font-family: AktivGrotesk, sans-serif;
+
+    cursor: url('/cursor.png'), auto !important;
 }
 
 html {
@@ -21,7 +23,6 @@ html {
 
 body {
     background-color: #C2C2C0;
-    cursor: url('/cursor.png'), auto;
 }
 
 .btn {
@@ -35,7 +36,6 @@ body {
     color: #333;
     border: none;
     border-radius: 50px;
-    cursor: pointer;
     transition: background-color 0.3s ease-in-out;
 }
 

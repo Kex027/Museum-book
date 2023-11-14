@@ -2,19 +2,19 @@
   .heading {
     color: #0f0;
 
-    font-size: calc(9 * var(--vh));
-    line-height: calc(8 * var(--vh));
+    font-size: calc(7 * var(--vh));
+    line-height: calc(6 * var(--vh));
 
     font-weight: bold;
 
     position: absolute;
-    top: 3%;
+    top: 10%;
     z-index: 1;
   }
 
   .videoRect {
     position: absolute;
-    top: 21%;
+    top: 6%;
     left: 0;
     width: 34%;
     height: 52%;

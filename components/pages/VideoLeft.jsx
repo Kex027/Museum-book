@@ -88,10 +88,12 @@ const VideoLeft = ({
       </div>
 
       <div className={classNames(style.info)}>
-        <h3 className={classNames(style.heading)}>
-          CHAPTER {id}: {heading}
-        </h3>
-        <p className={style.description}>{text}</p>
+        <div className={classNames(style.text)}>
+          <h3 className={classNames(style.heading)}>
+            {heading?.toUpperCase()}
+          </h3>
+          <p className={style.description}>{text}</p>
+        </div>
         <div className={classNames(style.topics)}>
           Topics:{" "}
           {topics.map((topic, index) => {

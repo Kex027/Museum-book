@@ -51,6 +51,7 @@ const Book = ({
             zIndexPage={zIndexPage}
             changePage={changePage}
             changeCustomPage={changeCustomPage}
+            page={{ page }}
             bgLeft={`url('${page.fields.backgroundImage[0].fields.file.url}')`}
             bgRight={`url('${page.fields.backgroundImage[1].fields.file.url}')`}
             leftContent={

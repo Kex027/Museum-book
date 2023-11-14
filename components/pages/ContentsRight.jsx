@@ -21,7 +21,7 @@ const ContentsRight = ({
           justifyContent: "space-between",
           alignItems: "flex-start",
 
-          padding: "4% 0 4% 6%",
+          padding: "4% 0 4% 0",
           height: "78%",
         }}
       >

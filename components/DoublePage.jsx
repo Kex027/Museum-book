@@ -11,6 +11,15 @@ const DoublePage = ({
   zIndexPage,
   changePage,
   changeCustomPage,
+  page: {
+    page: {
+      sys: {
+        contentType: {
+          sys: { id },
+        },
+      },
+    },
+  },
   bgLeft,
   bgRight,
   leftContent,
@@ -34,7 +43,17 @@ const DoublePage = ({
           backgroundImage: bgLeft,
         }}
       >
-        <div className={classNames(style.content)}>
+        <div
+          className={classNames(style.content)}
+          style={{
+            padding:
+              id !== "contentsPage"
+                ? id !== "videoPage"
+                  ? "8%"
+                  : "8% 0"
+                : "8% 0 8% 8%",
+          }}
+        >
           {leftContent}
 
           {bookmark && (
@@ -69,7 +88,10 @@ const DoublePage = ({
           backgroundImage: bgRight,
         }}
       >
-        <div className={classNames(style.content)}>
+        <div
+          className={classNames(style.content)}
+          style={{ padding: id !== "contentsPage" ? "8%" : "8% 0" }}
+        >
           {rightContent}
 
           <PageIndex side="right" thisPageIndex={thisPageIndex} />
