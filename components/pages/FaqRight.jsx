@@ -30,6 +30,7 @@ const FaqRight = ({
               transform:
                 index === qaIndex ? "translateX(0%)" : "translateX(-125%)",
               opacity: index === qaIndex ? 1 : 0,
+              fontSize: "calc(1.3 * var(--vh))",
             }}
           >
             {answer}

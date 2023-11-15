@@ -24,10 +24,11 @@ const ForParentsLeft = ({
       </div>
       <div
         style={{
-          lineHeight: "calc(2.4 * var(--vh))",
+          lineHeight: "calc(2 * var(--vh))",
           fontSize: "calc(1.5 * var(--vh))",
           fontWeight: 300,
-          padding: "10% 0",
+          paddingTop: "14%",
+          textAlign: "justify",
         }}
       >
         {textLeft?.content.map(({ content }, index) => (

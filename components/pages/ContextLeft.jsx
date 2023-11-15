@@ -13,9 +13,10 @@ const ContextLeft = ({
             lineHeight: "calc(13 * var(--vh))",
             whiteSpace: "normal",
             fontWeight: "bold",
+            textAlign: "center",
           }}
         >
-          CON-
+          CON
           <br />
           TEXT
         </h2>
@@ -26,20 +27,23 @@ const ContextLeft = ({
           lineHeight: "calc(1.35 * var(--vh))",
           fontSize: "calc(1.2 * var(--vh))",
           fontWeight: 300,
+          textAlign: "justify",
         }}
       >
-        {text?.content.map(({ content }, index) => (
-          <span
-            key={index}
-            style={{
-              fontWeight: content[0].marks[0],
-            }}
-          >
-            {content[0].value}
-            <br />
-            <br />
-          </span>
-        ))}
+        {text?.content.map(({ content }, index) => {
+          return (
+            <span
+              key={index}
+              style={{
+                fontWeight: content[0].marks[0]?.type,
+              }}
+            >
+              {content[0].value}
+              <br />
+              <br />
+            </span>
+          );
+        })}
       </div>
     </>
   );

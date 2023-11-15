@@ -10,10 +10,11 @@ const ForParentsRight = ({
       <div style={{ height: "28%" }}></div>
       <div
         style={{
-          lineHeight: "calc(2.4 * var(--vh))",
+          lineHeight: "calc(2 * var(--vh))",
           fontSize: "calc(1.5 * var(--vh))",
           fontWeight: 300,
-          padding: "8% 8% 8% 0",
+          padding: "14% 8% 8% 0",
+          textAlign: "justify",
         }}
       >
         {textRight?.content.map(({ content }, index) => (

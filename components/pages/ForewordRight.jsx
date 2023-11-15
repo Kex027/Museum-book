@@ -13,17 +13,20 @@ const ForewordRight = ({
           lineHeight: "calc(12 * var(--vh))",
           wordBreak: "break-all",
           fontWeight: "bold",
-          paddingTop: "calc(2 * var(--vh))",
+          textAlign: "center",
         }}
       >
-        FORE&shy;WORD
+        FORE
+        <br />
+        WORD
       </h2>
       <div
         style={{
           fontSize: "calc(1.4 * var(--vh))",
           lineHeight: "calc(1.8 * var(--vh))",
-          padding: "8% 20% 8% 0",
+          padding: "8% 4% 8% 4%",
           fontWeight: 300,
+          textAlign: "justify",
         }}
       >
         {Object.entries(text?.content).map((content) => (

@@ -28,6 +28,7 @@ const ForTeachersLeft = ({
           fontSize: "calc(1.3 * var(--vh))",
           lineHeight: "calc(1.75 * var(--vh))",
           fontWeight: 300,
+          textAlign: "justify",
         }}
       >
         {textLeft?.content.map(({ content }, index) => (
