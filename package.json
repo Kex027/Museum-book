@@ -20,6 +20,7 @@
     "react-google-recaptcha": "^3.1.0",
     "react-hook-form": "^7.47.0",
     "react-icons": "^4.11.0",
+    "react-pageflip": "^2.0.3",
     "sass": "^1.61.0"
   },
   "devDependencies": {

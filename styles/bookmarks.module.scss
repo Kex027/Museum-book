@@ -1,0 +1,16 @@
+.container {
+  margin-top: calc(8 * var(--vh));
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: calc(2 * var(--vh));
+
+  .bookmark {
+    position: relative;
+    top: calc(-15 * var(--vh));
+
+    font-size: calc(2.2 * var(--vh));
+    width: calc(25 * var(--vh));
+    padding: calc(1 * var(--vh)) calc(1 * var(--vh)) calc(1 * var(--vh)) calc(4 * var(--vh));
+  }
+}

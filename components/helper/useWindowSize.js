@@ -17,7 +17,7 @@ export default function useWindowSize() {
     let maxHeight = innerWidth * maxRatio;
     const adjustedHeight = Math.min(innerHeight, maxHeight);
 
-    htmlElement.style.setProperty("--vh", adjustedHeight / 100 + "px");
+    htmlElement.style.setProperty("--vh", adjustedHeight / 110 + "px");
   }
 
   useEffect(() => {

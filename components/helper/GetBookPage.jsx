@@ -35,6 +35,7 @@ const GetBookPage = ({
   pages,
   qaIndex,
   setQaIndex,
+  pageFlip,
   mobile = false,
 }) => {
   if (!mobile) {
@@ -62,12 +63,14 @@ const GetBookPage = ({
           page={page}
           changeCustomPage={changeCustomPage}
           pages={pages}
+          pageFlip={pageFlip}
         />
       ) : (
         <ContentsRight
           page={page}
           changeCustomPage={changeCustomPage}
           pages={pages}
+          pageFlip={pageFlip}
         />
       );
     else if (id === "videoPage")

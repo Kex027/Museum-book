@@ -6,6 +6,7 @@ const ContentsRight = ({
   },
   changeCustomPage,
   pages,
+  pageFlip,
 }) => {
   const indexOfFirstVideoPage = pages.findIndex(
     (page) => page.sys.contentType.sys.id === "videoPage"
@@ -35,6 +36,7 @@ const ContentsRight = ({
               text={text}
               changeCustomPage={changeCustomPage}
               indexOfFirstVideoPage={indexOfFirstVideoPage}
+              pageFlipRef={pageFlip}
             />
           ))}
       </div>

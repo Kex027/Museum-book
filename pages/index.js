@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import classNames from "classnames";
 import MobileBook from "../components/mobile/MobileBook";
 import useWindowSize from "../components/helper/useWindowSize";
+import Bookmarks from "../components/Bookmarks";
 
 export async function getStaticProps() {
   const client = createClient({
@@ -111,6 +112,16 @@ export default function Index({ bookData }) {
               className={style.img}
             />
           </div>
+
+          {/*<div*/}
+          {/*  style={{*/}
+          {/*    width: "calc(120 * var(--vh))",*/}
+          {/*    height: "calc(200 * var(--vh))",*/}
+          {/*    // display: "flex",*/}
+          {/*    // justifyContent: "center",*/}
+          {/*    // alignItems: "center",*/}
+          {/*  }}*/}
+          {/*>*/}
           <Book
             pages={bookData.fields.pages}
             bookmarks={bookData.fields.bookmarks}
@@ -120,6 +131,7 @@ export default function Index({ bookData }) {
             changeCustomPage={changeCustomPage}
             bookRef={bookRef}
           />
+          {/*</div>*/}
         </>
       )}
     </div>
