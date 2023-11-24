@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import style from "../../styles/videoLeft.module.scss";
 import { FaPlayCircle } from "react-icons/fa";
 
@@ -7,8 +7,8 @@ const VideoLeft = ({
   page: {
     fields: { id, heading, text, topics, videoUrl },
   },
+  setVideoModal,
 }) => {
-  const [showVideo, setShowVideo] = useState(false);
   const videoRef = useRef(null);
 
   const fullScreen = () => {
@@ -55,7 +55,7 @@ const VideoLeft = ({
 
     if (videoSize.width !== screenSize.width) {
       videoRef?.current?.pause();
-      setShowVideo(false);
+      setVideoModal(false);
     }
 
     return () => {
@@ -65,24 +65,17 @@ const VideoLeft = ({
 
   return (
     <div className={classNames(style.container)}>
-      <video
-        ref={videoRef}
-        controls
-        style={{
-          display: showVideo ? "block" : "none",
-        }}
-      >
-        <source src={videoUrl} type="video/mp4" />
-      </video>
-
-      <div
-        className={classNames(style.videoRect)}
-        onClick={() => {
-          setShowVideo(true);
-          fullScreen();
-        }}
-      >
-        <div className={classNames(style.videoRectClickable)}></div>
+      <div className={classNames(style.videoRect)}>
+        <button
+          className={classNames(style.videoRectClickable)}
+          onClick={() => {
+            setVideoModal(
+              <video ref={videoRef} controls>
+                <source src={videoUrl} type="video/mp4" />
+              </video>
+            );
+          }}
+        ></button>
 
         <FaPlayCircle className={classNames(style.playButton)} />
       </div>

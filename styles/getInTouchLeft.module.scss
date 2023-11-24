@@ -12,44 +12,44 @@
     position: relative;
     top: calc(-2.25 * var(--vh));
   }
+}
 
-  .form {
-    height: 76%;
+.form {
+  height: 76%;
 
-    color: black;
+  color: black;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    gap: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 6px;
 
-    padding: 4% 4% 4% 0;
+  padding: 4%;
 
-    .label {
-      font-size: calc(1.8 * var(--vh));
-      font-weight: 500;
-    }
+  .label {
+    font-size: calc(1.8 * var(--vh));
+    font-weight: 500;
+  }
 
-    .input {
-      font-size: calc(1.8 * var(--vh));
-      padding: 4px;
-      background-color: #e9e8e8;
-      border-radius: 4px;
-    }
+  .input {
+    font-size: calc(1.8 * var(--vh));
+    padding: 4px;
+    background-color: #e9e8e8;
+    border-radius: 4px;
+  }
 
-    .button {
-      color: #fff;
-      background-color: #000;
-      max-width: 50%;
-      padding: 10px 20px;
-      font-size: calc(2.2 * var(--vh));
-      border-radius: 4px;
-    }
+  .button {
+    color: #fff;
+    background-color: #000;
+    max-width: 50%;
+    padding: 10px 20px;
+    font-size: calc(2.2 * var(--vh));
+    border-radius: 4px;
+  }
 
-    .success {
-      color: #0f0;
-      font-weight: bold;
-      align-self: center;
-    }
+  .success {
+    color: #0f0;
+    font-weight: bold;
+    align-self: center;
   }
 }

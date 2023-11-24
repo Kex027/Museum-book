@@ -17,3 +17,29 @@
     max-height: calc(80 * var(--vh));
   }
 }
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  color: white;
+  height: 78%;
+  font-size: calc(1.6 * var(--vh));
+  padding: 6%;
+  background-color: #fff;
+
+  .question {
+    display: flex;
+    justify-content: space-between;
+    font-size: calc(2 * var(--vh));
+
+    .icon {
+      font-size: calc(2.5 * var(--vh));
+      transition: transform .2s ease;
+    }
+
+    &:hover {
+      color: #0f0;
+    }
+  }
+}

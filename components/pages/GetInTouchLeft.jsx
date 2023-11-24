@@ -1,9 +1,9 @@
 import React from "react";
 import classNames from "classnames";
 import style from "/styles/getInTouchLeft.module.scss";
-import Form from "../helper/Form";
+import ModalButton from "../helper/ModalButton";
 
-const GetInTouchLeft = () => {
+const GetInTouchLeft = ({ setGetInTouchModal }) => {
   return (
     <div className={classNames(style.container)}>
       <h2 className={classNames(style.heading)}>
@@ -11,7 +11,11 @@ const GetInTouchLeft = () => {
         <br />
         TOUCH
       </h2>
-      <Form style={style} />
+
+      <ModalButton
+        click={() => setGetInTouchModal(style)}
+        text={"Get in touch"}
+      />
     </div>
   );
 };

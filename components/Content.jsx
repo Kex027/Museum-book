@@ -1,8 +1,6 @@
 import React, { forwardRef } from "react";
 import style from "../styles/content.module.scss";
 
-//TODO 6 - 10 doesn't work (6 => 8 chapter)
-//TODO modals (video, faq, contact)
 const Content = ({
   index,
   name,
@@ -24,9 +22,11 @@ const Content = ({
     <div
       className={style.container}
       onClick={() => {
-        console.log(index);
-        console.log(indexOfFirstVideoPage);
-        goToPage((index + 1 + indexOfFirstVideoPage + 1) * 2);
+        let pageIndex = 0;
+        if (index >= 0 && index <= 4)
+          pageIndex = (index + 2 + indexOfFirstVideoPage) * 2;
+        else pageIndex = (index + indexOfFirstVideoPage) * 2;
+        goToPage(pageIndex);
       }}
     >
       <div className={style.description}>{text}</div>

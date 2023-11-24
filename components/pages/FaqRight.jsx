@@ -20,23 +20,7 @@ const FaqRight = ({
           position: "relative",
           fontWeight: 300,
         }}
-      >
-        {qa?.map(({ fields: { answer } }, index) => (
-          <div
-            key={index}
-            style={{
-              position: "absolute",
-              transition: "transform 1s ease .25s, opacity 1s ease",
-              transform:
-                index === qaIndex ? "translateX(0%)" : "translateX(-125%)",
-              opacity: index === qaIndex ? 1 : 0,
-              fontSize: "calc(1.3 * var(--vh))",
-            }}
-          >
-            {answer}
-          </div>
-        ))}
-      </div>
+      ></div>
     </>
   );
 };

@@ -1,45 +1,30 @@
 import { AiOutlinePlus } from "react-icons/ai";
 import style from "/styles/faqLeft.module.scss";
 import classNames from "classnames";
+import Modal from "../helper/Modal";
+import React, { useEffect, useState } from "react";
+import { BiSolidRightArrowAlt } from "react-icons/bi";
+import ModalButton from "../helper/ModalButton";
 
 const FaqLeft = ({
   page: {
     fields: { qa },
   },
+  setFaqModal,
   qaIndex,
   setQaIndex,
 }) => {
   return (
-    <div className={classNames(style.container)}>
-      <h2 className={classNames(style.heading)}>FAQ</h2>
-      <div className={classNames(style.questions)}>
-        {qa?.map(({ fields: { question }, sys: { id } }, index) => (
-          <div
-            key={id}
-            className={classNames(style.question)}
-            onClick={() => {
-              setQaIndex(index);
-            }}
-            style={{
-              color: qaIndex === index ? "#0f0" : "",
-              zIndex: 1,
-            }}
-          >
-            <div style={{ display: "flex", gap: "5px" }}>
-              <span>Q{index + 1}: </span> <span>{question}</span>
-            </div>
-            <span>
-              <AiOutlinePlus
-                className={classNames(style.icon)}
-                style={{
-                  transform: qaIndex === index ? "rotate(45deg)" : "",
-                }}
-              />
-            </span>
-          </div>
-        ))}
+    <>
+      <div className={classNames(style.container)}>
+        <h2 className={classNames(style.heading)}>FAQ</h2>
+        <ModalButton
+          click={() => setFaqModal(qa)}
+          text={"Show questions and answers"}
+          white
+        />
       </div>
-    </div>
+    </>
   );
 };
 

@@ -36,6 +36,9 @@ const GetBookPage = ({
   qaIndex,
   setQaIndex,
   pageFlip,
+  setFaqModal,
+  setGetInTouchModal,
+  setVideoModal,
   mobile = false,
 }) => {
   if (!mobile) {
@@ -75,7 +78,7 @@ const GetBookPage = ({
       );
     else if (id === "videoPage")
       return side === "left" ? (
-        <VideoLeft page={page} />
+        <VideoLeft page={page} setVideoModal={setVideoModal} />
       ) : (
         <VideoRight page={page} />
       );
@@ -93,12 +96,21 @@ const GetBookPage = ({
       );
     else if (id === "faqPage") {
       return side === "left" ? (
-        <FaqLeft page={page} qaIndex={qaIndex} setQaIndex={setQaIndex} />
+        <FaqLeft
+          page={page}
+          qaIndex={qaIndex}
+          setQaIndex={setQaIndex}
+          setFaqModal={setFaqModal}
+        />
       ) : (
         <FaqRight page={page} qaIndex={qaIndex} />
       );
     } else if (id === "getInTouchPage")
-      return side === "left" ? <GetInTouchLeft /> : <GetInTouchRight />;
+      return side === "left" ? (
+        <GetInTouchLeft setGetInTouchModal={setGetInTouchModal} />
+      ) : (
+        <GetInTouchRight />
+      );
   } else {
     if (id === "intoPage") return <IntoMobile page={page} />;
     else if (id === "forewordPage") return <ForewordMobile page={page} />;
