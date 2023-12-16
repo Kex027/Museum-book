@@ -107,7 +107,7 @@ const GetBookPage = ({
       );
     } else if (id === "getInTouchPage")
       return side === "left" ? (
-        <GetInTouchLeft setGetInTouchModal={setGetInTouchModal} />
+        <GetInTouchLeft page={page} setGetInTouchModal={setGetInTouchModal} />
       ) : (
         <GetInTouchRight />
       );

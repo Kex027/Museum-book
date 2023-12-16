@@ -1,11 +1,6 @@
 import React from "react";
 
-const FaqRight = ({
-  page: {
-    fields: { qa },
-  },
-  qaIndex,
-}) => {
+const FaqRight = () => {
   return (
     <>
       <h2 style={{ height: "22%" }}></h2>

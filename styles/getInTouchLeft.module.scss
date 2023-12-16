@@ -8,9 +8,22 @@
     line-height: calc(9 * var(--vh));
     word-break: break-all;
     font-weight: bold;
-    height: 24%;
+    height: 25%;
     position: relative;
     top: calc(-2.25 * var(--vh));
+  }
+
+  .doublePage {
+    display: flex;
+    height: calc(75 * var(--vh));
+    width: calc(100 * var(--vh));
+
+    .content {
+      padding: 30px;
+      background-size: cover;
+      height: 100%;
+      width: 50%;
+    }
   }
 }
 

@@ -5,27 +5,11 @@ import { FaPlayCircle } from "react-icons/fa";
 
 const VideoLeft = ({
   page: {
-    fields: { id, heading, text, topics, videoUrl },
+    fields: { heading, text, topics, videoUrl },
   },
   setVideoModal,
 }) => {
   const videoRef = useRef(null);
-
-  const fullScreen = () => {
-    const video = videoRef?.current;
-    if (video.requestFullscreen) {
-      video.requestFullscreen();
-      video.play();
-    } else if (video.webkitRequestFullscreen) {
-      /* Safari */
-      video.webkitRequestFullscreen();
-      video.play();
-    } else if (video.msRequestFullscreen) {
-      /* IE11 */
-      video.msRequestFullscreen();
-      video.play();
-    }
-  };
 
   const getCurrentDimension = () => {
     if (typeof window === "undefined") return;

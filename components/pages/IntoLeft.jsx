@@ -1,5 +1,5 @@
-const IntoLeft = ({page}) => {
-  return '';
-}
+const IntoLeft = () => {
+  return "";
+};
 
 export default IntoLeft;

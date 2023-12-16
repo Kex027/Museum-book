@@ -3,7 +3,7 @@ import classNames from "classnames";
 import style from "/styles/getInTouchLeft.module.scss";
 import ModalButton from "../helper/ModalButton";
 
-const GetInTouchLeft = ({ setGetInTouchModal }) => {
+const GetInTouchLeft = ({ setGetInTouchModal, page }) => {
   return (
     <div className={classNames(style.container)}>
       <h2 className={classNames(style.heading)}>
@@ -13,7 +13,7 @@ const GetInTouchLeft = ({ setGetInTouchModal }) => {
       </h2>
 
       <ModalButton
-        click={() => setGetInTouchModal(style)}
+        click={() => setGetInTouchModal({ style, page })}
         text={"Get in touch"}
       />
     </div>

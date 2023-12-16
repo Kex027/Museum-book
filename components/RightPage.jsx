@@ -11,9 +11,9 @@ const RightPage = forwardRef(
           backgroundSize: "cover",
           height: "100%",
           borderLeft: "1px solid hwb(235 26% 65% / 0.5)",
-          WebkitBoxShadow: "inset 42px 0px 42px -47px rgba(66, 68, 90, 1)",
-          MozBoxShadow: "inset 42px 0px 42px -47px rgba(66, 68, 90, 1)",
-          boxShadow: "inset 42px 0px 42px -47px rgba(66, 68, 90, 1)",
+          WebkitBoxShadow: "inset 50px 0px 42px -47px rgba(0, 0, 0, 1)",
+          MozBoxShadow: "inset 50px 0px 42px -47px rgba(0, 0, 0, 1)",
+          boxShadow: "inset 50px 0px 42px -47px rgba(0, 0, 0, 1)",
         }}
       >
         {content}

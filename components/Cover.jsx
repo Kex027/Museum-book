@@ -1,36 +1,53 @@
-import React from "react";
-import style from "/styles/cover.module.scss";
-import classNames from "classnames";
+import React, { forwardRef } from "react";
 import Image from "next/image";
 
-const Cover = ({
-  thisPageIndex,
-  currentPage,
-  pagesLength,
-  zIndexPage,
-  changePage,
-}) => {
-  return (
-    <div
-      className={style.container}
-      style={{
-        zIndex: pagesLength - Math.abs(zIndexPage - thisPageIndex),
-        width: currentPage === -1 ? "51%" : "52.5%",
-        transform:
-          currentPage !== -1 && thisPageIndex === pagesLength
-            ? "translateX(10%)"
-            : "",
-      }}
-    >
-      <div
-        className={classNames(style.content, {
-          [style.flipped]: thisPageIndex < currentPage,
-        })}
-        onClick={() => {
-          changePage(1);
-        }}
-      >
+const Cover = forwardRef(
+  ({ pageFlipRef, showSideBanners, setShowSideBanners }, ref) => {
+    return (
+      <>
+        <div
+          style={{
+            position: "absolute",
+            top: "0",
+            left: "-5%",
+            width: "5%",
+            height: "100%",
+            backgroundColor: "#131313",
+            transform: showSideBanners
+              ? // &&
+                // !(
+                //   Math.ceil(
+                //     pageFlipRef.current?.pageFlip()?.getCurrentPageIndex() / 2
+                //   ) === 0
+                // )
+                ""
+              : "translateX(1100%)",
+            opacity: showSideBanners
+              ? // &&
+                // !(
+                //   Math.ceil(
+                //     pageFlipRef.current?.pageFlip()?.getCurrentPageIndex() / 2
+                //   ) === 0
+                // )
+                "100%"
+              : "0",
+            transition: "opacity .1s ease-in-out, transform 1s ease-in-out",
+            zIndex: -1,
+            display: "flex",
+            justifyContent: "flex-end",
+          }}
+        >
+          <div
+            style={{
+              width: "50%",
+              height: "100%",
+              backgroundColor: "#595959",
+            }}
+          ></div>
+        </div>
+
         <Image
+          ref={ref}
           src={"/blackBookCover.webp"}
           alt="book cover"
           placeholder="blur"
@@ -40,11 +57,46 @@ const Cover = ({
           loader={() => "/blackBookCover.webp"}
           fill
           unoptimized={true}
-          style={{ objectFit: "cover" }}
+          style={{
+            objectFit: "cover",
+          }}
+          onClick={() => {
+            setShowSideBanners(true);
+          }}
         />
-      </div>
-    </div>
-  );
-};
+
+        <div
+          style={{
+            position: "absolute",
+            top: "0",
+            right: "-5%",
+            width: "5%",
+            height: "100%",
+            backgroundColor: "#131313",
+            transform: showSideBanners
+              ? // &&
+                // !(
+                //   Math.ceil(
+                //     pageFlipRef.current?.pageFlip()?.getCurrentPageIndex() / 2
+                //   ) === 0
+                // )
+                ""
+              : "translateX(-100%)",
+            transition: "transform 1s ease",
+            zIndex: -1,
+          }}
+        >
+          <div
+            style={{
+              width: "50%",
+              height: "100%",
+              backgroundColor: "#a8a8a8",
+            }}
+          ></div>
+        </div>
+      </>
+    );
+  }
+);
 
 export default Cover;

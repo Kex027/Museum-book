@@ -1,14 +1,7 @@
-import React, { forwardRef } from "react";
+import React from "react";
 import style from "../styles/content.module.scss";
 
-const Content = ({
-  index,
-  name,
-  text,
-  changeCustomPage,
-  indexOfFirstVideoPage,
-  pageFlipRef,
-}) => {
+const Content = ({ index, name, text, indexOfFirstVideoPage, pageFlipRef }) => {
   const displayId = (id) => {
     if (id < 10) return "0" + id;
     return id;
@@ -22,7 +15,7 @@ const Content = ({
     <div
       className={style.container}
       onClick={() => {
-        let pageIndex = 0;
+        let pageIndex;
         if (index >= 0 && index <= 4)
           pageIndex = (index + 2 + indexOfFirstVideoPage) * 2;
         else pageIndex = (index + indexOfFirstVideoPage) * 2;

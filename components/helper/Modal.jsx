@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { AiFillCloseSquare, AiOutlineCloseSquare } from "react-icons/ai";
 
 const Modal = ({ children, setShowModal, white }) => {
   useEffect(() => {
@@ -36,15 +35,15 @@ const Modal = ({ children, setShowModal, white }) => {
           position: "absolute",
           backgroundColor: "#ffffff",
           maxWidth: "75%",
-          maxHeight: "70%",
+          maxHeight: "90%",
         }}
       >
         {children}
         <span
           style={{
             position: "absolute",
-            top: "2%",
-            right: "2%",
+            top: "5px",
+            right: "5px",
             padding: "0 1%",
             color: white ? "#fff" : "#000",
           }}
